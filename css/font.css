@@ -1,0 +1,30 @@
+
+/* Ciutadella Regular */
+@font-face {
+    font-family: 'Ciutadella';
+    font-weight: 400;
+    src: url('../font/Ciutadella-Regular.woff') format('woff');
+}
+
+/*  Ciutadella Medium */
+@font-face {
+    font-family: 'Ciutadella';
+    font-weight: 500;
+    src: url('../font/Ciutadella-Medium.woff') format('woff');
+}
+
+/*  Ciutadella Bold */
+@font-face {
+    font-family: 'Ciutadella';
+    font-weight: 700;
+    src: url('../font/Ciutadella-Bold.woff') format('woff');
+}
+
+/* icomoon font - 아이콘폰트에 모두 사용*/
+@font-face {font-family: 'icomoon';src: url('../font/icomoon.eot') format('embedded-opentype'),
+            url('../font/icomoon.ttf') format('truetype'),
+            url('../font/icomoon.woff') format('woff');font-weight: normal;font-style: normal;}
+
+/* Noto Serif */
+
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@200;300;400;500;600;700;900&family=Noto+Serif:ital,wght@0,400;0,700;1,400;1,700&display=swap');

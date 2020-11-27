@@ -1,0 +1,150 @@
+/* HEADER KEYFRAMES */
+
+@keyframes gnb_close-item1 {
+  0% {
+    -webkit-transform: translate(-50%, -50%) rotate(45deg);
+    transform: translate(-50%, -50%) rotate(45deg);
+  }
+  40% {
+    -webkit-transform: translate(-50%, -50%) rotate(0deg);
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  50% {
+    -webkit-transform: translate(-50%, -50%) rotate(0deg);
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  100% {
+    -webkit-transform: translate(-50%, -6px) rotate(0deg);
+    transform: translate(-50%, -6px) rotate(0deg);
+  }
+}
+
+@keyframes gnb_close-item2 {
+  0% {
+    -webkit-transform: translate(-50%, -50%) rotate(-45deg);
+    transform: translate(-50%, -50%) rotate(-45deg);
+  }
+  40% {
+    -webkit-transform: translate(-50%, -50%) rotate(0deg);
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  50% {
+    -webkit-transform: translate(-50%, -50%) rotate(0deg);
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  100% {
+    -webkit-transform: translate(-50%, 4px) rotate(0deg);
+    transform: translate(-50%, 4px) rotate(0deg);
+  }
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    font-size: 10px;
+  }
+
+  50% {
+    font-size: 70px;
+  }
+  100% {
+    font-size: 60px;
+    opacity: 1;
+  }
+}
+@keyframes dotIn {
+  0% {
+    opacity: 0;
+    left: -40px;
+    top: 0;
+  }
+  50% {
+    top: -40px;
+    left: -6px;
+  }
+  100% {
+    opacity: 1;
+    top: -30px;
+    left: -15px;
+  }
+}
+
+@keyframes logoTxt {
+  0% {
+    transform: translateX(-120%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+/* Mobile ver */
+
+@keyframes fadeIn_m {
+  0% {
+    opacity: 0;
+    font-size: 5px;
+  }
+  50% {
+    font-size: 45px;
+  }
+  100% {
+    font-size: 35px;
+    opacity: 100%;
+  }
+}
+
+@keyframes dotIn_m {
+  0% {
+    opacity: 0;
+    left: -30px;
+    top: 0;
+  }
+  50% {
+    top: -25px;
+    left: -3px;
+  }
+  100% {
+    opacity: 1;
+    top: -19px;
+    left: -9px;
+  }
+}
+
+/* SLIDE ANIMATION */
+
+@keyframes fade_in_rtl {
+  0% {
+    left: 100%;
+  }
+  100% {
+    left: 0;
+  }
+}
+
+@keyframes fade_out_rtl {
+  0% {
+    left: 0;
+  }
+  100% {
+    left: -100%;
+  }
+}
+
+@keyframes fade_in_ltr {
+  0% {
+    left: -100%;
+  }
+  100% {
+    left: 0;
+  }
+}
+
+@keyframes fade_out_ltr {
+  0% {
+    left: 0;
+  }
+  100% {
+    left: 100%;
+  }
+}

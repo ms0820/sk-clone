@@ -1,0 +1,1193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Join us_SKT AI</title>
+
+    <script src="https://kit.fontawesome.com/480c261f60.js" crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="../css/font.css">
+    <link rel="stylesheet" href="../css/common.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital@1&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/joinus.css">
+    <link rel="stylesheet" href="../css/philosophy.css">
+    <link rel="stylesheet" href="css/keyframes_joinus.css">
+    <link rel="stylesheet" href="css/media.css">
+    <script src="../js/jquery.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.7/ScrollMagic.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.7/plugins/debug.addIndicators.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/gsap/2.1.3/TweenMax.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.5/plugins/animation.gsap.js"></script>
+
+    <script>
+        //리사이즈 이벤트들
+        x=window.matchMedia("(max-width:768px)");
+        y=window.matchMedia("(max-width:1024px)");
+        $(window).resize(function(){
+            
+         if(x.matches){ //768이하
+            document.getElementById("gnb").style="height:72px";
+            document.getElementById("gnb_wrap").style="height:72px";
+            if(document.body.scrollTop > 72){
+                document.getElementById("gnb").style="height:50px";
+                 document.getElementById("gnb_wrap").style="height:50px";
+            }
+            // document.getElementById("gnb_logo_icon").style="display:block";
+         }
+         else if(y.matches){ //1024이하
+            document.getElementById("gnb").style="height:165px";
+            document.getElementById("gnb_wrap").style="height:165px";
+            if(document.body.scrollTop > 150){
+                document.getElementById("gnb").style="height:80px";
+                 document.getElementById("gnb_wrap").style="height:80px";
+            }
+            // document.getElementById("gnb_logo_icon").style="display:block";
+         }
+         else{ //pc
+            // document.getElementById("gnb_logo_icon").style="display:block";
+         }
+        
+        });
+        
+        ///다시 스크롤시이벤트들
+        var presntScrollPosition = 0;
+        var prevScrollPosition = 0;
+         window.onscroll = function() { 
+            console.log(window.pageYOffset);
+            //console.log (window.screenTop);
+        
+        prevScrollPosition = presntScrollPosition;
+        presntScrollPosition = window.pageYOffset;
+        
+        scrollMove = presntScrollPosition - prevScrollPosition;
+        
+        x=window.matchMedia("(max-width:768px)");
+        y=window.matchMedia("(max-width:1024px)");
+        
+         if(prac == 0){
+             
+             
+        if(x.matches){ //768이하
+            //768이하 평소에는
+                    document.getElementById("gnb_wrap").style="height:72px;";
+                    document.getElementById("gnb").style="height:72px;";
+                    if(scrollMove < 0){ //스크롤업하면
+                     //스크롤업할때 이렇게해라
+                    document.getElementById("gnb_wrap").style="height:50px;";
+                    document.getElementById("gnb").style="position:fixed;height:50px;background-color: rgba(255, 255, 255, 0.95);color: #333;transition: background-color 0.5s cubic-bezier(0.23, 1, 0.32, 1);"
+                    
+                    document.getElementById("gnb_logo_icon").style="display:none";
+                    document.getElementById("top_menu_search").style="color:#222;";
+                    document.getElementById("bugger_line1").style="background:#222;";
+                    document.getElementById("bugger_line2").style="background:#222;";
+                      if (window.pageYOffset==0) //스크롤업하다가 0이되면
+                    { 
+                    document.getElementById("gnb_wrap").style="height:72px;";
+                    document.getElementById("gnb").style="height:72px";
+                    document.getElementById("logo_ai").style="color:#333";
+                    document.getElementById("logo_dot").style="color:#333";
+                    // document.getElementById("logo").style="transform: none;margin-left:0px;";
+                    document.getElementById("gnb_top_menu").style="top:50%";
+                    document.getElementById("gnb_logo_icon").style="display:block";
+                    document.getElementById("logo_text_con").style="animation:herotextin .5s ease-in-out forwards;";
+                    document.getElementById("top_menu_search").style="color:#333;";
+                    document.getElementById("bugger_line1").style="background:#333;";
+                    document.getElementById("bugger_line2").style="background:#333;";
+        
+                        }
+        
+                    if (window.pageYOffset < 200) //스크롤업하다가 200보다 작아지면
+                    {  document.getElementById("ph_indicator").style="animation:fadeout 0.1s backwards"; }
+        
+               
+                    
+        
+                }
+        
+                if(scrollMove > 0){ //스크롤을 내릴때는
+                if (window.pageYOffset > 72) 
+                    { 
+                        document.getElementById("gnb_wrap").style="height:50px;background-color: rgba(255, 255, 255, 0.95);";
+                    document.getElementById("gnb").style="position:fixed;height:50px;background-color: rgba(255, 255, 255, 0.95);color: #333;transition: background-color 0.5s cubic-bezier(0.23, 1, 0.32, 1);"
+                    
+                    document.getElementById("gnb_top_menu").style="top:50%";
+                    document.getElementById("gnb_logo_icon").style="display:none";
+                    document.getElementById("top_menu_search").style="color:#222;";
+                    document.getElementById("bugger_line1").style="background:#222;";
+                    document.getElementById("bugger_line2").style="background:#222;";
+                    
+        
+                } 
+        
+                if (window.pageYOffset > 75) 
+                    {  document.getElementById("ph_indicator").style="animation:fadein 0.8s 0.3s forwards"; }
+                }   
+        
+        }
+        else if(y.matches){ //1024이하
+                    if(scrollMove < 0){
+                    if (window.pageYOffset==0) 
+                    { 
+                    document.getElementById("gnb_wrap").style="height:165px;";
+                    document.getElementById("gnb").style="height:165px";
+                    document.getElementById("logo_ai").style="color:#333";
+                    document.getElementById("logo_dot").style="color:#333";
+                    // document.getElementById("logo").style="transform: none;margin-left:0px;";
+                    document.getElementById("gnb_top_menu").style="top:50%";
+                    document.getElementById("gnb_logo_icon").style="display:block";
+                    document.getElementById("logo_text_con").style="animation:herotextin .5s ease-in-out forwards;";
+                    document.getElementById("top_menu_search").style="color:#333;";
+                    document.getElementById("bugger_line1").style="background:#333;";
+                    document.getElementById("bugger_line2").style="background:#333;";
+        
+                        }
+        
+                    if (window.pageYOffset < 200) 
+                    {  document.getElementById("ph_indicator").style="animation:fadeout 0.1s backwards"; }
+                    }
+             
+        
+        
+        
+        
+                if(scrollMove > 0){
+                if (window.pageYOffset > 80) 
+                    { 
+                        document.getElementById("gnb_wrap").style="height:80px;";
+                    document.getElementById("gnb").style="position:fixed;height:80px;background-color: rgba(255, 255, 255, 0.95);color: #333;transition: background-color 0.5s cubic-bezier(0.23, 1, 0.32, 1);"
+                    
+                    document.getElementById("gnb_logo_icon").style="display:none";
+                    document.getElementById("top_menu_search").style="color:#222;";
+                    document.getElementById("bugger_line1").style="background:#222;";
+                    document.getElementById("bugger_line2").style="background:#222;";
+                    
+        
+                } 
+        
+                if (window.pageYOffset > 80) 
+                    {  document.getElementById("ph_indicator").style="animation:fadein 0.8s 0.3s forwards"; }
+                }   
+        }
+        else{ //1025이후부터
+        
+            if(scrollMove < 0){
+             if (window.pageYOffset <80) 
+              { 
+         document.getElementById("gnb_wrap").style="height:165px;";
+         document.getElementById("logo_ai").style="color:#333";
+         document.getElementById("logo_dot").style="color:#333";
+         // document.getElementById("logo").style="transform: none;margin-left:0px;";
+         document.getElementById("gnb_logo_icon").style="display:block";
+         document.getElementById("logo_text_con").style="animation:herotextin .5s ease-in-out forwards;";
+         document.getElementById("top_menu_search").style="color:#333;";
+         document.getElementById("bugger_line1").style="background:#333;";
+         document.getElementById("bugger_line2").style="background:#333;";
+        
+              }
+        
+         if (window.pageYOffset < 200) 
+         {  document.getElementById("ph_indicator").style="animation:fadeout 0.8s backwards"; }
+        }
+        
+        if(scrollMove > 0){
+         if (window.pageYOffset > 80) 
+              { 
+                 document.getElementById("gnb_wrap").style="height:80px;";
+             document.getElementById("gnb").style="position:fixed;height:80px;background-color: rgba(255, 255, 255, 0.95);color: #333;transition: background-color 0.5s cubic-bezier(0.23, 1, 0.32, 1);"
+             document.getElementById("gnb_logo_icon").style="display:block";
+             document.getElementById("logo_text_con").style="animation:herotextout .1s ease-in-out forwards;";
+             // document.getElementById("logo").style="width:40px;margin-left: -45px;";
+             document.getElementById("logo_ai").style="color:#222;font-size:50px !important";
+             document.getElementById("logo_dot").style="color:#222;font-size:50px !important;line-height:65px";
+             document.getElementById("top_menu_search").style="color:#222;";
+             document.getElementById("bugger_line1").style="background:#222;";
+             document.getElementById("bugger_line2").style="background:#222;";
+             
+        
+        } 
+        
+        if (window.pageYOffset > 200) 
+              {  document.getElementById("ph_indicator").style="animation:fadein 0.8s 0.3s forwards"; }
+        }  
+        
+        }
+         }
+        
+         }//스크롤할때이벤트들끝
+
+        </script>
+
+</head>
+<body>
+     <!-- HEADER -->
+<header id="header">
+      <nav id="gnb">
+          <div id="gnb_wrap">
+            <a class="gnb_logo_link" id="gnb_logo_icon" href="../index.html">
+                <div id="logo">
+                    <span id="logo_ai"></span>
+                    <span id="logo_dot"></span>
+                    <span id="logo_text">
+                        <span id="logo_text_con"></span>
+                    </span>
+                </div>
+            </a>
+            <div class="gnb_indicator_wrap">
+                <div class="gnb_indicator" id="ph_indicator">Join Us</div>
+            </div>
+          <div class="top_menu" id="gnb_top_menu">
+                <div id="top_menu_search"></div>
+                <button id="top_menu_bugger" onclick="buggerIcon()">
+                    <span id="bugger_line1"></span>
+                    <span id="bugger_line2"></span>
+                </button>
+          </div>
+        </div>
+      </nav>
+      <nav id="lnb">
+        <div class="lnb_wrap">
+
+            <ul class="lnb_ul">
+                <li onmouseover="subMenuShow(0)" onmouseout="subMenuOut(0)"><a href="../philosophy.html" class="lnb_a">Philosophy</a>
+                </li>
+                <li onmouseover="subMenuShow(1)" onmouseout="subMenuOut(1)"><a href="#" class="lnb_a">Research</a>
+                </li>
+                <li onmouseover="subMenuShow(2)" onmouseout="subMenuOut(2)"><a href="#" class="lnb_a">Projects</a>
+                </li>
+                <li onmouseover="subMenuShow(3)" onmouseout="subMenuOut(3)"><a href="joinus.html" class="lnb_a">Join Us</a>
+                </li>
+                <li onmouseover="subMenuShow(4)" onmouseout="subMenuOut(4)"><a href="#" class="lnb_a">Press/Blog</a>
+                </li>
+                <li onmouseover="subMenuShow(5)" onmouseout="subMenuOut(5)"><a href="#" class="lnb_a">Demos</a></li>
+                <li onmouseover="subMenuShow(6)" onmouseout="subMenuOut(6)"><a href="#" class="lnb_a">ai.x
+                        conference</a></li>
+            </ul>
+
+            <ul class="header_copy_wrap">
+                <li class="header_copy">
+                    <svg width="700" height="600">
+                        <text x="700" y="0"
+                            style="font-family: 'Ciutadella', sans-serif; font-size: 82px; font-style: normal; letter-spacing: -0.016em; font-weight: bold; fill: none; fill-opacity: 1; stroke: #bbbbbb; stroke-width: 1px; stroke-linecap: butt; stroke-linejoin: miter; stroke-opacity: 1;">
+                            <tspan x="700" y="76" text-anchor="end">Innovation</tspan>
+                            <tspan x="700" y="152" text-anchor="end">through</tspan>
+                            <tspan x="700" y="228" text-anchor="end">disruptive and</tspan>
+                            <tspan x="700" y="304" text-anchor="end">scalable</tspan>
+                            <tspan x="700" y="380" text-anchor="end">technology</tspan>
+                            <tspan x="700" y="600" text-anchor="end" style="visibility: hidden;">.</tspan>
+                        </text>
+                    </svg>
+                </li>
+                <li class="header_copy">
+                    <svg width="700" height="600">
+                        <text x="700" y="0"
+                            style="font-family: 'Ciutadella', sans-serif; font-size: 82px; font-style: normal; letter-spacing: -0.016em; font-weight: bold; fill: none; fill-opacity: 1; stroke: #bbbbbb; stroke-width: 1px; stroke-linecap: butt; stroke-linejoin: miter; stroke-opacity: 1;">
+                            <!-- #PUB 008 텍스트 수정, 마크업 삭제 -->
+                            <tspan x="700" y="76" text-anchor="end">Cutting-edge</tspan>
+                            <tspan x="700" y="152" text-anchor="end">AI research</tspan>
+                            <tspan x="700" y="600" text-anchor="end" style="visibility: hidden;">.</tspan>
+                        </text>
+                    </svg>
+                </li>
+                <li class="header_copy">
+                    <svg width="700" height="600">
+                        <text x="700" y="0"
+                            style="font-family: 'Ciutadella', sans-serif; font-size: 82px; font-style: normal; letter-spacing: -0.016em; font-weight: bold; fill: none; fill-opacity: 1; stroke: #bbbbbb; stroke-width: 1px; stroke-linecap: butt; stroke-linejoin: miter; stroke-opacity: 1;">
+                            <tspan x="700" y="76" text-anchor="end">Accelerating</tspan>
+                            <tspan x="700" y="152" text-anchor="end">innovations</tspan>
+                            <tspan x="700" y="228" text-anchor="end">in research and</tspan>
+                            <tspan x="700" y="304" text-anchor="end">service</tspan>
+                            <tspan x="700" y="600" text-anchor="end" style="visibility: hidden;">.</tspan>
+                        </text>
+                    </svg>
+                </li>
+                <li class="header_copy">
+                    <svg width="700" height="600">
+                        <text x="700" y="0"
+                            style="font-family: 'Ciutadella', sans-serif; font-size: 82px; font-style: normal; letter-spacing: -0.016em; font-weight: bold; fill: none; fill-opacity: 1; stroke: #bbbbbb; stroke-width: 1px; stroke-linecap: butt; stroke-linejoin: miter; stroke-opacity: 1;">
+                            <!-- #PUB 001 카피수정 -->
+                            <tspan x="700" y="76" text-anchor="end">We strive for</tspan>
+                            <tspan x="700" y="152" text-anchor="end">(and achieve)</tspan>
+                            <tspan x="700" y="228" text-anchor="end">excellence!</tspan>
+                            <tspan x="700" y="600" text-anchor="end" style="visibility: hidden;">.</tspan>
+                        </text>
+                    </svg>
+                </li>
+                <li class="header_copy">
+                    <svg width="700" height="600">
+                        <text x="700" y="0"
+                            style="font-family: 'Ciutadella', sans-serif; font-size: 82px; font-style: normal; letter-spacing: -0.016em; font-weight: bold; fill: none; fill-opacity: 1; stroke: #bbbbbb; stroke-width: 1px; stroke-linecap: butt; stroke-linejoin: miter; stroke-opacity: 1;">
+                            <!-- #PUB 008 텍스트 수정 -->
+                            <tspan x="700" y="76" text-anchor="end">“SotA”</tspan>
+                            <tspan x="700" y="152" text-anchor="end">(State-of-the-Art)</tspan>
+                            <!-- #PUB 002 text 수정  -->
+                            <tspan x="700" y="600" text-anchor="end" style="visibility: hidden;">.</tspan>
+                        </text>
+                    </svg>
+                </li>
+                <li class="header_copy">
+                    <svg width="700" height="600">
+                        <text x="700" y="0"
+                            style="font-family: 'Ciutadella', sans-serif; font-size: 82px; font-style: normal; letter-spacing: -0.016em; font-weight: bold; fill: none; fill-opacity: 1; stroke: #bbbbbb; stroke-width: 1px; stroke-linecap: butt; stroke-linejoin: miter; stroke-opacity: 1;">
+                            <!-- #PUB 002 text 수정 및 태그삭제  -->
+                            <!-- #PUB 006 텍스트 변경  -->
+                            <tspan x="700" y="76" text-anchor="end">Visual demo of</tspan>
+                            <tspan x="700" y="152" text-anchor="end">research and</tspan>
+                            <tspan x="700" y="228" text-anchor="end">service innovation</tspan>
+                            <!-- <tspan x="700" y="304" text-anchor="end">waiting to serve</tspan> -->
+                            <!-- <tspan x="700" y="380" text-anchor="end">Live Demo</tspan> -->
+                            <!-- <tspan x="700" y="600" text-anchor="end" style="visibility: hidden;">.</tspan> -->
+                        </text>
+                    </svg>
+                </li>
+                <li class="header_copy">
+                    <svg width="700" height="600">
+                        <text x="700" y="0"
+                            style="font-family: 'Ciutadella', sans-serif; font-size: 82px; font-style: normal; letter-spacing: -0.016em; font-weight: bold; fill: none; fill-opacity: 1; stroke: #bbbbbb; stroke-width: 1px; stroke-linecap: butt; stroke-linejoin: miter; stroke-opacity: 1;">
+                            <tspan x="700" y="76" text-anchor="end">Human.</tspan>
+                            <tspan x="700" y="152" text-anchor="end">Machine.</tspan>
+                            <tspan x="700" y="228" text-anchor="end">Experience</tspan>
+                            <tspan x="700" y="304" text-anchor="end">Together</tspan>
+                            <tspan x="700" y="600" text-anchor="end" style="visibility: hidden;">.</tspan>
+                        </text>
+                    </svg>
+                </li>
+            </ul>
+
+            <div class="lnb_shape_wrap">
+                <div id="lnb_shape_1"></div>
+                <div id="lnb_shape_2"></div>
+                <div id="lnb_shape_3">
+                    <div id="lnb_shape_4"></div>
+                </div>
+            </div>
+        </div>
+    </nav>
+    </header>
+     <!-- MAIN START-->
+    <main id="main" class="wrapper wrapper--joinus">
+<!--SECTION EXP START-->
+        <section class="exp">
+            <h2 class="exp_title title__txt">
+                We strive for <br>
+                (and achieve) excellence!
+            </h2>
+            <div class="exp__color-bg"> </div>
+            <div class="exp_img_wrap">
+                <div class="exp__img"></div>
+            </div>
+            <div class="exp_color_wrap">
+                <div class="exp_color_wrap_inner">
+                    <div class="exp_color_title">
+                        <div class="title__txt">
+                            Every day in AIC transforms you to become an EXPERT
+                        </div>
+                    </div>
+                    <div class="exp__circle-wrap">
+                        <div class="exp__circle-item">
+                            <div class="exp__circle-item-inner">
+                                <h3 class="exp__circle-item-capt">
+                                    Experts <br>  Colleague
+                                </h3>
+                                <div class="exp__circle-item-desc">
+                                    Top-notch talents from <br>
+                                    various backgrounds <br>
+                                    work here, AIC
+                                </div>
+                            </div>
+                        </div>
+                        <div class="exp__circle-item exp__circle-item--right">
+                            <div class="exp__circle-item-inner">
+                                <h3 class="exp__circle-item-capt">
+                                    Out of <br> Comfort Zone
+                                </h3>
+                                <div class="exp__circle-item-desc">
+                                    We believe in risk-taking to grow up : expand our knowledge to a new domain, strengthen our knowledge in current domain, change our practice
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="exp__title--withbg">
+                        <h2 class="title__txt">
+                            We are waiting for YOU <br>
+                            who have
+                        </h2>
+                    </div>
+                    <!-- inline-block으로 잘 안됐던 부분 -->
+                    <div class="exp__waiting-item-wrap">
+                        <div class="e-item-wrap">
+                            <div class="exp__w-item">
+                                <div class="row_pad">
+                                    <div class="exp__w-item-1 e-item">
+                                        Knowledge, skill, critical thinking ability and productivity.
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="exp__w-item">
+                                <div class="row_pad">
+                                    <div class="exp__w-item-2 e-item">
+                                        Performance through innovative and back-tracking mind
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="exp__w-item">
+                                <div class="row_pad">
+                                    <div class="exp__w-item-3 e-item">
+                                        Broad view of gray areas
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="exp__w-item">
+                                <div class="row_pad">
+                                    <div class="exp__w-item-4 e-item">
+                                        Care for self, work, colleagues and the society
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- exp__watingitem list end -->
+                        <!-- exp__wating btn start -->
+                        <div class="exp__btn-wrap">
+                            <div class="exp__btn-wrap__tooltip">
+                                <a class="exp-btn btn--with-arrow e-btn" href="#">
+                                    Check Job Openings and APPLY
+                                </a>
+                                <span class="tooltip-text">
+                                    This menu is current job openings in AIC. You can apply now and start the recruiting process
+                                </span>
+                                <div class="tooltip_text_media">
+                                    ∙ This menu is current job openings in AIC. You can apply now and start the recruiting process
+                                </div>
+                            </div>
+                            <div class="exp__btn-wrap__tooltip-cv">
+                                <a class="exp-btn btn--with-arrow e-btn" href="#">
+                                    Drop your Resume/CV and WAIT
+                                </a>
+                                <span class="tooltip-text-cv">
+                                    If you can’t find a suitable job opening, you can register your Resume/CV in advance through this menu. We will contact you if a job opening is available for your career.
+                                </span>
+                                <div class="tooltip_text_media">
+                                    ∙ If you can’t find a suitable job opening, you can register your Resume/CV in advance through this menu. We will contact you if a job opening is available for your career.
+                                </div>
+                            </div>
+                        </div>
+
+                    </div><!--/exp__waiting-item-wrap--> 
+                </div> 
+            </div><!--exp_color_wrap-->
+        </section>
+<!--SECTION EXP END-->  
+
+<!--SECTION  hiring process -->
+        <section class="hire">
+            <div class="pad-1200">
+                
+                <div class="hire-title">
+                    <div class="title__txt">
+                        We hire Expert and <br class="pc-visible">
+                        Potential Expert(Junior) <br class="mobile-visible">
+                        in 5 steps
+                    </div>
+                </div>
+
+                <div class="hire__btn-wrap">
+                    <button id="hire_expert" onclick="selectExpert()" class="hire__btn j-btn-fat j-btn--select btn-p">
+                        Expert
+                    </button>
+                    <button id="hire_junior" onclick="selectJunior()" class="hire__btn j-btn-fat j-btn--normal btn-p">
+                        Junior
+                    </button>
+                </div>
+                <div class="hire_exp_junior_wrap">
+                    <div id="select-expert" class="hire__steps-expert hire__steps--select">
+                        <div class="hire-itm-wrap-expert">
+                            <div class="hire-pad">
+                                <div class="hire-itm-1">
+                                    <figure class="hire-itm__img"></figure>
+                                    <div class="hire-itm__capt">Step 01</div>
+                                    <div class="hire-itm__desc">Apply</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="hire-itm-wrap-expert">
+                            <div class="hire-pad">
+                                <div class="hire-itm-2">
+                                    <figure class="hire-itm__img"></figure>
+                                    <div class="hire-itm__capt">Step 02</div>
+                                    <div class="hire-itm__desc">Coding Test</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="hire-itm-wrap-expert">
+                            <div class="hire-pad">
+                                <div class="hire-itm-3">
+                                    <figure class="hire-itm__img"></figure>
+                                    <div class="hire-itm__capt">Step 03</div>
+                                    <div class="hire-itm__desc">Manager <br>
+                                        Interview</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="hire-itm-wrap-expert">
+                            <div class="hire-pad">
+                                <div class="hire-itm-4">
+                                    <figure class="hire-itm__img"></figure>
+                                    <div class="hire-itm__capt">Step 04</div>
+                                    <div class="hire-itm__desc">Executive <br>
+                                        Review</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="hire-itm-wrap-expert">
+                            <div class="hire-pad">
+                                <div class="hire-itm-5">
+                                    <figure class="hire-itm__img"></figure>
+                                    <div class="hire-itm__capt">Step 05</div>
+                                    <div class="hire-itm__desc">Employment Vetting
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                
+                    <div class="hire-itm__txt">
+                        More than <span class="hire-itm__txt-span">3 years</span> of experience
+                    </div>
+                    </div><!--hire__steps-expert-->
+
+                <div id="select-junior" class="hire__steps-junior hire-steps-display">
+                    <div class="hire-itm-wrap-junior" id="prac">
+                        <div class="hire-pad">
+                            <div class="hire-itm-1">
+                                <figure class="hire-itm__img"></figure>
+                                <div class="hire-itm__capt">Step 01</div>
+                                <div class="hire-itm__desc">Apply</div>
+                            </div>
+                        </div>
+                    </div>
+   
+                    <div class="hire-itm-wrap-junior">
+                       <div class="hire-pad">
+                           <div class="hire-itm-2">
+                               <figure class="hire-itm__img"></figure>
+                               <div class="hire-itm__capt">Step 02</div>
+                               <div class="hire-itm__desc">Coding Test</div>
+                           </div>
+                       </div>
+                   </div>
+   
+                   <div class="hire-itm-wrap-junior">
+                       <div class="hire-pad">
+                           <div class="hire-itm-3">
+                               <figure class="hire-itm__img"></figure>
+                               <div class="hire-itm__capt">Step 03</div>
+                               <div class="hire-itm__desc">SK Competency Test, <br>
+                                Manager Interview</div>
+                           </div>
+                       </div>
+                   </div>
+   
+                   <div class="hire-itm-wrap-junior">
+                       <div class="hire-pad">
+                           <div class="hire-itm-4">
+                               <figure class="hire-itm__img"></figure>
+                               <div class="hire-itm__capt">Step 04</div>
+                               <div class="hire-itm__desc">Executive <br>
+                                   Review</div>
+                           </div>
+                       </div>
+                   </div>
+   
+                   <div class="hire-itm-wrap-junior">
+                       <div class="hire-pad">
+                           <div class="hire-itm-5">
+                               <figure class="hire-itm__img"></figure>
+                               <div class="hire-itm__capt">Step 05</div>
+                               <div class="hire-itm__desc">Employment Vetting
+                               </div>
+                           </div>
+                       </div>
+                   </div>
+                   
+                </div><!--hire__steps-junior-->
+            
+
+            </div>
+            <div class="hire__notice">
+                <span class="mobile_notice">•</span>Hiring process may differ by job position 
+            </div>
+        </section>
+<!--SECTION  hiring process END-->
+
+
+<!-- SECTION POS -->
+<section class="pos">
+    <div class="tit-lett-spa pad-1200">
+        <div class="title__txt">
+            We care various ways to meet you
+        </div> 
+    </div>
+    <div class="pos__tab-wrap g-tab">
+        <div class="g-tab__header">
+            <div>
+                <button id="btn_pos_color1" onclick="chItm(0)" class="g-tab__btn j-btn-fat j-btn--select btn-p">Full-time</button>
+                <button id="btn_pos_color2" onclick="chItm(1)" class="g-tab__btn j-btn-fat j-btn--normal btn-p">Postdoctoral Researcher</button>
+                <button id="btn_pos_color3" onclick="chItm(2)" class="g-tab__btn j-btn-fat j-btn--normal btn-p">Domestic Doctoral Internship</button>
+                <button  id="btn_pos_color4"onclick="chItm(3)" class="g-tab__btn j-btn-fat j-btn--normal btn-p">Global Internship</button>
+            </div>
+        </div>
+        <p class="swiper-notice">Swipe to see more</p>
+        <div class="g-tab__body">
+        
+            <div class="pos-itm">
+                <div class="pos-itm__info-wrap">
+                    <div class="pos-itm__info-tx">
+                        <div class="pos-itm__tit">
+                            Be the <br> AIC members
+                        </div>
+                        <ul class="pos-itm__li-wrap">
+                            <li class="pos-itm__li  g-pre-point">
+                                Expert: more than 3 years of experience or Ph. D
+                            </li>
+                            <li class="pos-itm__li g-pre-point">
+                                Junior: BS/MS or less than 3 years of experience
+                            </li>  
+                        </ul> 
+                      </div>
+                    <div class="pos-itm__info-tx">
+                    <div class="pos-itm__tit">
+                        Grow up with real <br> data from real world
+                    </div>
+                    <ul class="pos-itm__li-wrap">
+                        <li class="pos-itm__li  g-pre-point">
+                            For doctoral candidate or Ph.D.
+                        </li>
+                        <li class="pos-itm__li  g-pre-point">
+                            6 ~ 12 months contract(contract extension or full-time employment is also possible)
+                        </li>
+                    </ul> 
+                    </div>
+                    <div class="pos-itm__info-tx">
+                        <div class="pos-itm__tit">
+                            Grow up <br> with top experts
+                        </div>
+                        <ul class="pos-itm__li-wrap">
+                            <li class="pos-itm__li  g-pre-point">
+                                For students in doctoral course of science and engineering
+                            </li>
+                            <li class="pos-itm__li  g-pre-point">
+                                2 ~ 12 months based on project
+                            </li>
+                        </ul> 
+                    </div>
+                    <div class="pos-itm__info-tx">
+                        <div class="pos-itm__tit">
+                            Meet the real world <br>with special benefits 
+                        </div>
+                        <ul class="pos-itm__li-wrap">
+                            <li class="pos-itm__li  g-pre-point">
+                                For students in overseas graduate school or university
+                            </li>
+                            <li class="pos-itm__li  g-pre-point">
+                                Duration - 2 ~ 12 months depending upon project
+                            </li>
+                            <li class="pos-itm__li  g-pre-point">
+                                Special benefits: residence support, round-trip airplane ticket
+                            </li>
+                        </ul> 
+                    </div>
+                </div>
+                <div class="pos-itm__img-wrap">
+                    <img id="pos_img" class="pos-itm__img" src="img/sk_aic_joinus_job_position_1.jpg" alt="">
+                </div> 
+            </div>
+        
+             <!--/pos-itm 1 end --> 
+
+
+           <!-- <div class="pos-itm_wrap">        
+            <div class="pos-itm">
+              <div class="pos-itm__info-wrap">
+                  <div class="pos-itm__info-tx">
+                      <div class="pos-itm__tit">
+                        Grow up with real <br> data from real world
+                      </div>
+                      <ul class="pos-itm__li-wrap">
+                          <li class="pos-itm__li  g-pre-point">
+                            For doctoral candidate or Ph.D.
+                          </li>
+                          <li class="pos-itm__li  g-pre-point">
+                            6 ~ 12 months contract(contract extension or full-time employment is also possible)
+                          </li>
+                      </ul> 
+                      </div>
+              </div>
+              <div class="pos-itm__img-wrap">
+                  <img class="pos-itm__img" src="img/sk_aic_joinus_job_position_2.jpg" alt="">
+              </div> 
+            </div>
+           </div> -->
+            <!--/pos-itm 2 end-->
+           <!-- <div class="pos-itm_wrap">
+             <div class="pos-itm">
+              <div class="pos-itm__info-wrap">
+                  <div class="pos-itm__info-tx">
+                      <div class="pos-itm__tit">
+                        Grow up <br> with top experts
+                      </div>
+                      <ul class="pos-itm__li-wrap">
+                          <li class="pos-itm__li  g-pre-point">
+                            For students in doctoral course of science and engineering
+                          </li>
+                          <li class="pos-itm__li  g-pre-point">
+                            2 ~ 12 months based on project
+                          </li>
+                      </ul> 
+                      </div>
+              </div>
+              <div class="pos-itm__img-wrap">
+                  <img class="pos-itm__img" src="img/sk_aic_joinus_job_position_3.jpg" alt="">
+              </div> 
+            </div>
+        </div> -->
+            <!--/pos-itm 3end-->
+         <!-- <div class="pos-itm_wrap">
+            <div class="pos-itm">
+              <div class="pos-itm__info-wrap">
+                  <div class="pos-itm__info-tx">
+                      <div class="pos-itm__tit">
+                        Meet the real world <br>with special benefits 
+                      </div>
+                      <ul class="pos-itm__li-wrap">
+                          <li class="pos-itm__li  g-pre-point">
+                            For students in overseas graduate school or university
+                          </li>
+                          <li class="pos-itm__li  g-pre-point">
+                            Duration - 2 ~ 12 months depending upon project
+                          </li>
+                          <li class="pos-itm__li  g-pre-point">
+                            Special benefits: residence support, round-trip airplane ticket
+                          </li>
+                      </ul> 
+                      </div>
+              </div>
+              <div class="pos-itm__img-wrap">
+                  <img class="pos-itm__img" src="img/sk_aic_joinus_job_position_4.jpg" alt="">
+              </div> 
+            </div>
+          </div> -->
+            <!--/pos-itm 4end-->
+          
+            
+            </div> <!--g-tab__body--> 
+        </div>
+
+</section>
+<!-- SECTION POS END -->
+<div class="test"></div>
+<!-- SECTION CULT -->
+<section class="cult">
+
+  <div class="pad-1200">
+      <!-- cult 초반에 보이는 버튼과 큰제목 -->
+      <div class="tit-lett-spa">
+          <div class="title__txt">
+              We design space and culture
+              <br class="pc-visible">
+              for happy
+              <br class="mobile-visible">
+              grow-up
+          </div>
+          <button id="btn-cult" onclick="cultExpand()" class="more-btn cult__more-btn">
+              <div class="more-btn__ico icon-wrap">
+                  <i class="fas fa-plus-circle"></i>
+              </div>
+              <span class="more-btn__txt">Learn more</span>
+            </button>
+      </div>
+  </div>
+
+  <div id="cult__hidden-wrap">
+    <div class="pad-1200">
+      <div id="slider"> 
+        <div class="slider_wrap">
+            <div class="slider_item">1</div>
+            <div class="slider_item">2</div>
+            <div class="slider_item">3</div>
+            <div class="slider_item">4</div>
+            <div class="slider_item">5</div>
+        </div>
+      </div>
+      <div class="slider-nav">
+        <button onclick="movePrev()" id="bt_prev">
+            <span id="arrow_left"></span> 
+        </button>
+        <p class="paging">
+            <span id="current">01</span>
+            <i></i>
+            <span class="total">05</span>
+        </p>
+        <button onclick="moveNext()" id="bt_next">
+            <span id="arrow_right"></span> 
+        </button>
+      </div>
+     <!--/ SLIDER END-->
+
+    <div id="cult__desc">
+        <div class="cult_list_wrap">
+            <div class="desc_half">
+                <div class="pad_48">
+                <h3 class="cult_capt">Workpalce</h3>
+                <ul>
+                <li class=" cult__li">
+                    Established in 2018 (T Brain: 2017~)
+                </li>
+                <li class=" cult__li">
+                    Executives from Silicon Valley
+                </li>
+                <li class=" cult__li">
+                    Researchers, engineers, UX designers, etc.
+                </li>
+                <li class= "cult__li">
+                    Cutting-edge GPU clusters & toys for geeks
+                </li>
+                <li class=" cult__li">
+                    Availability of enormous amount of data from SK Telecom, world-wide leading telecom company
+                </li>
+                <li class=" cult__li">
+                    First-hand experience working with actual AI products or services of SK Telecom
+                </li> 
+                </ul>
+                </div>
+            </div>
+            <div class="desc_half">
+                <div class="pad_48">
+                <h3 class="cult_capt">Way of Work</h3>
+                <ul>
+                    <li class=" cult__li">
+                        Innovative and back-tracking mind
+                    </li>
+                    <li class=" cult__li">
+                        Cross-functional and collaborative
+                    </li>
+                    <li class=" cult__li">
+                        Agile methodology
+                    </li>
+                    <li class=" cult__li">
+                        Quick prototyping
+                    </li>
+                    <li class=" cult__li">
+                        All-hands and hands-up: tea-time with demo or tech talk
+                    </li>
+                </ul>
+                </div>
+            </div><!--/desc_half-->
+
+        </div>
+
+           <!-- 여기서부터만듬 -->
+
+           <div class="cult_cart_wrap">
+            <div class="pccard pccard_coral">
+                <img src="img/sk_aic_joinus_card_1.svg" alt="">
+                <div class="pccard_title">
+                    You can experience the best welfare<br> benefits of SK Telecom
+                </div>
+                <div class="pccard_seperate"></div>
+                <div class="pccard_item_wrap">
+                    <div class="pccard_item">Talents Development</div>
+                    <div class="pccard_item">Work & Life Balance</div>
+                </div>
+            </div>
+            <div class="pccard pccard_white">
+                <img src="img/sk_aic_joinus_card_2.svg" alt="">
+                <div class="pccard_title">Talents Development</div>
+                <div class="pcccard_sub_title">Employee’s expertise is the core of performance<br>
+                    SK Telecom offers various ways to grow-up<br>
+                    for market top leader
+                    </div>
+                <div class="pccard_seperate"></div>
+                <div class="pccard_item_wrap">
+                    <div class="pccard_item">Internal continuous education and Individual Development Plan to develop domain expertise and/or leadership</div>
+                    <div class="pccard_item">Career Development Challenge to develop career</div>
+                </div>
+            </div>
+            <div class="pccard pccard_blue">
+                <img src="img/sk_aic_joinus_card_3.svg" alt="">
+                <div class="pccard_title">Work & Life Balance</div>
+                <div class="pccard_seperate"></div>
+                <div class="pccard_item_wrap">
+                    <div class="pccard_item_column_wrap">
+                        <div class="pccard_item_first_column">
+                            <div class="pccard_item">
+                                Design Your Work & Time
+                            </div>
+                            <div class="pccard_sub_item">
+                                Self-managed flexible working hours (80 hours in 2 weeks)
+                            </div>
+                            <div class="pccard_item">
+                                Financial Aid
+                            </div>
+                            <div class="pccard_sub_item">
+                                Funding for residential and life
+                            </div>
+                        </div>
+                        <div class="pccard_item_second_column">
+                            <div class="pccard_item">
+                                Medical Care
+                            </div>
+                            <div class="pccard_sub_item">
+                                Free health checkup per year
+                            </div>
+                            <div class="pccard_item">
+                                In-house Facility
+                            </div>
+                            <div class="pccard_sub_item">
+                                Gym, Library, Club activities
+                            </div>
+                            <div class="pccard_item">
+                                Vacation
+                            </div>
+                            <div class="pccard_sub_item">
+                                Paid time off
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="cult_cart_wrap_m">
+            <div class="pccard_m pccard_coral_m">
+                <img src="img/sk_aic_joinus_card_1.svg" alt="">
+                <div class="pccard_title_m">
+                    You can experience the best welfare<br> benefits of SK Telecom
+                </div>
+                <div class="pccard_seperate_m"></div>
+                <div class="pccard_item_wrap_m">
+                    <div class="pccard_item_m">Talents Development</div>
+                    <div class="pccard_item_m">Work & Life Balance</div>
+                </div>
+            </div>
+            <div class="pccard_m pccard_white_m">
+                <img src="img/sk_aic_joinus_card_2.svg" alt="">
+                <div class="pccard_title_m">Talents Development</div>
+                <div class="pcccard_sub_title_m">Employee’s expertise is the core of performance
+                    SK Telecom offers various ways to grow-up
+                    for<br> market top leader
+                    </div>
+                <div class="pccard_seperate_m"></div>
+                <div class="pccard_item_wrap_m">
+                    <div class="pccard_item_m">Internal continuous education and Individual Development Plan to develop domain expertise and/or leadership</div>
+                    <div class="pccard_item_m">Career Development Challenge to develop career</div>
+                </div>
+            </div>
+            <div class="pccard_m pccard_blue_m">
+                <img src="img/sk_aic_joinus_card_3.svg" alt="">
+                <div class="pccard_title_m">Work & Life Balance</div>
+                <div class="pccard_seperate_m"></div>
+                <div class="pccard_item_wrap_m">
+                    <div class="pccard_item_column_wrap_m">
+                        <div class="pccard_item_first_column_m">
+                            <div class="pccard_item_m">
+                                Design Your Work & Time
+                            </div>
+                            <div class="pccard_sub_item_m">
+                                Self-managed flexible working hours (80 hours in 2 weeks)
+                            </div>
+                            <div class="pccard_item_m">
+                                Financial Aid
+                            </div>
+                            <div class="pccard_sub_item_m">
+                                Funding for residential and life
+                            </div>
+                            <div class="pccard_item_m">
+                                Medical Care
+                            </div>
+                            <div class="pccard_sub_item_m">
+                                Free health checkup per year
+                            </div>
+                            <div class="pccard_item_m">
+                                In-house Facility
+                            </div>
+                            <div class="pccard_sub_item_m">
+                                Gym, Library, Club activities
+                            </div>
+                            <div class="pccard_item_m">
+                                Vacation
+                            </div>
+                            <div class="pccard_sub_item_m">
+                                Paid time off
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </div>
+    </div><!--/# cult__desc-->
+   </div>
+  </div><!--/ cult__hidden-wrap-->
+
+</section>
+
+<!-- SECTION QNA -->
+<section class="qna">
+    <div class="q-pad-1200">
+        <div class="qna__tit tit-left-align">
+            <div class="title-txt">
+                Question about
+                <br>
+                Jobs at AIC
+            </div>
+        </div>
+        <a href="#" class="qna__itm">
+            <span class="qna__itm--line">help@sktair.com</span>
+        </a>
+        <a class="qna__itm" href="mailto:jobs@sktair.com">
+            <span class="qna__itm--line">
+            jobs@sktair.com
+            </span>
+        </a>
+        <span class="deco deco--qna01">
+            <span class="deco__anchor">
+                <span class="deco__round deco__circles34 deco__round--purple"></span>
+            </span>
+        </span>
+        <span class="deco deco--qna02">
+            <span class="deco__anchor">
+                <span class="deco__round deco__circles40 deco__round--coral"></span>
+            </span>
+        </span>
+        <span class="deco deco--qna03">
+            <span class="deco__anchor">
+                <span class="deco__round deco__stretch118 deco__round--green"></span>
+                <span class="deco__round deco__circles40 deco__round--blue"></span>
+            </span>
+        </span>
+    </div>
+</section>
+
+
+    </main>
+    <!--/ MAIN END -->
+<!-- FOOTER S T A R T-->
+<footer id="footer">
+    <div class="footer_wrap">
+          <div class="footer_logo">
+              <span class="icon_logo"></span>
+          </div>
+          <div class="footer_menu">
+              <ul>
+                  <li><a href="#">Contact</a></li>
+                  <li><a href="#">Legal Notice</a></li>
+                  <li class="footer_lang_wrap"><button class="footer_lang">ENG<i class="dropdown"></i></button></li>
+              </ul>
+          </div>
+     </div>
+  </footer>
+  <script src="joinus.js"></script>
+
+  <script>
+
+
+        //burgermenuicon
+ 	 var burgerState = 0;
+
+     var prac = 0;
+
+        function buggerIcon() {
+
+            if (burgerState == 0) {
+
+                document.getElementById('main').style = "display:none";
+                document.getElementById('footer').style = "display:none";
+                document.getElementById('lnb').style = "display:block";
+                document.getElementById('header').style = "height:300px;"
+                document.getElementsByClassName('gnb_indicator_wrap')[0].style = "color:#333;"
+                //document.getElementById('gnb_wrap').style = "height:160px;"
+                document.getElementById('gnb_logo_icon').style = "display:block;"
+                document.getElementById('gnb').style ="background-color:transparent;"
+                document.getElementById('top_menu_search').style = "color:333;"
+                document.getElementById('ph_indicator').style = "opacity:0; color:#333;";
+                // document.getElementById('logo_ai').style = "color:black;"
+                // document.getElementById('logo_dot').style = "color:black;"
+                // document.getElementById('logo_text').style = "color:black;"
+                
+                document.getElementById('logo_ai').style = "color : #333"
+                document.getElementById('logo_dot').style = "color : #333"
+                document.getElementById('logo_text_con').style = "color : #333"
+
+                document.getElementById('bugger_line1').style = "animation: buggeropen1 .8s backwards;transform: translate(-50%, -50%) rotate(45deg); background : #333;"
+                document.getElementById('bugger_line2').style = "animation: buggeropen2 .8s backwards;transform: translate(-50%, -50%) rotate(-45deg); background : #333;"
+
+                burgerState = 1;
+                
+                prac = 1;
+
+            } else if (burgerState == 1) {
+
+                document.getElementById('main').style = "display:block";
+                document.getElementById('footer').style = "display:block";
+                document.getElementById('lnb').style = "display:none";
+                document.getElementById('header').style = "height:auto;"
+                document.getElementsByClassName('gnb_indicator_wrap')[0].style = "color:#333;"
+                //document.getElementById('gnb_wrap').style = "height:160px;"
+                document.getElementById('gnb_logo_icon').style = "display:block;"
+                document.getElementById('gnb').style ="background-color:transparent;"
+                 document.getElementById('top_menu_search').style = "color:#333;"
+                document.getElementById('ph_indicator').style = "opacity:0;";
+                // document.getElementById('logo_ai').style = "color:white;"
+                // document.getElementById('logo_dot').style = "color:white;"
+                // document.getElementById('logo_text').style = "color:white;"
+
+                document.getElementById('logo_ai').style = "color : #333"
+                document.getElementById('logo_dot').style = "color : #333"
+                document.getElementById('logo_text_con').style = "color : #333"
+                document.getElementById('bugger_line1').style = "animation: buggerclose1 .8s backwards;transform: translate(-50%, 230%) rotate(0deg); background : #333;"
+                document.getElementById('bugger_line2').style = "animation: buggerclose2 .8s backwards;transform: translate(-50%, -230%) rotate(0deg); background : #333;"
+
+                burgerState = 0;
+                
+                prac = 0;
+            }
+
+        };
+      
+      	function subMenuShow(subMenuNumber) {
+
+            if (window.innerWidth > 1200) {
+
+                for (i = 0; i < 7; i++) {
+                    document.getElementsByClassName('header_copy')[i].style = "display:none;"
+                    document.getElementsByClassName('lnb_a')[subMenuNumber].style = "font-weight:400"
+                }
+
+                document.getElementsByClassName('header_copy')[subMenuNumber].style = "display:block;"
+
+                document.getElementsByClassName('lnb_a')[subMenuNumber].style = "font-weight:600"
+
+            } else[
+                document.getElementsByClassName('lnb_a')[subMenuNumber].style = "font-weight:600"
+            ]
+
+        }
+
+
+        function subMenuOut(subMenuNumber) {
+
+            if (window.innerWidth > 1200) {
+                document.getElementsByClassName('header_copy')[subMenuNumber].style = "display:none"
+                document.getElementsByClassName('lnb_a')[subMenuNumber].style = "font-weight:400"
+            } else{
+                document.getElementsByClassName('lnb_a')[subMenuNumber].style = "font-weight:400"
+            }
+        }
+    
+
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,2053 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SKT_AI</title>
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/font.css">
+    <link rel="stylesheet" href="css/slick-theme.css">
+    <link rel="stylesheet" href="css/slick.css">
+    <link rel="stylesheet" href="css/style.css">
+
+    <script src="js/index.js"></script>
+    <script src="js/jquery.min.js"></script>
+    <script src="js/slick.min.js"></script>
+
+    <script src="js/owl.carousel.min.js"></script>
+    <link rel="stylesheet" href="css/owl.carousel.min.css">
+    <link rel="stylesheet" href="css/owl.theme.default.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+
+    <script src="//cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.7/ScrollMagic.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.7/plugins/debug.addIndicators.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/gsap/2.1.3/TweenMax.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.5/plugins/animation.gsap.js"></script>
+
+
+    <script>
+        //리사이즈 이벤트들
+        x = window.matchMedia("(max-width:768px)");
+        y = window.matchMedia("(max-width:1024px)");
+        z = window.matchMedia("(max-width:)")
+        $(window).resize(function () {
+
+            if (x.matches) { //768이하
+                document.getElementById("gnb").style = "height:72px";
+                document.getElementById("gnb_wrap").style = "height:72px";
+                if (document.body.scrollTop > 72) {
+                    document.getElementById("gnb").style = "height:50px";
+                    document.getElementById("gnb_wrap").style = "height:50px";
+                }
+
+            }
+            else if (y.matches) { //1024이하
+                document.getElementById("gnb").style = "height:165px";
+                document.getElementById("gnb_wrap").style = "height:165px";
+                if (document.body.scrollTop > 150) {
+                    document.getElementById("gnb").style = "height:80px";
+                    document.getElementById("gnb_wrap").style = "height:80px";
+                }
+
+            }
+            else { //pc
+
+            }
+
+        });
+
+        ///다시 스크롤시이벤트들
+        var presntScrollPosition = 0;
+        var prevScrollPosition = 0;
+        window.onscroll = function () {
+            //console.log(window.pageYOffset);
+            //console.log (window.screenTop);
+
+            prevScrollPosition = presntScrollPosition;
+            presntScrollPosition = window.pageYOffset;
+
+            scrollMove = presntScrollPosition - prevScrollPosition;
+
+            x = window.matchMedia("(max-width:768px)");
+            y = window.matchMedia("(max-width:1024px)");
+            
+      
+            if(prac == 0){
+
+            if (x.matches) { //768이하
+                //768이하 평소에는
+                document.getElementById("gnb_wrap").style = "height:72px;";
+                document.getElementById("gnb").style = "height:72px;";
+                if (scrollMove < 0) { //스크롤업하면
+                    //스크롤업할때 이렇게해라
+                    document.getElementById("gnb_wrap").style = "height:50px;background-color: rgba(255, 255, 255, 0.95);";
+                    document.getElementById("gnb").style = "position:fixed;height:50px;background-color: rgba(255, 255, 255, 0.95);color: #333;transition: background-color 0.5s cubic-bezier(0.23, 1, 0.32, 1);"
+
+                    document.getElementById("gnb_logo_icon").style = "display:none";
+                    document.getElementById("top_menu_search").style = "color:#222;";
+                    document.getElementById("bugger_line1").style = "background:#222;";
+                    document.getElementById("bugger_line2").style = "background:#222;";
+                    if (window.pageYOffset < 72) //스크롤업하다가 0이되면
+                    {
+                        document.getElementById("gnb_wrap").style = "height:72px;background-color:none";
+                        document.getElementById("gnb").style = "height:72px;background-color:none";
+                        document.getElementById("logo_ai").style = "color:#fff";
+                        document.getElementById("logo_dot").style = "color:#fff";
+                        document.getElementById("gnb_top_menu").style = "top:50%";
+                        document.getElementById("gnb_logo_icon").style = "display:block";
+                        document.getElementById("logo_text_con").style = "animation:herotextin .5s ease-in-out forwards;";
+                        document.getElementById("top_menu_search").style = "color:#fff;";
+                        document.getElementById("bugger_line1").style = "background:#fff;";
+                        document.getElementById("bugger_line2").style = "background:#fff;";
+
+                    }
+
+
+
+
+                }
+
+                if (scrollMove > 0) { //스크롤을 내릴때는
+                    if (window.pageYOffset > 72) {
+                        document.getElementById("gnb_wrap").style = "height:50px;background-color: rgba(255, 255, 255, 0.95);";
+                        document.getElementById("gnb").style = "position:fixed;height:50px;background-color: rgba(255, 255, 255, 0.95);color: #333;transition: background-color 0.5s cubic-bezier(0.23, 1, 0.32, 1);"
+
+                        document.getElementById("gnb_top_menu").style = "top:50%";
+                        document.getElementById("gnb_logo_icon").style = "display:none";
+                        document.getElementById("top_menu_search").style = "color:#222;";
+                        document.getElementById("bugger_line1").style = "background:#222;";
+                        document.getElementById("bugger_line2").style = "background:#222;";
+
+
+                    }
+
+
+                }
+
+            }
+            else if (y.matches) { //1024이하
+                if (scrollMove < 0) {
+                    if (window.pageYOffset <30) {
+                        document.getElementById("gnb_wrap").style = "height:165px;background-color:none";
+                        document.getElementById("gnb").style = "height:165px";
+                        document.getElementById("logo_ai").style = "color:#fff";
+                        document.getElementById("logo_dot").style = "color:#fff";
+                        // document.getElementById("logo").style="transform: none;margin-left:0px;";
+                        document.getElementById("gnb_top_menu").style = "top:50%";
+                        document.getElementById("gnb_logo_icon").style = "display:block";
+                        document.getElementById("logo_text_con").style = "animation:herotextin .5s ease-in-out forwards;";
+                        document.getElementById("top_menu_search").style = "color:#fff;";
+                        document.getElementById("bugger_line1").style = "background:#fff;";
+                        document.getElementById("bugger_line2").style = "background:#fff;";
+
+                    }
+
+
+                }
+
+
+
+
+
+                if (scrollMove > 0) {
+                    if (window.pageYOffset > 80) {
+                        document.getElementById("gnb_wrap").style = "height:80px;";
+                        document.getElementById("gnb").style = "position:fixed;height:80px;background-color: rgba(255, 255, 255, 0.95);color: #333;transition: background-color 0.5s cubic-bezier(0.23, 1, 0.32, 1);"
+
+                        document.getElementById("gnb_logo_icon").style = "display:none";
+                        document.getElementById("top_menu_search").style = "color:#222;";
+                        document.getElementById("bugger_line1").style = "background:#222;";
+                        document.getElementById("bugger_line2").style = "background:#222;";
+
+
+                    }
+
+
+                }
+            }
+            else { //1025이후부터
+                
+                if (scrollMove < 0) { //스크롤업하면
+                    if (window.pageYOffset < 30) {
+                        document.getElementById("gnb_wrap").style = "height:165px;background-color:none";
+                        document.getElementById("gnb").style = "height:165px";
+                        document.getElementById("logo_ai").style = "color:#fff";
+                        document.getElementById("logo_dot").style = "color:#fff";
+                        // document.getElementById("logo").style="transform: none;margin-left:0px;";
+                        document.getElementById("gnb_top_menu").style = "top:50%";
+                        document.getElementById("gnb_logo_icon").style = "display:block";
+                        document.getElementById("logo_text_con").style = "animation:herotextin .5s ease-in-out forwards;";
+                        document.getElementById("top_menu_search").style = "color:#fff;";
+                        document.getElementById("bugger_line1").style = "background:#fff;";
+                        document.getElementById("bugger_line2").style = "background:#fff;";
+
+                    }
+                    if (window.pageYOffset < 80) {
+                        document.getElementById("gnb_wrap").style = "height:165px;";
+                        document.getElementById("logo_ai").style = "color:#fff";
+                        document.getElementById("logo_dot").style = "color:#fff";
+                        // document.getElementById("logo").style="transform: none;margin-left:0px;";
+                        document.getElementById("gnb_logo_icon").style = "display:block";
+                        document.getElementById("logo_text_con").style = "animation:herotextin .5s ease-in-out forwards;";
+                        document.getElementById("top_menu_search").style = "color:#fff;";
+                        document.getElementById("bugger_line1").style = "background:#fff;";
+                        document.getElementById("bugger_line2").style = "background:#fff;";
+
+                    }
+
+
+                }
+
+                if (scrollMove > 0) {
+                    if (window.pageYOffset > 80) {
+                        document.getElementById("gnb_wrap").style = "height:80px;";
+                        document.getElementById("gnb").style = "position:fixed;height:80px;background-color: rgba(255, 255, 255, 0.95);color: #333;transition: background-color 0.5s cubic-bezier(0.23, 1, 0.32, 1);"
+                        document.getElementById("gnb_logo_icon").style = "display:block";
+                        document.getElementById("logo_text_con").style = "animation:herotextout .1s ease-in-out forwards;";
+                        // document.getElementById("logo").style="width:40px;margin-left: -45px;";
+                        document.getElementById("logo_ai").style = "color:#222;font-size:50px !important";
+                        document.getElementById("logo_dot").style = "color:#222;font-size:50px !important;line-height:65px";
+                        document.getElementById("top_menu_search").style = "color:#222;";
+                        document.getElementById("bugger_line1").style = "background:#222;";
+                        document.getElementById("bugger_line2").style = "background:#222;";
+
+
+                    }
+
+
+                }
+            }
+            }
+
+
+
+            scrollPoint = window.scrollY;
+
+            projectsSection = document.getElementById('hero_slide').offsetTop;
+            reSearchSection = document.getElementById('hero_research').offsetTop;
+            nuguSection = document.getElementById('nugu').offsetTop;
+            rndSection = document.getElementById('rnd').offsetTop;
+            peopleSection = document.getElementById('people_slide').offsetTop;
+            aixSection = document.getElementById('aix').offsetTop;
+            joinSection = document.getElementById('join').offsetTop;
+
+            console.log(scrollPoint);
+
+    if(prac == 0){
+            
+            if (scrollMove > 0) {
+
+                if (scrollPoint >= projectsSection) {
+                    document.getElementById('gnb_hero_indicator1').style = "animation:indicatorcenter 0.3s forwards"
+                    document.getElementById('gnb_indicator_wrap_id').style = "animation:fadein 0.3s forwards"
+                }
+
+
+                if (scrollPoint >= reSearchSection) {
+                    document.getElementById('gnb_hero_indicator1').style = "animation:indicatorup 0.3s forwards"
+                    document.getElementById('gnb_hero_indicator2').style = "animation:indicatorcenter 0.3s forwards"
+                }
+
+                if (scrollPoint >= nuguSection) {
+                    document.getElementById('gnb_hero_indicator2').style = "animation:indicatorup 0.3s forwards"
+                    document.getElementById('gnb_hero_indicator3').style = "animation:indicatorcenter 0.3s forwards"
+                }
+                if (scrollPoint >= rndSection) {
+                    document.getElementById('gnb_hero_indicator3').style = "animation:indicatorup 0.3s forwards"
+                    document.getElementById('gnb_hero_indicator4').style = "animation:indicatorcenter 0.3s forwards"
+                }
+                if (scrollPoint >= peopleSection) {
+                    document.getElementById('gnb_hero_indicator4').style = "animation:indicatorup 0.3s forwards"
+                    document.getElementById('gnb_hero_indicator5').style = "animation:indicatorcenter 0.3s forwards"
+                }
+                if (scrollPoint >= aixSection) {
+                    document.getElementById('gnb_hero_indicator5').style = "animation:indicatorup 0.3s forwards"
+                    document.getElementById('gnb_hero_indicator6').style = "animation:indicatorcenter 0.3s forwards"
+                }
+
+
+                if (scrollPoint + 400 >= joinSection) {
+                    document.getElementById('gnb_hero_indicator6').style = "animation:indicatorup 0.3s forwards"
+                    document.getElementById('gnb_hero_indicator7').style = "animation:indicatorcenter 0.3s forwards"
+                }
+            }
+
+
+            if (scrollMove < 0) {
+
+                if (scrollPoint < projectsSection) {
+                    document.getElementById('gnb_hero_indicator1').style = "animation:indicatorup 0.3s forwards"
+                    document.getElementById('gnb_indicator_wrap_id').style = "animation:fadeout 0.3s forwards"
+                }
+
+                if (scrollPoint < reSearchSection) {
+
+                    document.getElementById('gnb_hero_indicator2').style = "animation:indicatorcentertodown 0.3s forwards"
+
+                    document.getElementById('gnb_hero_indicator1').style = "animation:indicatortoptocenter 0.3s forwards"
+                }
+                if (scrollPoint < nuguSection) {
+
+
+                    document.getElementById('gnb_hero_indicator3').style = "animation:indicatorcentertodown 0.3s forwards"
+                    document.getElementById('gnb_hero_indicator2').style = "animation:indicatortoptocenter 0.3s forwards"
+                }
+                if (scrollPoint < rndSection) {
+
+
+                    document.getElementById('gnb_hero_indicator4').style = "animation:indicatorcentertodown 0.3s forwards"
+                    document.getElementById('gnb_hero_indicator3').style = "animation:indicatortoptocenter 0.3s forwards"
+                }
+                if (scrollPoint < peopleSection) {
+
+
+                    document.getElementById('gnb_hero_indicator5').style = "animation:indicatorcentertodown 0.3s forwards"
+                    document.getElementById('gnb_hero_indicator4').style = "animation:indicatortoptocenter 0.3s forwards"
+                }
+                if (scrollPoint < aixSection) {
+
+                    document.getElementById('gnb_hero_indicator6').style = "animation:indicatorcentertodown 0.3s forwards"
+                    document.getElementById('gnb_hero_indicator5').style = "animation:indicatortoptocenter 0.8s forwards"
+                }
+                if (scrollPoint + 400 < joinSection) {
+                    document.getElementById('gnb_hero_indicator6').style = "animation:indicatortoptocenter 0.3s forwards"
+                    document.getElementById('gnb_hero_indicator7').style = "animation:indicatorcentertodown 0.3s forwards"
+                }
+            }
+        }
+
+        }//스크롤할때이벤트들끝
+    </script>
+
+</head>
+
+<body>
+    <header id="header">
+        <nav id="gnb">
+            <div id="gnb_wrap" class="gnb_wrap_m">
+                <a class="gnb_logo_link" id="gnb_logo_icon" href="index.html">
+                    <div id="logo">
+                        <span id="logo_ai"></span>
+                        <span id="logo_dot"></span>
+                        <span id="logo_text">
+                            <span id="logo_text_con"></span>
+                        </span>
+                    </div>
+                </a>
+                <div class="gnb_indicator_wrap" id="gnb_indicator_wrap_id">
+                    <div class="gnb_indicator" id="gnb_hero_indicator1">Projects</div>
+                    <div class="gnb_indicator" id="gnb_hero_indicator2">Research & Press/Blog</div>
+                    <div class="gnb_indicator" id="gnb_hero_indicator3">Nugu</div>
+                    <div class="gnb_indicator" id="gnb_hero_indicator4">AIC SK Telecom</div>
+                    <div class="gnb_indicator" id="gnb_hero_indicator5">People</div>
+                    <div class="gnb_indicator" id="gnb_hero_indicator6">ai.x Conference</div>
+                    <div class="gnb_indicator" id="gnb_hero_indicator7">Join Us</div>
+                </div>
+                <div class="top_menu" id="gnb_top_menu">
+                    <div id="top_menu_search"></div>
+                    <button id="top_menu_bugger" onclick="buggerIcon()">
+                        <span id="bugger_line1"></span>
+                        <span id="bugger_line2"></span>
+                    </button>
+                </div>
+            </div>
+        </nav>
+
+        <nav id="lnb">
+            <div class="lnb_wrap">
+
+                <ul class="lnb_ul">
+                    <li onmouseover="subMenuShow(0)" onmouseout="subMenuOut(0)"><a href="philosophy.html" class="lnb_a">Philosophy</a>
+                    </li>
+                    <li onmouseover="subMenuShow(1)" onmouseout="subMenuOut(1)"><a href="#" class="lnb_a">Research</a>
+                    </li>
+                    <li onmouseover="subMenuShow(2)" onmouseout="subMenuOut(2)"><a href="#" class="lnb_a">Projects</a>
+                    </li>
+                    <li onmouseover="subMenuShow(3)" onmouseout="subMenuOut(3)"><a href="joinus/joinus.html" class="lnb_a">Join Us</a>
+                    </li>
+                    <li onmouseover="subMenuShow(4)" onmouseout="subMenuOut(4)"><a href="#" class="lnb_a">Press/Blog</a>
+                    </li>
+                    <li onmouseover="subMenuShow(5)" onmouseout="subMenuOut(5)"><a href="#" class="lnb_a">Demos</a></li>
+                    <li onmouseover="subMenuShow(6)" onmouseout="subMenuOut(6)"><a href="#" class="lnb_a">ai.x
+                            conference</a></li>
+                </ul>
+
+                <ul class="header_copy_wrap">
+                    <li class="header_copy">
+                        <svg width="700" height="600">
+                            <text x="700" y="0"
+                                style="font-family: 'Ciutadella', sans-serif; font-size: 82px; font-style: normal; letter-spacing: -0.016em; font-weight: bold; fill: none; fill-opacity: 1; stroke: #bbbbbb; stroke-width: 1px; stroke-linecap: butt; stroke-linejoin: miter; stroke-opacity: 1;">
+                                <tspan x="700" y="76" text-anchor="end">Innovation</tspan>
+                                <tspan x="700" y="152" text-anchor="end">through</tspan>
+                                <tspan x="700" y="228" text-anchor="end">disruptive and</tspan>
+                                <tspan x="700" y="304" text-anchor="end">scalable</tspan>
+                                <tspan x="700" y="380" text-anchor="end">technology</tspan>
+                                <tspan x="700" y="600" text-anchor="end" style="visibility: hidden;">.</tspan>
+                            </text>
+                        </svg>
+                    </li>
+                    <li class="header_copy">
+                        <svg width="700" height="600">
+                            <text x="700" y="0"
+                                style="font-family: 'Ciutadella', sans-serif; font-size: 82px; font-style: normal; letter-spacing: -0.016em; font-weight: bold; fill: none; fill-opacity: 1; stroke: #bbbbbb; stroke-width: 1px; stroke-linecap: butt; stroke-linejoin: miter; stroke-opacity: 1;">
+                                <!-- #PUB 008 텍스트 수정, 마크업 삭제 -->
+                                <tspan x="700" y="76" text-anchor="end">Cutting-edge</tspan>
+                                <tspan x="700" y="152" text-anchor="end">AI research</tspan>
+                                <tspan x="700" y="600" text-anchor="end" style="visibility: hidden;">.</tspan>
+                            </text>
+                        </svg>
+                    </li>
+                    <li class="header_copy">
+                        <svg width="700" height="600">
+                            <text x="700" y="0"
+                                style="font-family: 'Ciutadella', sans-serif; font-size: 82px; font-style: normal; letter-spacing: -0.016em; font-weight: bold; fill: none; fill-opacity: 1; stroke: #bbbbbb; stroke-width: 1px; stroke-linecap: butt; stroke-linejoin: miter; stroke-opacity: 1;">
+                                <tspan x="700" y="76" text-anchor="end">Accelerating</tspan>
+                                <tspan x="700" y="152" text-anchor="end">innovations</tspan>
+                                <tspan x="700" y="228" text-anchor="end">in research and</tspan>
+                                <tspan x="700" y="304" text-anchor="end">service</tspan>
+                                <tspan x="700" y="600" text-anchor="end" style="visibility: hidden;">.</tspan>
+                            </text>
+                        </svg>
+                    </li>
+                    <li class="header_copy">
+                        <svg width="700" height="600">
+                            <text x="700" y="0"
+                                style="font-family: 'Ciutadella', sans-serif; font-size: 82px; font-style: normal; letter-spacing: -0.016em; font-weight: bold; fill: none; fill-opacity: 1; stroke: #bbbbbb; stroke-width: 1px; stroke-linecap: butt; stroke-linejoin: miter; stroke-opacity: 1;">
+                                <!-- #PUB 001 카피수정 -->
+                                <tspan x="700" y="76" text-anchor="end">We strive for</tspan>
+                                <tspan x="700" y="152" text-anchor="end">(and achieve)</tspan>
+                                <tspan x="700" y="228" text-anchor="end">excellence!</tspan>
+                                <tspan x="700" y="600" text-anchor="end" style="visibility: hidden;">.</tspan>
+                            </text>
+                        </svg>
+                    </li>
+                    <li class="header_copy">
+                        <svg width="700" height="600">
+                            <text x="700" y="0"
+                                style="font-family: 'Ciutadella', sans-serif; font-size: 82px; font-style: normal; letter-spacing: -0.016em; font-weight: bold; fill: none; fill-opacity: 1; stroke: #bbbbbb; stroke-width: 1px; stroke-linecap: butt; stroke-linejoin: miter; stroke-opacity: 1;">
+                                <!-- #PUB 008 텍스트 수정 -->
+                                <tspan x="700" y="76" text-anchor="end">“SotA”</tspan>
+                                <tspan x="700" y="152" text-anchor="end">(State-of-the-Art)</tspan>
+                                <!-- #PUB 002 text 수정  -->
+                                <tspan x="700" y="600" text-anchor="end" style="visibility: hidden;">.</tspan>
+                            </text>
+                        </svg>
+                    </li>
+                    <li class="header_copy">
+                        <svg width="700" height="600">
+                            <text x="700" y="0"
+                                style="font-family: 'Ciutadella', sans-serif; font-size: 82px; font-style: normal; letter-spacing: -0.016em; font-weight: bold; fill: none; fill-opacity: 1; stroke: #bbbbbb; stroke-width: 1px; stroke-linecap: butt; stroke-linejoin: miter; stroke-opacity: 1;">
+                                <!-- #PUB 002 text 수정 및 태그삭제  -->
+                                <!-- #PUB 006 텍스트 변경  -->
+                                <tspan x="700" y="76" text-anchor="end">Visual demo of</tspan>
+                                <tspan x="700" y="152" text-anchor="end">research and</tspan>
+                                <tspan x="700" y="228" text-anchor="end">service innovation</tspan>
+                                <!-- <tspan x="700" y="304" text-anchor="end">waiting to serve</tspan> -->
+                                <!-- <tspan x="700" y="380" text-anchor="end">Live Demo</tspan> -->
+                                <!-- <tspan x="700" y="600" text-anchor="end" style="visibility: hidden;">.</tspan> -->
+                            </text>
+                        </svg>
+                    </li>
+                    <li class="header_copy">
+                        <svg width="700" height="600">
+                            <text x="700" y="0"
+                                style="font-family: 'Ciutadella', sans-serif; font-size: 82px; font-style: normal; letter-spacing: -0.016em; font-weight: bold; fill: none; fill-opacity: 1; stroke: #bbbbbb; stroke-width: 1px; stroke-linecap: butt; stroke-linejoin: miter; stroke-opacity: 1;">
+                                <tspan x="700" y="76" text-anchor="end">Human.</tspan>
+                                <tspan x="700" y="152" text-anchor="end">Machine.</tspan>
+                                <tspan x="700" y="228" text-anchor="end">Experience</tspan>
+                                <tspan x="700" y="304" text-anchor="end">Together</tspan>
+                                <tspan x="700" y="600" text-anchor="end" style="visibility: hidden;">.</tspan>
+                            </text>
+                        </svg>
+                    </li>
+                </ul>
+
+                <div class="lnb_shape_wrap">
+                    <div id="lnb_shape_1"></div>
+                    <div id="lnb_shape_2"></div>
+                    <div id="lnb_shape_3">
+                        <div id="lnb_shape_4"></div>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main id="main">
+        <section id="hero">
+            <video class="hero_video" preload="" loop="loop" playsinline="" muted="muted" autoplay="autoplay">
+                <source src="img/sk-aic_kv-video.mp4" type="video/mp4">
+            </video>
+            <video class="hero_video_m" preload="" loop="loop" playsinline="" muted="muted" autoplay="autoplay">
+                <source src="img/sk-aic_kv-video_m.mp4" type="video/mp4">
+            </video>
+            <!-- <img src="img/sk-aic_kv-video-poster.jpg"> -->
+            <div class="hero_text_wrap">
+                <div class="hero_text">Human<br> Centered<br> AI</div>
+            </div>
+        </section>
+        <section id="hero_slide">
+            <h2>We create and foster<br>
+                disruptive and scalable AI technologies to accelerate innovation</h2>
+            <div class="hero_slide_wrap">
+                <div class="item">
+                    <div class="item_svg">
+                        <svg class="media_1024" version="1.1" id="01" xmlns="http://www.w3.org/2000/svg"
+                            xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="241.637px"
+                            height="242.182px" viewBox="0 0 241.637 242.182" enable-background="new 0 0 241.637 242.182"
+                            xml:space="preserve">
+                            <path data-order="1" data-duration="500" fill="none" stroke="#02D3AA" stroke-width="20"
+                                stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10"
+                                d="M40.565,173.294c17.095,26.771,47.066,44.523,81.186,44.523c53.157,0,96.25-43.092,96.25-96.25c0-21.901-7.316-42.097-19.638-58.271"
+                                style="stroke-dasharray: 310.408, 311.408; stroke-dashoffset: 310.908px;"></path>
+                            <path data-order="2" fill="none" stroke="#F4B601" stroke-width="20" stroke-linecap="round"
+                                stroke-linejoin="round" stroke-miterlimit="10"
+                                d="M142.752,174.818c-9.294,3.755-19.692,5.122-30.315,3.463c-31.328-4.894-52.759-34.259-47.864-65.587c2.356-15.076,10.38-27.861,21.562-36.522"
+                                style="stroke-dasharray: 164.531, 165.531; stroke-dashoffset: 165.031px;"></path>
+                            <path data-order="4" data-duration="800" fill="none" stroke="#02D3AA" stroke-width="20"
+                                stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10"
+                                d="M118.703,102.001c0.964-0.143,1.951-0.215,2.956-0.211c10.833,0.038,19.585,8.851,19.546,19.684c-0.038,10.833-8.851,19.585-19.684,19.548c-10.834-0.039-19.585-8.852-19.547-19.684"
+                                style="stroke-dasharray: 95.4151, 96.4151; stroke-dashoffset: 95.9151px;"></path>
+                            <path data-order="0" data-duration="500" class="multiply" fill="none" stroke="#00C0E1"
+                                stroke-width="20" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10"
+                                d="M165.702,35.916c-13.177-6.774-28.118-10.599-43.952-10.599c-53.157,0-96.25,43.094-96.25,96.25c0,17.28,4.554,33.497,12.525,47.516c0,0,0.769,1.638,1.975,3.417"
+                                style="stroke-dasharray: 250.495, 251.495; stroke-dashoffset: 250.995px;"></path>
+                            <path data-order="3" class="multiply" fill="none" stroke="#FF6B5F" stroke-width="20"
+                                stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10"
+                                d="M85.974,75.954c9.897-7.869,22.425-12.57,36.051-12.57c32.021,0,57.976,25.957,57.976,57.975c0,14.597-5.395,27.933-14.297,38.123"
+                                style="stroke-dasharray: 171.601, 172.601; stroke-dashoffset: 172.101px;"></path>
+
+                        </svg>
+                    </div>
+                    <div class="hero_slide_text_wrap">
+                        <h3>Meta AI</h3>
+                        <p>AI makes AI</p>
+                        <a href="#" class="more_btn">
+                            <i class="more_btn_icon"></i>
+                            <div class="more_btn_txt">Learn more</div>
+                        </a>
+                    </div>
+
+                </div>
+                <div class="item">
+                    <div class="item_svg">
+                        <svg class="media_1024" version="1.1" id="02" xmlns="http://www.w3.org/2000/svg"
+                            xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="313.682px"
+                            height="249.137px" viewBox="0 0 313.682 249.137" enable-background="new 0 0 313.682 249.137"
+                            xml:space="preserve">
+                            <circle class="step-1 ignore" fill="#C585FF" cx="61.75" cy="106" r="10"></circle>
+                            <circle class="step-2 ignore" fill="#C585FF" cx="103.75" cy="106" r="10"></circle>
+                            <circle class="step-3 ignore" fill="#C585FF" cx="145.75" cy="106" r="10"></circle>
+                            <path fill="none" stroke="#F4B601" stroke-width="20" stroke-linecap="round"
+                                stroke-linejoin="round" stroke-miterlimit="10"
+                                d="M64.088,25.477c-0.1,0.051-0.199,0.099-0.298,0.149C19.962,48.33,2.837,102.272,25.54,146.101c19.244,37.145,60.919,55.099,99.863,45.893l32.997,16.264l0.036-0.229"
+                                style="stroke-dasharray: 296.135, 297.135; stroke-dashoffset: 296.635px;"></path>
+                            <path class="multiply" fill="none" stroke="#FF6B5F" stroke-width="20" stroke-linecap="round"
+                                stroke-linejoin="round" stroke-miterlimit="10"
+                                d="M158.437,208.028l5.711-36.104c29.982-26.503,39.359-70.902,20.115-108.05C161.61,20.144,107.865,3.003,64.088,25.477"
+                                style="stroke-dasharray: 295, 296; stroke-dashoffset: 295.5px;"></path>
+                            <path fill="none" stroke="#02D3AA" stroke-width="20" stroke-linecap="round"
+                                stroke-linejoin="round" stroke-miterlimit="10"
+                                d="M259.883,112.958c-26.516-10.909-57.504-0.147-71.284,25.688c-12.444,23.332-6.855,51.467,11.895,68.444l3.055,20.937"
+                                style="stroke-dasharray: 179.036, 180.036; stroke-dashoffset: 179.536px;"></path>
+                            <path data-duration="1000" class="multiply" fill="none" stroke="#00C0E1" stroke-width="20"
+                                stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10"
+                                d="M203.547,228.027l21.281-7.954c24.546,6.113,51.024-4.917,63.471-28.251c14.685-27.529,4.27-61.752-23.262-76.438c-1.694-0.903-3.415-1.711-5.154-2.426"
+                                style="stroke-dasharray: 192, 193; stroke-dashoffset: 192.5px;"></path>
+                        </svg>
+                    </div>
+                    <div class="hero_slide_text_wrap">
+                        <h3>Conversational <br class="for_mobile"> AI</h3>
+                        <p>Utilizing AI to talk to machines </p>
+                        <a href="#" class="more_btn">
+                            <i class="more_btn_icon"></i>
+                            <div class="more_btn_txt">Learn more</div>
+                        </a>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="item_svg">
+                        <svg class="media_1024" version="1.1" id="03" xmlns="http://www.w3.org/2000/svg"
+                            xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="258.729px"
+                            height="242.182px" viewBox="0 0 258.729 242.182" enable-background="new 0 0 258.729 242.182"
+                            xml:space="preserve">
+                            <line data-order="1" data-duration="400" fill="none" stroke="#02D3AA" stroke-width="20"
+                                stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" x1="49.75"
+                                y1="35.626" x2="20.75" y2="35.626"
+                                style="stroke-dasharray: 29, 30; stroke-dashoffset: 29.5px;"></line>
+                            <line data-order="2" data-duration="500" class="multiply" fill="none" stroke="#00C0E1"
+                                stroke-width="20" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10"
+                                x1="20.75" y1="35.626" x2="20.75" y2="64.001"
+                                style="stroke-dasharray: 28.375, 29.375; stroke-dashoffset: 28.875px;"></line>
+                            <line data-order="1" data-duration="400" fill="none" stroke="#02D3AA" stroke-width="20"
+                                stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" x1="208.25"
+                                y1="35.626" x2="237.25" y2="35.626"
+                                style="stroke-dasharray: 29, 30; stroke-dashoffset: 29.5px;"></line>
+                            <line data-order="2" data-duration="500" class="multiply" fill="none" stroke="#00C0E1"
+                                stroke-width="20" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10"
+                                x1="237.25" y1="35.626" x2="237.25" y2="64.001"
+                                style="stroke-dasharray: 28.375, 29.375; stroke-dashoffset: 28.875px;"></line>
+                            <line data-order="1" data-duration="400" fill="none" stroke="#02D3AA" stroke-width="20"
+                                stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" x1="49.75"
+                                y1="207.001" x2="20.75" y2="207.001"
+                                style="stroke-dasharray: 29, 30; stroke-dashoffset: 29.5px;"></line>
+                            <line data-order="2" data-duration="500" class="multiply" fill="none" stroke="#00C0E1"
+                                stroke-width="20" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10"
+                                x1="20.75" y1="207.001" x2="20.75" y2="178.626"
+                                style="stroke-dasharray: 28.375, 29.375; stroke-dashoffset: 28.875px;"></line>
+                            <line data-order="1" data-duration="400" fill="none" stroke="#02D3AA" stroke-width="20"
+                                stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" x1="208.25"
+                                y1="207.001" x2="237.25" y2="207.001"
+                                style="stroke-dasharray: 29, 30; stroke-dashoffset: 29.5px;"></line>
+                            <line data-order="2" data-duration="500" class="multiply" fill="none" stroke="#00C0E1"
+                                stroke-width="20" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10"
+                                x1="237.25" y1="207.001" x2="237.25" y2="178.626"
+                                style="stroke-dasharray: 28.375, 29.375; stroke-dashoffset: 28.875px;"></line>
+                            <path data-order="3" fill="none" stroke="#F4B601" stroke-width="20" stroke-linecap="round"
+                                stroke-linejoin="round" stroke-miterlimit="10"
+                                d="M48.301,123.626c-0.033,0.041-0.068,0.082-0.102,0.125c18.407,23.225,46.862,38.125,78.801,38.125c31.938,0,60.393-14.9,78.801-38.125c-0.033-0.043-0.068-0.084-0.102-0.125"
+                                style="stroke-dasharray: 181.489, 182.489; stroke-dashoffset: 181.989px;"></path>
+                            <path data-order="4" data-duration="1000" class="multiply" fill="none" stroke="#FF6B5F"
+                                stroke-width="20" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10"
+                                d="M205.699,123.626c-18.412-23.153-46.819-38-78.699-38s-60.287,14.847-78.699,38"
+                                style="stroke-dasharray: 180.842, 181.842; stroke-dashoffset: 181.342px;"></path>
+                            <circle data-order="0" data-duration="1000" fill="none" stroke="#999999" stroke-width="16"
+                                stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" cx="125.875"
+                                cy="123.751" r="16.474"
+                                style="stroke-dasharray: 103.509, 104.509; stroke-dashoffset: 104.009px;"></circle>
+                        </svg>
+                    </div>
+                    <div class="hero_slide_text_wrap">
+                        <h3>Visual AI</h3>
+                        <p>AI for visual talk</p>
+                        <a href="#" class="more_btn">
+                            <i class="more_btn_icon"></i>
+                            <div class="more_btn_txt">Learn more</div>
+                        </a>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="item_svg">
+                        <svg class="media_1024" version="1.1" id="04" xmlns="http://www.w3.org/2000/svg"
+                            xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="283.455px"
+                            height="242.182px" viewBox="0 0 283.455 242.182" enable-background="new 0 0 283.455 242.182"
+                            xml:space="preserve">
+                            <path fill="none" stroke="#FF6B5F" stroke-width="20" stroke-linecap="round"
+                                stroke-linejoin="round" stroke-miterlimit="10"
+                                d="M21.995,107.751c0,0,15.833,0,24.101,0c8.268,0,16.042,7.183,16.042,16.043v24.121v22.497c0,8.862,7.183,16.045,16.044,16.045l0,0c8.86,0,16.042-7.183,16.042-16.045v-29.537"
+                                style="stroke-dasharray: 175.744, 176.744; stroke-dashoffset: 176.244px;"></path>
+                            <path fill="none" class="multiply" stroke="#F4B601" stroke-width="20" stroke-linecap="round"
+                                stroke-linejoin="round" stroke-miterlimit="10"
+                                d="M94.224,140.875v-50c0-8.859,7.183-16.043,16.044-16.043l0,0c8.86,0,16.042,7.184,16.042,16.043v57.123v47.5c0,8.86,7.183,16.043,16.044,16.043l0,0c8.859,0,16.041-7.183,16.041-16.043v-54.54"
+                                style="stroke-dasharray: 309.977, 310.977; stroke-dashoffset: 310.477px;"></path>
+                            <path fill="none" class="multiply" stroke="#02D3AA" stroke-width="20" stroke-linecap="round"
+                                stroke-linejoin="round" stroke-miterlimit="10"
+                                d="M158.474,141.125V48.123c0-8.859,7.184-16.043,16.045-16.043l0,0c8.859,0,16.041,7.184,16.041,16.043c0,11.375,0,93.002,0,93.002"
+                                style="stroke-dasharray: 236.411, 237.411; stroke-dashoffset: 236.911px;"></path>
+                            <path fill="none" class="multiply" stroke="#00C0E1" stroke-width="20" stroke-linecap="round"
+                                stroke-linejoin="round" stroke-miterlimit="10"
+                                d="M190.667,140.875v29.537c0,8.862,7.182,16.045,16.041,16.045l0,0c8.861,0,16.045-7.183,16.045-16.045v-22.497v-18.081c0-8.861,7.773-16.043,16.041-16.043s24.102,0,24.102,0"
+                                style="stroke-dasharray: 169.704, 170.704; stroke-dashoffset: 170.204px;"></path>
+                        </svg>
+                    </div>
+                    <div class="hero_slide_text_wrap">
+                        <h3>Music AI</h3>
+                        <p>Producing emotionally touching music service via AI</p>
+                        <a href="#" class="more_btn">
+                            <i class="more_btn_icon"></i>
+                            <div class="more_btn_txt">Learn more</div>
+                        </a>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="item_svg">
+                        <svg class="media_1024" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg"
+                            xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="253.637px"
+                            height="242.182px" viewBox="0 0 253.637 242.182" enable-background="new 0 0 253.637 242.182"
+                            xml:space="preserve">
+                            <path data-order="0" fill="none" stroke="#FF6B5F" stroke-width="20" stroke-linecap="round"
+                                stroke-linejoin="round" stroke-miterlimit="10"
+                                d="M204.834,87.194c-15.994,8.748-36.051,2.876-44.806-13.116c-8.752-15.992-2.876-36.052,13.115-44.804c15.994-8.749,36.057-2.875,44.802,13.115C226.703,58.385,220.829,78.442,204.834,87.194z"
+                                style="stroke-dasharray: 207.44, 208.44; stroke-dashoffset: 207.94px;"></path>
+                            <rect data-order="1" x="32.25" y="155.75" fill="none" stroke="#F4B601" stroke-width="20"
+                                stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" width="61.75"
+                                height="61.75" style="stroke-dasharray: 247, 248; stroke-dashoffset: 247.5px;"></rect>
+                            <line data-order="3" fill="none" stroke="#02D3AA" stroke-width="20" stroke-linecap="round"
+                                stroke-linejoin="round" stroke-miterlimit="10" x1="32.75" y1="58.25" x2="113.25"
+                                y2="58.25" style="stroke-dasharray: 80.5, 81.5; stroke-dashoffset: 81px;"></line>
+                            <line data-order="2" class="multiply" fill="none" stroke="#00C0E1" stroke-width="20"
+                                stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" x1="32.75"
+                                y1="118.5" x2="32.75" y2="58.25"
+                                style="stroke-dasharray: 60.25, 61.25; stroke-dashoffset: 60.75px;"></line>
+                            <line data-order="4" data-duration="400" fill="none" stroke="#02D3AA" stroke-width="20"
+                                stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" x1="83.875"
+                                y1="87.625" x2="113.25" y2="58.25"
+                                style="stroke-dasharray: 41.5425, 42.5425; stroke-dashoffset: 42.0425px;"></line>
+                            <line data-order="3" fill="none" stroke="#02D3AA" stroke-width="20" stroke-linecap="round"
+                                stroke-linejoin="round" stroke-miterlimit="10" x1="222" y1="188.125" x2="141.5"
+                                y2="188.125" style="stroke-dasharray: 80.5, 81.5; stroke-dashoffset: 81px;"></line>
+                            <line data-order="2" class="multiply" fill="none" stroke="#00C0E1" stroke-width="20"
+                                stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" x1="222"
+                                y1="127.875" x2="222" y2="188.125"
+                                style="stroke-dasharray: 60.25, 61.25; stroke-dashoffset: 60.75px;"></line>
+                            <line data-order="4" data-duration="400" fill="none" stroke="#02D3AA" stroke-width="20"
+                                stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" x1="170.875"
+                                y1="217.5" x2="141.5" y2="188.125"
+                                style="stroke-dasharray: 41.5425, 42.5425; stroke-dashoffset: 42.0425px;"></line>
+                            <line data-order="5" data-duration="600" class="multiply" fill="none" stroke="#00C0E1"
+                                stroke-width="20" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10"
+                                x1="141.5" y1="188.125" x2="170.875" y2="158.75"
+                                style="stroke-dasharray: 41.5425, 42.5425; stroke-dashoffset: 42.0425px;"></line>
+                            <line data-order="5" data-duration="600" class="multiply" fill="none" stroke="#00C0E1"
+                                stroke-width="20" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10"
+                                x1="113.25" y1="58.25" x2="83.875" y2="28.875"
+                                style="stroke-dasharray: 41.5425, 42.5425; stroke-dashoffset: 42.0425px;"></line>
+                        </svg>
+                    </div>
+                    <div class="hero_slide_text_wrap">
+                        <h3>Linguistic</h3>
+                        <p>Dedicated to understanding languages and mediating conversations via<span
+                                class="space"></span> smart applications of
+                            technology</p>
+                        <a href="#" class="more_btn">
+                            <i class="more_btn_icon"></i>
+                            <div class="more_btn_txt">Learn more</div>
+                        </a>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="item_svg">
+                        <svg class="media_1024" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg"
+                            xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="235.09px"
+                            height="254.182px" viewBox="0 0 235.09 254.182" enable-background="new 0 0 235.09 254.182"
+                            xml:space="preserve">
+                            <line data-order="6" data-duration="300" fill="none" stroke="#02D3AA" stroke-width="20"
+                                stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" x1="73.5"
+                                y1="121.914" x2="170.5" y2="60.164"
+                                style="stroke-dasharray: 114.987, 115.987; stroke-dashoffset: 115.487px;"></line>
+                            <line data-order="7" data-duration="300" fill="none" stroke="#02D3AA" stroke-width="20"
+                                stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" x1="191.5"
+                                y1="72.414" x2="188" y2="185.664"
+                                style="stroke-dasharray: 113.304, 114.304; stroke-dashoffset: 113.804px;"></line>
+                            <line data-order="8" data-duration="600" fill="none" stroke="#02D3AA" stroke-width="20"
+                                stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" x1="167.398"
+                                y1="199.784" x2="69.682" y2="143.664"
+                                style="stroke-dasharray: 112.685, 113.685; stroke-dashoffset: 113.185px;"></line>
+                            <path data-order="0" fill="none" stroke="#F4B601" stroke-width="20" stroke-linecap="round"
+                                stroke-linejoin="round" stroke-miterlimit="10"
+                                d="M168.932,29.366c-1.783,4.148-2.586,8.788-2.143,13.602c1.42,15.395,15.049,26.725,30.445,25.306c10.508-0.969,19.119-7.629,23.078-16.654"
+                                style="stroke-dasharray: 87.7472, 88.7472; stroke-dashoffset: 88.2472px;"></path>
+                            <path data-order="1" class="multiply" fill="none" stroke="#FF6B5F" stroke-width="20"
+                                stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10"
+                                d="M220.312,51.619c1.84-4.197,2.679-8.903,2.229-13.79c-1.42-15.396-15.049-26.726-30.444-25.307c-10.582,0.976-19.244,7.722-23.164,16.844"
+                                style="stroke-dasharray: 88.1629, 89.1629; stroke-dashoffset: 88.6629px;"></path>
+                            <path data-order="2" fill="none" stroke="#C585FF" stroke-width="20" stroke-linecap="round"
+                                stroke-linejoin="round" stroke-miterlimit="10"
+                                d="M41.747,157.621c4.515-0.005,9.095-1.107,13.338-3.421c13.573-7.401,18.577-24.402,11.177-37.978c-5.051-9.266-14.578-14.534-24.433-14.595"
+                                style="stroke-dasharray: 87.7474, 88.7474; stroke-dashoffset: 88.2474px;"></path>
+                            <path data-order="3" class="multiply" fill="none" stroke="#FF6B5F" stroke-width="20"
+                                stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10"
+                                d="M41.829,101.629c-4.583-0.027-9.236,1.067-13.545,3.415c-13.574,7.401-18.577,24.403-11.179,37.979c5.087,9.329,14.713,14.61,24.642,14.599"
+                                style="stroke-dasharray: 88.1634, 89.1634; stroke-dashoffset: 88.6634px;"></path>
+                            <path data-order="4" fill="none" stroke="#F4B601" stroke-width="20" stroke-linecap="round"
+                                stroke-linejoin="round" stroke-miterlimit="10"
+                                d="M217.807,199.784c-2.233-3.926-5.453-7.362-9.559-9.91c-13.137-8.151-30.395-4.111-38.545,9.024c-5.566,8.968-5.443,19.854-0.633,28.453"
+                                style="stroke-dasharray: 87.745, 88.745; stroke-dashoffset: 88.245px;"></path>
+                            <path data-order="5" class="multiply" fill="none" stroke="#00C0E1" stroke-width="20"
+                                stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10"
+                                d="M169.07,227.353c2.24,4,5.488,7.506,9.656,10.094c13.14,8.15,30.396,4.111,38.547-9.026c5.604-9.028,5.445-20.006,0.533-28.635"
+                                style="stroke-dasharray: 88.1624, 89.1624; stroke-dashoffset: 88.6624px;"></path>
+                        </svg>
+                    </div>
+                    <div class="hero_slide_text_wrap">
+                        <h3>Multimodal<br>Interaction</h3>
+                        <p>Making interaction with AI technologies more impactful by using multimodal<span
+                                class="space"></span> modalities</p>
+                        <a href="#" class="more_btn">
+                            <i class="more_btn_icon"></i>
+                            <div class="more_btn_txt">Learn more</div>
+                        </a>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="item_svg">
+                        <svg class="media_1024" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg"
+                            xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="253.637px"
+                            height="254.91px" viewBox="0 0 253.637 254.91" enable-background="new 0 0 253.637 254.91"
+                            xml:space="preserve">
+                            <line data-order="6" data-duration="800" fill="none" stroke="#02D3AA" stroke-width="20"
+                                stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" x1="127.5"
+                                y1="64.25" x2="127.5" y2="166.5"
+                                style="stroke-dasharray: 102.25, 103.25; stroke-dashoffset: 102.75px;"></line>
+                            <path data-order="0" fill="none" stroke="#FF6B5F" stroke-width="20" stroke-linecap="round"
+                                stroke-linejoin="round" stroke-miterlimit="10"
+                                d="M127.499,16.095c-3.991-0.041-8.047,0.903-11.798,2.956c-11.679,6.389-15.966,21.032-9.576,32.709c4.416,8.07,12.775,12.608,21.374,12.533"
+                                style="stroke-dasharray: 76.1831, 77.1831; stroke-dashoffset: 76.6831px;"></path>
+                            <path data-order="1" class="multiply" fill="none" stroke="#F4B601" stroke-width="20"
+                                stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10"
+                                d="M127.499,64.293c3.842-0.033,7.729-0.984,11.337-2.957c11.676-6.389,15.964-21.033,9.574-32.711c-4.335-7.926-12.478-12.441-20.911-12.53"
+                                style="stroke-dasharray: 75.2583, 76.2583; stroke-dashoffset: 75.7583px;"></path>
+                            <polyline data-order="6" data-duration="800" fill="none" stroke="#00C0E1" stroke-width="20"
+                                stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10"
+                                points="48.766,131.162 48.766,165.5 83.75,196 83.75,238.25 "
+                                style="stroke-dasharray: 235.658, 236.658; stroke-dashoffset: 236.158px;"></polyline>
+                            <path data-order="2" fill="none" stroke="#02D3AA" stroke-width="20" stroke-linecap="round"
+                                stroke-linejoin="round" stroke-miterlimit="10"
+                                d="M48.834,82.602c-3.902,0.016-7.857,0.975-11.522,2.979c-11.748,6.427-16.062,21.159-9.633,32.906c4.382,8.011,12.628,12.561,21.155,12.609"
+                                style="stroke-dasharray: 75.9478, 76.9478; stroke-dashoffset: 76.4478px;"></path>
+                            <path data-order="3" class="multiply" fill="none" stroke="#C585FF" stroke-width="20"
+                                stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10"
+                                d="M48.834,131.096c3.978,0.022,8.016-0.931,11.752-2.976c11.746-6.427,16.059-21.16,9.632-32.908c-4.421-8.082-12.775-12.645-21.384-12.611"
+                                style="stroke-dasharray: 76.4077, 77.4077; stroke-dashoffset: 76.9077px;"></path>
+                            <polyline data-order="6" data-duration="800" fill="none" stroke="#00C0E1" stroke-width="20"
+                                stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10"
+                                points="206.25,131.162 206.25,165.5 171.266,196 171.266,238.25 "
+                                style="stroke-dasharray: 235.658, 236.658; stroke-dashoffset: 236.158px;"></polyline>
+                            <path data-order="4" fill="none" stroke="#F4B601" stroke-width="20" stroke-linecap="round"
+                                stroke-linejoin="round" stroke-miterlimit="10"
+                                d="M206.521,82.852c-3.928-0.021-7.916,0.91-11.62,2.9c-11.833,6.355-16.271,21.1-9.915,32.932c4.342,8.081,12.598,12.71,21.163,12.81"
+                                style="stroke-dasharray: 76.2604, 77.2604; stroke-dashoffset: 76.7604px;"></path>
+                            <path data-order="5" class="multiply" fill="none" stroke="#02D3AA" stroke-width="20"
+                                stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10"
+                                d="M206.335,131.402c3.977,0.016,8.013-0.941,11.748-2.984c11.782-6.448,16.107-21.224,9.661-33.009c-4.429-8.095-12.789-12.669-21.409-12.65"
+                                style="stroke-dasharray: 76.5603, 77.5603; stroke-dashoffset: 77.0603px;"></path>
+                        </svg>
+                    </div>
+                    <div class="hero_slide_text_wrap">
+                        <h3>Intelligent<br>User Interface</h3>
+                        <p>Minimizing cognitive distances and improving naturalness for AI interface</p>
+                        <a href="#" class="more_btn">
+                            <i class="more_btn_icon"></i>
+                            <div class="more_btn_txt">Learn more</div>
+                        </a>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="item_svg">
+                        <svg class="media_1024" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg"
+                            xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="214.729px"
+                            height="242.182px" viewBox="0 0 214.729 242.182" enable-background="new 0 0 214.729 242.182"
+                            xml:space="preserve">
+                            <path data-order="0" fill="none" stroke="#02D3AA" stroke-width="20" stroke-linecap="round"
+                                stroke-linejoin="round" stroke-miterlimit="10"
+                                d="M23.408,214.348c0,0,0-6,0-18.697c0-30.183,15.919-59.463,44.259-74.967c1.588-0.869,3.191-1.682,4.809-2.438"
+                                style="stroke-dasharray: 115.458, 116.458; stroke-dashoffset: 115.958px;"></path>
+                            <path data-order="2" fill="none" stroke="#02D3AA" stroke-width="20" stroke-linecap="round"
+                                stroke-linejoin="round" stroke-miterlimit="10"
+                                d="M141.658,117.693c2.023,0.911,4.028,1.907,6.01,2.991c28.34,15.504,44.259,44.784,44.259,74.967c0,12.697,0,18.697,0,18.697"
+                                style="stroke-dasharray: 116.78, 117.78; stroke-dashoffset: 117.28px;"></path>
+                            <line data-order="3" class="multiply" fill="none" stroke="#00C0E1" stroke-width="20"
+                                stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" x1="191.75"
+                                y1="214.348" x2="23" y2="214.348"
+                                style="stroke-dasharray: 168.75, 169.75; stroke-dashoffset: 169.25px;"></line>
+                            <line data-order="6" data-duration="600" fill="none" stroke="#02D3AA" stroke-width="20"
+                                stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" x1="106.5"
+                                y1="147.848" x2="106.5" y2="184.098"
+                                style="stroke-dasharray: 36.25, 37.25; stroke-dashoffset: 36.75px;"></line>
+                            <path data-order="1" class="multiply" fill="none" stroke="#00C0E1" stroke-width="20"
+                                stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10"
+                                d="M72.625,118.473l34.125,34.125l34.905-34.906"
+                                style="stroke-dasharray: 97.6239, 98.6239; stroke-dashoffset: 98.1239px;"></path>
+                            <path data-order="5" data-duration="400" fill="none" stroke="#F4B601" stroke-width="20"
+                                stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10"
+                                d="M79.347,57.147c0.013,4.517,1.121,9.092,3.44,13.333c7.421,13.562,24.431,18.542,37.993,11.122c9.259-5.064,14.513-14.599,14.559-24.455"
+                                style="stroke-dasharray: 87.7466, 88.7466; stroke-dashoffset: 88.2466px;"></path>
+                            <path data-order="4" data-duration="400" class="multiply" fill="none" stroke="#FF6B5F"
+                                stroke-width="20" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10"
+                                d="M135.34,57.147c0.021-4.583-1.08-9.234-3.436-13.54c-7.422-13.562-24.431-18.542-37.994-11.122c-9.322,5.101-14.591,14.732-14.562,24.662"
+                                style="stroke-dasharray: 88.1619, 89.1619; stroke-dashoffset: 88.6619px;"></path>
+                        </svg>
+                    </div>
+                    <div class="hero_slide_text_wrap">
+                        <h3>Customer<br class="for_mobile">Channel<br>Automation</h3>
+                        <p>AI-powered, automated and intelligent communication platform for<span class="space"></span>
+                            customers</p>
+                        <a href="#" class="more_btn">
+                            <i class="more_btn_icon"></i>
+                            <div class="more_btn_txt">Learn more</div>
+                        </a>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="item_svg">
+                        <svg class="media_1024" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg"
+                            xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="258.729px"
+                            height="242.182px" viewBox="0 0 258.729 242.182" enable-background="new 0 0 258.729 242.182"
+                            xml:space="preserve">
+                            <path data-order="4" data-duration="600" fill="none" stroke="#FF6B5F" stroke-width="20"
+                                stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10"
+                                d="M26.028,131.984c-0.019-0.775-0.028-1.553-0.028-2.332c0-51.362,41.638-93,93-93c0.784,0,1.565,0.01,2.344,0.029"
+                                style="stroke-dasharray: 150.781, 151.781; stroke-dashoffset: 151.281px;"></path>
+                            <line data-order="5" data-duration="600" class="multiply" fill="none" stroke="#C585FF"
+                                stroke-width="20" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10"
+                                x1="121.344" y1="36.652" x2="87.01" y2="17.652"
+                                style="stroke-dasharray: 39.2406, 40.2406; stroke-dashoffset: 39.7406px;"></line>
+                            <path data-order="4" data-duration="600" fill="none" stroke="#00C0E1" stroke-width="20"
+                                stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10"
+                                d="M161.672,46.997C191.567,62.463,212,93.672,212,129.652c0,17.463-4.813,33.803-13.186,47.763"
+                                style="stroke-dasharray: 151.936, 152.936; stroke-dashoffset: 152.436px;"></path>
+                            <line data-order="5" data-duration="600" class="multiply" fill="none" stroke="#02D3AA"
+                                stroke-width="20" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10"
+                                x1="198.613" y1="177.414" x2="232.946" y2="158.414"
+                                style="stroke-dasharray: 39.2397, 40.2397; stroke-dashoffset: 39.7397px;"></line>
+                            <path data-order="4" data-duration="600" fill="none" stroke="#F4B601" stroke-width="20"
+                                stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10"
+                                d="M167.539,208.995c-14.13,8.662-30.751,13.656-48.539,13.656c-34.497,0-64.606-18.781-80.66-46.678"
+                                style="stroke-dasharray: 148.683, 149.683; stroke-dashoffset: 149.183px;"></path>
+                            <line data-order="5" data-duration="600" class="multiply" fill="none" stroke="#FF6B5F"
+                                stroke-width="20" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10"
+                                x1="38.34" y1="175.974" x2="37.628" y2="215.208"
+                                style="stroke-dasharray: 39.2405, 40.2405; stroke-dashoffset: 39.7405px;"></line>
+                            <path data-order="2" data-duration="130" fill="none" stroke="#FF6B5F" stroke-width="20"
+                                stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10"
+                                d="M119.166,104.652c-13.531,0-24.5,10.97-24.5,24.5"
+                                style="stroke-dasharray: 38.4898, 39.4898; stroke-dashoffset: 38.9898px;"></path>
+                            <path data-order="1" data-duration="200" fill="none" stroke="#00C0E1" stroke-width="20"
+                                stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10"
+                                d="M136.491,146.476c4.434-4.434,7.176-10.559,7.176-17.324c0-13.531-10.97-24.5-24.501-24.5"
+                                style="stroke-dasharray: 57.7356, 58.7356; stroke-dashoffset: 58.2356px;"></path>
+                            <path data-order="0" data-duration="200" fill="none" stroke="#F4B601" stroke-width="20"
+                                stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10"
+                                d="M101.842,146.476c4.434,4.434,10.559,7.176,17.324,7.176s12.891-2.742,17.325-7.176"
+                                style="stroke-dasharray: 38.4908, 39.4908; stroke-dashoffset: 38.9908px;"></path>
+                            <path data-order="3" data-duration="70" fill="none" stroke="#FF6B5F" stroke-width="20"
+                                stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10"
+                                d="M94.666,129.152c0,6.767,2.742,12.892,7.176,17.324"
+                                style="stroke-dasharray: 19.2452, 20.2452; stroke-dashoffset: 19.7452px;"></path>
+                        </svg>
+                    </div>
+                    <div class="hero_slide_text_wrap">
+                        <h3>AI Cycle</h3>
+                        <p>A cycle, whereby data is used to generate an AI model, and the model is then<span
+                                class="space"></span> used to generate
+                            data </p>
+                        <a href="#" class="more_btn">
+                            <i class="more_btn_icon"></i>
+                            <div class="more_btn_txt">Learn more</div>
+                        </a>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="item_svg">
+                        <svg class="media_1024" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg"
+                            xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="253.637px"
+                            height="254.91px" viewBox="0 0 253.637 254.91" enable-background="new 0 0 253.637 254.91"
+                            xml:space="preserve">
+                            <path data-order="0" data-duration="500" fill="none" stroke="#00C0E1" stroke-width="20"
+                                stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="
+                    M61.096,77.924v51.294c0,21.183,17.172,38.354,38.355,38.354h6.963"
+                                style="stroke-dasharray: 118.513, 119.513; stroke-dashoffset: 119.013px;"></path>
+                            <path data-order="2" data-duration="500" fill="none" stroke="#00C0E1" stroke-width="20"
+                                stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="
+                    M171.465,54.305c8.165,7.033,13.331,17.447,13.331,29.067v46.991"
+                                style="stroke-dasharray: 79.9808, 80.9808; stroke-dashoffset: 80.4808px;"></path>
+                            <line data-order="3" data-duration="500" fill="none" stroke="#F4B601" stroke-width="20"
+                                stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" x1="147.772"
+                                y1="167.572" x2="99.451" y2="215.893"
+                                style="stroke-dasharray: 68.3362, 69.3362; stroke-dashoffset: 68.8362px;"></line>
+                            <path data-order="1" class="multiply" data-duration="500" fill="none" stroke="#C585FF"
+                                stroke-width="20" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10"
+                                d="
+                    M99.451,45.018h46.988c9.668,0,18.501,3.577,25.248,9.48"
+                                style="stroke-dasharray: 74.5499, 75.5499; stroke-dashoffset: 75.0499px;"></path>
+                        </svg>
+                    </div>
+                    <div class="hero_slide_text_wrap">
+                        <h3>NUGU</h3>
+                        <p>AI assists in daily life. From voice/video recognition to multimodal interaction,<span
+                                class="space"></span> NUGU
+                            continuously learns about you and evolves to become a better friend</p>
+                        <a href="#" class="more_btn">
+                            <i class="more_btn_icon"></i>
+                            <div class="more_btn_txt">Learn more</div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="hero_research">
+            <div id="research_title_wrap">
+                <div class="research_title">
+                    <h2>
+                        Cutting-edge AI research: State-of-the-Art(SotA)
+                    </h2>
+                    <!-- 오류 -->
+                    <a href="#" class="more_btn_fix">
+                        <div class="more_btn_txt_fix">Learn more</div>
+                        <i class="more_btn_icon_fix"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="research_content_wrap">
+                <div class="research_content">
+                    <div class="research_items">
+                        <div>
+                            <h5>Research</h5>
+                            <div class="research_img_wrap">
+                                <div>
+                                    <img src="img/b585990f-978d-423e-b8eb-aab6b6139f92.png" alt="">
+                                </div>
+                            </div>
+                            <div class="research_items_text">
+                                <a href="">
+                                    <h4>
+                                        Domain-Agnostic Few-Shot Classification by Learning Disparate Modulators
+                                    </h4>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="research_items">
+                        <div>
+                            <h5>Research</h5>
+                            <div class="research_img_wrap">
+                                <div>
+                                    <img src="img/fb6a948c-2b73-4814-98cb-ce7c42a096d6.png" alt="">
+                                </div>
+                            </div>
+                            <div class="research_items_text">
+                                <a href="">
+                                    <h4>
+                                        Korean Localization of Visual Question Answering for Blind People
+                                    </h4>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="research_items">
+                        <div>
+                            <h5>Research</h5>
+                            <div class="research_img_wrap">
+                                <div>
+                                    <img src="img/21ed76e7-7542-435a-8e09-be21a8c11fa6.png" alt="">
+                                </div>
+                            </div>
+                            <div class="research_items_text">
+                                <a href="">
+                                    <h4>
+                                        Data Augmentation and Model Optimization for Piano Transcription
+                                    </h4>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="research_items items_hidden">
+                        <div>
+                            <h5>Blog</h5>
+                            <div class="research_img_wrap">
+                                <div>
+                                    <img src="img/0af14b4f-1eeb-4daf-9694-e2e2aaedd8ed.jpg" alt="">
+                                </div>
+                            </div>
+                            <div class="research_items_text">
+                                <a href="">
+                                    <h4>
+                                        Participation in 2019 Neural Information Processing Systems (NeurIPS)
+                                    </h4>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="research_items items_hidden">
+                        <div>
+                            <h5>Blog</h5>
+                            <div class="research_img_wrap">
+                                <div>
+                                    <img src="img/29a0ad95-5223-485d-9332-d589b227f24c (1).jpg" alt="">
+                                </div>
+                            </div>
+                            <div class="research_items_text">
+                                <a href="">
+                                    <h4>
+                                        Participation in 2019 International Society for Music Information Retrieval
+                                        Conference (ISMIR)
+                                    </h4>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="research_items items_hidden">
+                        <div>
+                            <h5>Blog</h5>
+                            <div class="research_img_wrap">
+                                <div>
+                                    <img src="img/98f9b399-ea0d-42f5-a4f2-bcb38a61e370 (1).jpg" alt="">
+                                </div>
+                            </div>
+                            <div class="research_items_text">
+                                <a href="">
+                                    <h4>
+                                        Participation in 2019 International Conference on Computer Vision (ICCV)
+                                    </h4>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="fix"></div>
+        </section>
+
+        <section id="nugu">
+            <div class="nugu_wrap">
+                <div class="nugu_text_wrap">
+                    <div>
+                        <i class="nugu_title_logo" aria-hidden="true"></i>
+                        <span class="blind">NUGU</span>
+                    </div>
+                    <div class="nugu_paragraph">
+                        <p>
+                            “ARIA”, how are you today?<br>
+                            NUGU is a voice-controlled artificial intelligence assistant that was born on September 1,
+                            2016.<br>
+                            From the time you wake up until you fall asleep, NUGU is always a part of your daily
+                            life.<br>
+                            NUGU consistently strives to create new voice-enabled interactions and evolve to become more
+                            human-like.<br>
+                            The ultimate goal is to be your life-companion and best friend.
+                        </p>
+                    </div>
+                    <div class="nugu_btn_wrap">
+                        <a href="#" class="more_btn_fix">
+                            <div class="more_btn_txt_fix">Learn more</div>
+                            <i class="more_btn_icon_fix"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="nugu_figure_wrap">
+                    <div class="nugu_figure_1"></div>
+                    <div class="nugu_figure_2"></div>
+                </div>
+                <div class="nugu_bg_wrap">
+                    <div class="nugu_bg">
+                    </div>
+                </div>
+        </section>
+
+        <section id="rnd">
+            <div class="rnd_wrap">
+                <div class="research_title">
+                    <h2>
+                        AI Center focuses on applying AI in new and innovative ways
+                    </h2>
+                </div>
+                <div class="rnd_contens_wrap">
+                    <div class="rnd_content">
+                        <div class="rnd_items_1_wrap">
+                            <div class="rnd_items_1">
+                                <div class="rnd_items_1_inner">
+                                    <div class="rnd_items_1_title">
+                                        <h4>
+                                            Applied Research & Commercial Development
+                                        </h4>
+                                    </div>
+                                    <div class="rnd_items_1_icons">
+                                        <div>
+                                            <a href="#">
+                                                <img src="img/sk-aic_inno-1.svg" alt="">
+                                                <span>T-Brain</span>
+                                                <span>Cutting-edge<br>AI research</span>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="rnd_items_1_icons">
+                                        <div>
+                                            <a href="#">
+                                                <img src="img/sk-aic_inno-2.svg" alt="">
+                                                <span>Tech<br>Prototyping</span>
+                                                <span>Cutting-edge research meets<br>real-world applications</span>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="rnd_items_1_icons">
+                                        <div>
+                                            <a href="#">
+                                                <img src="img/sk-aic_inno-3.svg" alt="">
+                                                <span>Data Machine<br>Intelligence</span>
+                                                <span>Building AI that works<br>in the real world</span>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="rnd_items_2_wrap">
+                            <div class="rnd_items_2">
+                                <div class="rnd_items_2_inner">
+                                    <div class="rnd_items_1_title">
+                                        <h4>
+                                            Service Innovation
+                                        </h4>
+                                    </div>
+                                    <div class="rnd_items_1_icons">
+                                        <div>
+                                            <a href="#">
+                                                <img src="img/sk-aic_inno-4.svg" alt="">
+                                                <span>T-Brain</span>
+                                                <span>Cutting-edge<br>AI research</span>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <script>
+            document.getElementsByClassName('people_item_img').style = "opacity:0;"
+        </script>
+
+        <section id="people_slide">
+            <div>
+                <div class="research_title">
+                    <h2>
+                        Meet our top-notch and diverse group of engineers
+                    </h2>
+                </div>
+
+                <div class="people_slide_wrap">
+                    <div class="people_item_bg" id="bg">
+                        <div class="people_img_wrap">
+                            <!-- <div id="img_move"> -->
+                            <div class="people_item_img" id="one">
+                                <img src="img/sk-aic_people-1.png" alt="">
+                            </div>
+                            <div class="people_item_img" id="two">
+                                <img src="img/sk-aic_people-2.png" alt="">
+                            </div>
+                            <div class="people_item_img" id="three">
+                                <img src="img/sk-aic_people-3.png" alt="">
+                            </div>
+                            <div class="people_item_img" id="four">
+                                <img src="img/sk-aic_people-4.png" alt="">
+                            </div>
+                            <div class="people_item_img" id="five">
+                                <img src="img/sk-aic_people-5.png" alt="">
+                            </div>
+                            <div class="people_item_img" id="six">
+                                <img src="img/sk-aic_people-6.png" alt="">
+                            </div>
+                            <div class="people_item_img" id="seven">
+                                <img src="img/sk-aic_people-7.png" alt="">
+                            </div>
+                            <div class="people_item_img" id="eight">
+                                <img src="img/sk-aic_people-8.png" alt="">
+                            </div>
+                            <div class="people_item_img" id="nine">
+                                <img src="img/sk-aic_people-9.png" alt="">
+                            </div>
+                            <div class="people_item_img" id="ten">
+                                <img src="img/sk-aic_people-10.png" alt="">
+                            </div>
+                            <div class="people_item_img" id="eleven">
+                                <img src="img/sk-aic_people-11.png" alt="">
+                            </div>
+                            <div class="people_item_img" id="twelve">
+                                <img src="img/sk-aic_people-12.png" alt="">
+                            </div>
+                        </div>
+                        <div class="people_img_bg">
+                            <div class="img_bg"></div class="img_bg">
+                            <div class="img_bg"></div class="img_bg">
+                            <div class="img_bg"></div class="img_bg">
+                            <div class="img_bg"></div class="img_bg">
+                            <div class="img_bg"></div class="img_bg">
+                            <div class="img_bg"></div class="img_bg">
+                            <div class="img_bg"></div class="img_bg">
+                            <div class="img_bg"></div class="img_bg">
+                            <div class="img_bg"></div class="img_bg">
+                            <div class="img_bg"></div class="img_bg">
+                            <div class="img_bg"></div class="img_bg">
+                            <div class="img_bg"></div class="img_bg">
+                        </div>
+                    </div>
+                    <div class="people_text_slide">
+                        <div id="people_text_1" class="people_text">
+                            <div class="people_text_wrap">
+                                <div class="people_text_box">
+                                    <div class="people_text_exp">
+                                        <p>
+                                            My research aims at the understanding of vision and language to help
+                                            everyone's
+                                            everyday
+                                            communications. I have been focusing on the learning of joint representation
+                                            for
+                                            vision
+                                            and language, visual reasoning and conversations, including substantial
+                                            works on
+                                            visual
+                                            question answering over past years. Especially, with the continuous support
+                                            of
+                                            T-Brain,
+                                            I am seeking an effective method to help the visually-impaired through the
+                                            developed
+                                            vision and language AI system to make a vivid world to everyone.
+                                        </p>
+                                    </div>
+                                    <ul class="people_position">
+                                        <li>http://wityworks.com</li>
+                                        <li>Publication Details</li>
+                                    </ul>
+                                    <div class="people_title">
+                                        <span>James</span>
+                                        <span>Research Scientist</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="people_text_2" class="people_text">
+                            <div class="people_text_wrap">
+                                <div class="people_text_box">
+                                    <div class="people_text_exp">
+                                        <p>
+                                            I develop a system which can make AI automatically according to the given
+                                            data
+                                            or environment. Specifically, my research focuses on techniques to automate
+                                            each
+                                            element of machine learning, including optimization of neural network
+                                            structure
+                                            and usage of training data. Through this, I hope many people to use AI more
+                                            easily and want to contribute their convenient and happy life.
+                                        </p>
+                                    </div>
+                                    <ul class="people_position">
+                                        <li>Publication Details</li>
+                                    </ul>
+                                    <div class="people_title">
+                                        <span>Paul</span>
+                                        <span>Research Scientist</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="people_text_3" class="people_text">
+                            <div class="people_text_wrap">
+                                <div class="people_text_box">
+                                    <div class="people_text_exp">
+                                        <p>
+                                            At T-Brain, my research aims at analyzing dialog systems that humans can
+                                            conveniently as well as accurately communicate through the natural language.
+                                            Recently, I have been focusing on natural language understanding and
+                                            generation,
+                                            scalable to multi-domain goal-oriented dialog systems. Through AI research,
+                                            I am
+                                            hoping for making people’s lives more comfortable and pleasant.
+                                        </p>
+                                    </div>
+                                    <ul class="people_position">
+                                        <li>Publication Details</li>
+                                    </ul>
+                                    <div class="people_title">
+                                        <span>Ryanne</span>
+                                        <span>Research Scientist</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="people_text_4" class="people_text">
+                            <div class="people_text_wrap">
+                                <div class="people_text_box">
+                                    <div class="people_text_exp">
+                                        <p>
+                                            AI Center is at the center of data and intelligence from the world leader of
+                                            5G
+                                            networks, SK Telecom. With top-notch and diverse set of engineers, we create
+                                            and
+                                            foster disruptive and scalable AI technologies to accelerate innovation. We
+                                            know
+                                            that this vision calls for global partnerships, as it’s impossible to build
+                                            everything on our own. Partnerships also allow for integration of our AI
+                                            with
+                                            other AIs, leading to disruptive business opportunities.
+                                        </p>
+                                    </div>
+                                    <ul class="people_position">
+                                        <li>Publication Details</li>
+                                    </ul>
+                                    <div class="people_title">
+                                        <span>Max</span>
+                                        <span>Head of AI Center</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="people_text_5" class="people_text">
+                            <div class="people_text_wrap">
+                                <div class="people_text_box">
+                                    <div class="people_text_exp">
+                                        <p>
+                                            T-Brain, as a pioneer in the field of AI research, performs a pivotal role
+                                            within AIC. We self-define the issues around AI and to solve these, research
+                                            scientists and engineers across different expertise, from deep learning
+                                            algorithm and techniques to signal processing, software and infrastructure,
+                                            joined the journey to work together. Especially, through the Meta AI
+                                            technology,
+                                            we contemplate the idea of automatic creation of AI - AI makes AI - and lead
+                                            a
+                                            project on Communication AI for user-interaction. Along with this, T-Brain
+                                            is
+                                            committed to disseminating our technology in Visual AI and Music AI and
+                                            creating
+                                            a friendly platform to approach diverse potential users. Building upon our
+                                            previous achievement, T-Brain will further introduce new AI technologies,
+                                            solidify partnership with our stakeholders and continuously endeavor to
+                                            create
+                                            Social Value through AI in the future.
+                                        </p>
+                                    </div>
+                                    <ul class="people_position">
+                                        <li>Publication Details</li>
+                                    </ul>
+                                    <div class="people_title">
+                                        <span>Stark</span>
+                                        <span>RLead of T-Brain</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="people_text_6" class="people_text">
+                            <div class="people_text_wrap">
+                                <div class="people_text_box">
+                                    <div class="people_text_exp">
+                                        <p>
+                                            Under the mission of AI transformation - making AI work in the real world –
+                                            we
+                                            are building AI products to innovate enterprise, customer experience at SK
+                                            Telecom services such as MNO marketing, contact center AI, music, T-map etc.
+                                            To
+                                            achieve this goal, Data Machine Intelligence Group has AI product science,
+                                            engineering and dev-ops teams. Data scientists, data engineers, machine
+                                            learning
+                                            / platform engineers work together to deliver AI values to business and our
+                                            customers.
+                                        </p>
+                                    </div>
+                                    <ul class="people_position">
+                                        <li>Publication Details</li>
+                                    </ul>
+                                    <div class="people_title">
+                                        <span>John</span>
+                                        <span>Lead of Data Machine Intelligence</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="people_text_7" class="people_text">
+                            <div class="people_text_wrap">
+                                <div class="people_text_box">
+                                    <div class="people_text_exp">
+                                        <p>
+                                            inguistic work focuses on all aspects of natural language processing,
+                                            including
+                                            speech recognition, natural language understanding, dialogue, and natural
+                                            language generation. The end goal is to apply said technologies into
+                                            products
+                                            that surprise and delight our customers. To that end, we’re working on
+                                            mediating
+                                            communication with AI, AI assistants, and other exciting projects.
+                                        </p>
+                                    </div>
+                                    <ul class="people_position">
+                                        <li>Publication Details</li>
+                                    </ul>
+                                    <div class="people_title">
+                                        <span>Eric</span>
+                                        <span>Lead of Linguistic Project</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="people_text_8" class="people_text">
+                            <div class="people_text_wrap">
+                                <div class="people_text_box">
+                                    <div class="people_text_exp">
+                                        <p>
+                                            Being the leader of the multimodal team with more than 13 years global
+                                            experience working and leading research teams, my focus is on applied
+                                            research
+                                            of AI technologies. Tech Prototyping Group’s multimodal team dreams to bring
+                                            AI
+                                            from research to the real use case. The multimodal team consists of talented
+                                            people with diverse technical background that includes machine learning,
+                                            computer vision, full stack developers, embedded experts and robotics
+                                            experts to
+                                            name a few. Having such a diverse team, our vision is to showcase the use of
+                                            AI
+                                            in different aspects of daily life by making, adopting, collaborating and/or
+                                            inventing technologies. We are currently doing exciting work to improve the
+                                            AI
+                                            assistant by including different modalities including vision and speech.
+                                        </p>
+                                    </div>
+                                    <ul class="people_position">
+                                        <li>
+                                            https://kr.linkedin.com/in/sudhakarsah</li>
+                                    </ul>
+                                    <div class="people_title">
+                                        <span>Sud</span>
+                                        <span>Lead of Multimodal Interaction Project</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="people_text_9" class="people_text">
+                            <div class="people_text_wrap">
+                                <div class="people_text_box">
+                                    <div class="people_text_exp">
+                                        <p>
+                                            I make it possible by challenging things that seem impossible: development
+                                            of
+                                            container-based ML platform and integrated management console, architecture
+                                            design and development of big data platform separating storage and
+                                            computing,
+                                            and CI / CD automation.
+                                        </p>
+                                    </div>
+                                    <ul class="people_position">
+                                        <li>Publication Details</li>
+                                    </ul>
+                                    <div class="people_title">
+                                        <span>Moon</span>
+                                        <span>Platform Engineer</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="people_text_10" class="people_text">
+                            <div class="people_text_wrap">
+                                <div class="people_text_box">
+                                    <div class="people_text_exp">
+                                        <p>
+                                            Instead of creating and validating models using only toy data in the lab,
+                                            I’m
+                                            thrilled to generate revenue from analyzing real data and developing
+                                            modeling /
+                                            systems that reflect customers’ feedback : recommendation algorithm, A/B
+                                            test
+                                            and scoring for additional services and customer.
+                                        </p>
+                                    </div>
+                                    <ul class="people_position">
+                                        <li>Publication Details</li>
+                                    </ul>
+                                    <div class="people_title">
+                                        <span>Resa</span>
+                                        <span>Data Scientist</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="people_text_11" class="people_text">
+                            <div class="people_text_wrap">
+                                <div class="people_text_box">
+                                    <div class="people_text_exp">
+                                        <p>
+                                            I’m an ambitious developer from Kazakhstan with strong algorithmic
+                                            background
+                                            and awards from international programming competitions such as IZhO, ACM
+                                            ICPC
+                                            etc. After graduation in Sci. & Tech, I spent a few years working in a few
+                                            famous startups and even tried to build my own tech company in the Silicon
+                                            Valley. I’d love to become professional in the fields of backend
+                                            development,
+                                            databases, server management: ML models and API deployment building
+                                            monitoring/controlling systems
+                                        </p>
+                                    </div>
+                                    <ul class="people_position">
+                                        <li>Publication Details</li>
+                                    </ul>
+                                    <div class="people_title">
+                                        <span>Zuma</span>
+                                        <span>Software Engineer</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="people_text_12" class="people_text">
+                            <div class="people_text_wrap">
+                                <div class="people_text_box">
+                                    <div class="people_text_exp">
+                                        <p>
+                                            As a Korean linguist, I'm in charge of creating linguistic data and planning
+                                            natural language processing modules with collaborating other super talented
+                                            engineers! Also, I'm researching on the kinds of data that make AI better
+                                            understand Korean : Korean data collection/preprocessing, Korean research
+                                            for
+                                            NLP
+                                        </p>
+                                    </div>
+                                    <ul class="people_position">
+                                        <li>Publication Details</li>
+                                    </ul>
+                                    <div class="people_title">
+                                        <span>Bruno</span>
+                                        <span>Linguist</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="people_slide_nav_wrap">
+                        <div onclick="moveLeft()">
+                            <i class="slide_left"></i>
+                        </div>
+                        <div id="slide_text"></div>
+                        <div onclick="moveRight()">
+                            <i class="slide_right"></i>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            </div>
+        </section>
+
+        <section id="aix">
+            <div class="aix_wrap">
+                <div class="aix_text_wrap">
+                    <div class="aix_text">
+                        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" id="TEXT"
+                            width="749.094" height="436.47" viewBox="0 0 749.094 436.47">
+                            <defs>
+                                <style>
+                                    .cls-1 {
+                                        fill: #e87062;
+                                    }
+
+                                    .cls-1,
+                                    .cls-3 {
+                                        fill-rule: evenodd;
+                                    }
+
+                                    .cls-2 {
+                                        fill: none;
+                                        stroke: #e87062;
+                                        stroke-width: 2px;
+                                    }
+
+                                    .cls-3 {
+                                        fill: #333;
+                                    }
+                                </style>
+                            </defs>
+                            <g id="Title">
+                                <g id="ONLINE_CONFERENCE" data-name="ONLINE CONFERENCE">
+                                    <path id="Online_Conference-2" data-name="Online Conference" class="cls-1"
+                                        d="M153.867,4750.25a2.665,2.665,0,1,1,5.33,0v5.44a2.665,2.665,0,1,1-5.33,0v-5.44Zm7.621,0c0-2.9-2-4.73-4.956-4.73-3.106,0-4.934,1.83-4.934,4.73v5.44c0,2.91,2,4.74,4.934,4.74,2.951,0,4.956-1.83,4.956-4.74v-5.44Zm5.551,9.96v-6.85a2.062,2.062,0,0,1,2.093-2.23,1.935,1.935,0,0,1,2,2.14v6.94h2.181v-7.03c0-2.35-1.234-3.96-3.634-3.96a3.4,3.4,0,0,0-2.82,1.36l-0.2-1.14h-1.828v10.77h2.2Zm9.624-14.91v14.91h2.181V4745.3h-2.181Zm5.394,1.14a1.3,1.3,0,1,0,2.6,0A1.3,1.3,0,1,0,182.057,4746.44Zm0.2,3v10.77h2.2v-10.77h-2.2Zm7.775,10.77v-6.85a2.061,2.061,0,0,1,2.092-2.23,1.935,1.935,0,0,1,2,2.14v6.94h2.181v-7.03c0-2.35-1.234-3.96-3.634-3.96a3.4,3.4,0,0,0-2.82,1.36l-0.2-1.14h-1.828v10.77h2.2Zm15.528-3.68v0.18a1.858,1.858,0,0,1-2.026,1.96,2.025,2.025,0,0,1-2.093-2.18v-1.3h6.212v-1.7a4.186,4.186,0,1,0-8.37,0v2.78a3.949,3.949,0,0,0,4.229,4.16c2.445,0,4.141-1.45,4.141-3.77v-0.13h-2.093Zm-4.119-3.3a2.068,2.068,0,1,1,4.119,0v0.39h-4.119v-0.39Zm20.553,2.18v0.44a2.416,2.416,0,0,1-2.665,2.53,2.475,2.475,0,0,1-2.6-2.69v-5.44a2.472,2.472,0,0,1,2.6-2.68,2.416,2.416,0,0,1,2.665,2.53v0.35h2.2v-0.33c0-2.84-1.96-4.6-4.824-4.6-3.083,0-4.911,1.83-4.911,4.73v5.44a4.547,4.547,0,0,0,4.911,4.74c2.864,0,4.824-1.76,4.824-4.6v-0.42h-2.2Zm7.257-2.09a2.076,2.076,0,1,1,4.141,0v3.01a2.076,2.076,0,1,1-4.141,0v-3.01Zm6.344,0.17a4.273,4.273,0,0,0-8.546,0v2.67a4.273,4.273,0,0,0,8.546,0v-2.67Zm5.25,6.72v-6.85a2.062,2.062,0,0,1,2.092-2.23,1.935,1.935,0,0,1,2,2.14v6.94h2.181v-7.03c0-2.35-1.233-3.96-3.634-3.96a3.4,3.4,0,0,0-2.82,1.36l-0.2-1.14H238.64v10.77h2.2Zm8.83-8.85h1.608v8.85h2.181v-8.85h2.51v-1.83h-2.51v-0.58a1.6,1.6,0,0,1,1.828-1.78h0.815v-1.87h-1.014c-2.488,0-3.81,1.32-3.81,3.79v0.44h-1.608v1.83Zm14.835,5.17v0.18a1.857,1.857,0,0,1-2.026,1.96,2.024,2.024,0,0,1-2.092-2.18v-1.3H266.6v-1.7a4.186,4.186,0,1,0-8.37,0v2.78a3.949,3.949,0,0,0,4.229,4.16c2.445,0,4.141-1.45,4.141-3.77v-0.13h-2.093Zm-4.118-3.3a2.067,2.067,0,1,1,4.118,0v0.39H260.39v-0.39Zm11.426,6.98v-6.67a2.148,2.148,0,0,1,2.313-2.27,4.088,4.088,0,0,1,.793.09v-2.08a2.085,2.085,0,0,0-.6-0.06,3.085,3.085,0,0,0-2.665,1.5l-0.221-1.28h-1.828v10.77h2.2Zm11.617-3.68v0.18a1.857,1.857,0,0,1-2.026,1.96,2.024,2.024,0,0,1-2.092-2.18v-1.3h6.211v-1.7a4.186,4.186,0,1,0-8.37,0v2.78a3.949,3.949,0,0,0,4.229,4.16c2.445,0,4.141-1.45,4.141-3.77v-0.13h-2.093Zm-4.118-3.3a2.067,2.067,0,1,1,4.118,0v0.39h-4.118v-0.39Zm11.426,6.98v-6.85a2.062,2.062,0,0,1,2.092-2.23,1.936,1.936,0,0,1,2,2.14v6.94h2.18v-7.03c0-2.35-1.233-3.96-3.634-3.96a3.4,3.4,0,0,0-2.819,1.36l-0.2-1.14h-1.828v10.77h2.2Zm15.55-3.92v0.35a1.832,1.832,0,0,1-2.048,1.92,2.006,2.006,0,0,1-2.048-2.23v-3.01a2.006,2.006,0,0,1,2.048-2.23,1.853,1.853,0,0,1,2.048,1.87v0.25h2.115v-0.11c0-2.38-1.7-3.88-4.163-3.88a4,4,0,0,0-4.251,4.27v2.67a4,4,0,0,0,4.251,4.27,3.812,3.812,0,0,0,4.163-3.96v-0.18h-2.115Zm11.059,0.24v0.18a1.858,1.858,0,0,1-2.026,1.96,2.025,2.025,0,0,1-2.093-2.18v-1.3h6.211v-1.7a4.185,4.185,0,1,0-8.369,0v2.78a3.949,3.949,0,0,0,4.229,4.16c2.444,0,4.14-1.45,4.14-3.77v-0.13H317.35Zm-4.119-3.3a2.068,2.068,0,1,1,4.119,0v0.39h-4.119v-0.39Z"
+                                        transform="translate(-119 -4726)" />
+                                    <rect id="BOX" class="cls-2" x="1" y="1" width="230" height="50" />
+                                </g>
+                                <image id="LOGO_ai.x_2020" data-name="LOGO ai.x 2020" x="1" y="81" width="570"
+                                    height="130"
+                                    xlink:href="data:img/png;base64,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" />
+                                <path id="Human._Machine._Experience_Together"
+                                    data-name="Human. Machine. Experience Together" class="cls-3"
+                                    d="M126.2,5006.14v-12.33h11.106v12.33h5.814v-29.7h-5.814v12.26H126.2v-12.26h-5.832v29.7H126.2Zm39.98-1.42q2.223-1.995,2.223-6.53v-10.48h-5.526v9.18a7.128,7.128,0,0,1-.891,4.12,4.52,4.52,0,0,1-6.156,0,7.015,7.015,0,0,1-.909-4.12v-9.18H149.4v10.48q0,4.53,2.232,6.53t7.272,2Q163.957,5006.72,166.18,5004.72Zm13.329,1.42v-11.21a3.262,3.262,0,0,1,.468-1.71,3.3,3.3,0,0,1,1.305-1.22,3.946,3.946,0,0,1,1.9-.45,3.19,3.19,0,0,1,2.511,1.02,4,4,0,0,1,.909,2.74v10.83h5.526v-11.26a3.133,3.133,0,0,1,.468-1.68,3.431,3.431,0,0,1,1.287-1.2,3.88,3.88,0,0,1,1.9-.45,3.2,3.2,0,0,1,2.5,1.03,4.084,4.084,0,0,1,.936,2.84v10.72h5.526V4993.9a6.989,6.989,0,0,0-.891-3.59,6.207,6.207,0,0,0-2.439-2.35,7.422,7.422,0,0,0-3.546-.82,7.014,7.014,0,0,0-3.546.88,9.918,9.918,0,0,0-2.9,2.63,5.6,5.6,0,0,0-2.448-2.56,7.689,7.689,0,0,0-3.834-.95,6.81,6.81,0,0,0-2.916.63,9.772,9.772,0,0,0-2.718,1.99v-2.05h-5.526v18.43h5.526Zm42.393-.19a8.727,8.727,0,0,0,2.9-2.24v2.43h5.526v-18.43H224.8v2.25a7.277,7.277,0,0,0-2.781-2.08,8.971,8.971,0,0,0-3.663-.74,8.712,8.712,0,0,0-4.725,1.28,9.026,9.026,0,0,0-3.231,3.49,11.185,11.185,0,0,0,.045,10.05,9.176,9.176,0,0,0,3.294,3.49,8.654,8.654,0,0,0,4.617,1.27A8.279,8.279,0,0,0,221.9,5005.95Zm-4.464-4.59a4.685,4.685,0,0,1-1.755-1.8,5.35,5.35,0,0,1-.639-2.63,5.264,5.264,0,0,1,.648-2.63,4.777,4.777,0,0,1,1.764-1.81,5.227,5.227,0,0,1,5.085,0,4.776,4.776,0,0,1,1.746,1.8,5.308,5.308,0,0,1,.639,2.64,5.412,5.412,0,0,1-.63,2.63,4.621,4.621,0,0,1-1.746,1.8A5.279,5.279,0,0,1,217.438,5001.36Zm24.271,4.78v-10.9a3.923,3.923,0,0,1,.477-1.94,3.444,3.444,0,0,1,1.368-1.35,4.288,4.288,0,0,1,2.115-.49,3.681,3.681,0,0,1,2.835,1.1,4.356,4.356,0,0,1,1.035,3.09v10.49h5.526v-11.66a7.742,7.742,0,0,0-.918-3.84,6.658,6.658,0,0,0-2.529-2.58,7.332,7.332,0,0,0-3.735-.92,8.446,8.446,0,0,0-3.519.72,7.837,7.837,0,0,0-2.655,1.9v-2.05h-5.526v18.43h5.526Zm24.609,0.09a3.7,3.7,0,0,0,1.3-1.3,3.632,3.632,0,0,0,0-3.63,3.673,3.673,0,0,0-1.3-1.29,3.413,3.413,0,0,0-1.818-.49,3.473,3.473,0,0,0-1.818.49,3.626,3.626,0,0,0-1.305,4.92,3.6,3.6,0,0,0,1.3,1.3,3.46,3.46,0,0,0,1.827.49A3.413,3.413,0,0,0,266.318,5006.23Zm23.741-.09,1.854-19.22,6.768,18.49h3.582l6.786-18.49,1.836,19.22h5.832l-2.952-29.7h-6.192l-7.092,18.58-7.092-18.58H287.2l-2.952,29.7h5.814Zm43.448-.19a8.727,8.727,0,0,0,2.9-2.24v2.43h5.526v-18.43h-5.526v2.25a7.277,7.277,0,0,0-2.781-2.08,8.971,8.971,0,0,0-3.663-.74,8.712,8.712,0,0,0-4.725,1.28,9.026,9.026,0,0,0-3.231,3.49,11.185,11.185,0,0,0,.045,10.05,9.176,9.176,0,0,0,3.294,3.49,8.654,8.654,0,0,0,4.617,1.27A8.279,8.279,0,0,0,333.507,5005.95Zm-4.464-4.59a4.685,4.685,0,0,1-1.755-1.8,5.35,5.35,0,0,1-.639-2.63,5.264,5.264,0,0,1,.648-2.63,4.777,4.777,0,0,1,1.764-1.81,5.227,5.227,0,0,1,5.085,0,4.776,4.776,0,0,1,1.746,1.8,5.308,5.308,0,0,1,.639,2.64,5.412,5.412,0,0,1-.63,2.63,4.621,4.621,0,0,1-1.746,1.8A5.279,5.279,0,0,1,329.043,5001.36Zm31.1,4.85a8.867,8.867,0,0,0,2.646-1.29l-1.89-3.73a4.729,4.729,0,0,1-1.458.72,6.183,6.183,0,0,1-1.854.27,5.509,5.509,0,0,1-2.817-.7,4.932,4.932,0,0,1-1.881-1.9,5.359,5.359,0,0,1-.666-2.65,5.461,5.461,0,0,1,.621-2.54,5.017,5.017,0,0,1,1.809-1.96,5.24,5.24,0,0,1,2.9-.76,5.508,5.508,0,0,1,3.348.99l1.89-3.72a8.158,8.158,0,0,0-2.655-1.3,11.52,11.52,0,0,0-3.429-.5,10.381,10.381,0,0,0-7.353,2.95,9.754,9.754,0,0,0-2.16,3.13,9.291,9.291,0,0,0-.765,3.73,9.033,9.033,0,0,0,.81,3.8,10.008,10.008,0,0,0,2.232,3.12,10.47,10.47,0,0,0,3.285,2.09,10.343,10.343,0,0,0,3.969.76A11.323,11.323,0,0,0,360.143,5006.21Zm12.222-.07v-10.9a3.923,3.923,0,0,1,.477-1.94,3.444,3.444,0,0,1,1.368-1.35,4.288,4.288,0,0,1,2.115-.49,3.681,3.681,0,0,1,2.835,1.1,4.356,4.356,0,0,1,1.035,3.09v10.49h5.526v-11.66a7.742,7.742,0,0,0-.918-3.84,6.658,6.658,0,0,0-2.529-2.58,7.332,7.332,0,0,0-3.735-.92,8.446,8.446,0,0,0-3.519.72,7.837,7.837,0,0,0-2.655,1.9v-14.58h-5.526v30.96h5.526Zm24.451,0v-18.43H391.29v18.43h5.526Zm-1.116-22.7a3.405,3.405,0,0,0,1.179-1.2,3.232,3.232,0,0,0,.441-1.66,3.1,3.1,0,0,0-.441-1.63,3.269,3.269,0,0,0-1.179-1.18,3.077,3.077,0,0,0-1.638-.44,3.123,3.123,0,0,0-1.647.44,3.318,3.318,0,0,0-1.2,1.18,3.052,3.052,0,0,0-.45,1.63,3.182,3.182,0,0,0,.45,1.66,3.455,3.455,0,0,0,1.2,1.2,3.218,3.218,0,0,0,1.647.44A3.17,3.17,0,0,0,395.7,4983.44Zm12.546,22.7v-10.9a3.923,3.923,0,0,1,.477-1.94,3.444,3.444,0,0,1,1.368-1.35,4.288,4.288,0,0,1,2.115-.49,3.681,3.681,0,0,1,2.835,1.1,4.356,4.356,0,0,1,1.035,3.09v10.49H421.6v-11.66a7.742,7.742,0,0,0-.918-3.84,6.658,6.658,0,0,0-2.529-2.58,7.332,7.332,0,0,0-3.735-.92,8.446,8.446,0,0,0-3.519.72,7.837,7.837,0,0,0-2.655,1.9v-2.05H402.72v18.43h5.526Zm33.339-.68a9.025,9.025,0,0,0,3.672-3.49l-3.978-2a6.81,6.81,0,0,1-2.133,1.78,5.61,5.61,0,0,1-2.547.56,5.849,5.849,0,0,1-2.682-.59,4.385,4.385,0,0,1-1.791-1.62,4.627,4.627,0,0,1-.639-2.45h14.13c0.036-.31.057-0.53,0.063-0.64s0.009-.25.009-0.41a9.816,9.816,0,0,0-1.215-4.95,8.67,8.67,0,0,0-3.384-3.32,10.258,10.258,0,0,0-5.049-1.19,10.6,10.6,0,0,0-4.014.74,10.278,10.278,0,0,0-3.258,2.09,9.668,9.668,0,0,0-2.187,3.12,9.453,9.453,0,0,0-.783,3.84,9.206,9.206,0,0,0,1.386,5,9.928,9.928,0,0,0,3.753,3.5,11.006,11.006,0,0,0,5.355,1.29A11.118,11.118,0,0,0,441.585,5005.46Zm-9.216-12.71a3.7,3.7,0,0,1,1.476-1.19,5.219,5.219,0,0,1,2.124-.41,4.906,4.906,0,0,1,2.034.41,3.942,3.942,0,0,1,1.485,1.19,4.165,4.165,0,0,1,.765,1.84h-8.568A3.881,3.881,0,0,1,432.369,4992.75Zm23.065,13.48a3.7,3.7,0,0,0,1.3-1.3,3.632,3.632,0,0,0,0-3.63,3.673,3.673,0,0,0-1.3-1.29,3.413,3.413,0,0,0-1.818-.49,3.473,3.473,0,0,0-1.818.49,3.626,3.626,0,0,0-1.305,4.92,3.6,3.6,0,0,0,1.3,1.3,3.46,3.46,0,0,0,1.827.49A3.413,3.413,0,0,0,455.434,5006.23Zm35.819-.09v-5.11H480.561v-7.22h10.26v-5.11h-10.26v-7.14h10.692v-5.12H474.729v29.7h16.524Zm9.778,0,4.608-5.83,4.608,5.83h6.624l-7.866-9.63,6.75-8.8h-6.408l-3.708,4.95-3.708-4.95h-6.408l6.75,8.8-7.866,9.63h6.624Zm24.49,9.36v-11.79a8.608,8.608,0,0,0,2.9,2.23,8.336,8.336,0,0,0,3.564.78,8.588,8.588,0,0,0,4.653-1.29,9.148,9.148,0,0,0,3.249-3.51,11.1,11.1,0,0,0-.009-10.01,9.141,9.141,0,0,0-3.276-3.5,8.885,8.885,0,0,0-4.743-1.27,8.682,8.682,0,0,0-3.564.73,7.593,7.593,0,0,0-2.772,2.09v-2.25H520v27.79h5.526Zm2.268-14.14a4.647,4.647,0,0,1-1.773-1.8,5.676,5.676,0,0,1,.009-5.25,4.828,4.828,0,0,1,1.773-1.81,4.945,4.945,0,0,1,2.547-.67,4.754,4.754,0,0,1,4.266,2.49,5.691,5.691,0,0,1,.018,5.24,4.573,4.573,0,0,1-1.737,1.8,4.878,4.878,0,0,1-2.547.66A4.987,4.987,0,0,1,527.789,5001.36Zm32.375,4.1a9.025,9.025,0,0,0,3.672-3.49l-3.978-2a6.81,6.81,0,0,1-2.133,1.78,5.61,5.61,0,0,1-2.547.56,5.849,5.849,0,0,1-2.682-.59,4.385,4.385,0,0,1-1.791-1.62,4.627,4.627,0,0,1-.639-2.45H564.2c0.036-.31.057-0.53,0.063-0.64s0.009-.25.009-0.41a9.816,9.816,0,0,0-1.215-4.95,8.67,8.67,0,0,0-3.384-3.32,10.258,10.258,0,0,0-5.049-1.19,10.6,10.6,0,0,0-4.014.74,10.278,10.278,0,0,0-3.258,2.09,9.668,9.668,0,0,0-2.187,3.12,9.453,9.453,0,0,0-.783,3.84,9.206,9.206,0,0,0,1.386,5,9.928,9.928,0,0,0,3.753,3.5,11.006,11.006,0,0,0,5.355,1.29A11.118,11.118,0,0,0,560.164,5005.46Zm-9.216-12.71a3.7,3.7,0,0,1,1.476-1.19,5.219,5.219,0,0,1,2.124-.41,4.906,4.906,0,0,1,2.034.41,3.942,3.942,0,0,1,1.485,1.19,4.165,4.165,0,0,1,.765,1.84h-8.568A3.881,3.881,0,0,1,550.948,4992.75Zm23.439,13.39v-10.29a3.377,3.377,0,0,1,.594-1.92,4.626,4.626,0,0,1,1.566-1.45,4.082,4.082,0,0,1,2.052-.56,5.122,5.122,0,0,1,1.521.25,5.259,5.259,0,0,1,1.431.65l2.3-4.66a6.625,6.625,0,0,0-1.746-.74,7.633,7.633,0,0,0-2.016-.28,6.374,6.374,0,0,0-3.195.83,7.364,7.364,0,0,0-2.511,2.39v-2.65h-5.526v18.43h5.526Zm18.094,0v-18.43h-5.526v18.43h5.526Zm-1.116-22.7a3.405,3.405,0,0,0,1.179-1.2,3.232,3.232,0,0,0,.441-1.66,3.1,3.1,0,0,0-.441-1.63,3.269,3.269,0,0,0-1.179-1.18,3.077,3.077,0,0,0-1.638-.44,3.121,3.121,0,0,0-1.647.44,3.31,3.31,0,0,0-1.2,1.18,3.052,3.052,0,0,0-.45,1.63,3.182,3.182,0,0,0,.45,1.66,3.447,3.447,0,0,0,1.2,1.2,3.215,3.215,0,0,0,1.647.44A3.17,3.17,0,0,0,591.365,4983.44Zm21.322,22.02a9.025,9.025,0,0,0,3.672-3.49l-3.978-2a6.81,6.81,0,0,1-2.133,1.78,5.61,5.61,0,0,1-2.547.56,5.849,5.849,0,0,1-2.682-.59,4.385,4.385,0,0,1-1.791-1.62,4.627,4.627,0,0,1-.639-2.45h14.13c0.036-.31.057-0.53,0.063-0.64s0.009-.25.009-0.41a9.816,9.816,0,0,0-1.215-4.95,8.67,8.67,0,0,0-3.384-3.32,10.258,10.258,0,0,0-5.049-1.19,10.6,10.6,0,0,0-4.014.74,10.278,10.278,0,0,0-3.258,2.09,9.668,9.668,0,0,0-2.187,3.12,9.453,9.453,0,0,0-.783,3.84,9.206,9.206,0,0,0,1.386,5,9.928,9.928,0,0,0,3.753,3.5,11.006,11.006,0,0,0,5.355,1.29A11.118,11.118,0,0,0,612.687,5005.46Zm-9.216-12.71a3.7,3.7,0,0,1,1.476-1.19,5.219,5.219,0,0,1,2.124-.41,4.906,4.906,0,0,1,2.034.41,3.942,3.942,0,0,1,1.485,1.19,4.165,4.165,0,0,1,.765,1.84h-8.568A3.881,3.881,0,0,1,603.471,4992.75Zm23.44,13.39v-10.9a3.923,3.923,0,0,1,.477-1.94,3.444,3.444,0,0,1,1.368-1.35,4.288,4.288,0,0,1,2.115-.49,3.681,3.681,0,0,1,2.835,1.1,4.356,4.356,0,0,1,1.035,3.09v10.49h5.526v-11.66a7.742,7.742,0,0,0-.918-3.84,6.658,6.658,0,0,0-2.529-2.58,7.332,7.332,0,0,0-3.735-.92,8.446,8.446,0,0,0-3.519.72,7.837,7.837,0,0,0-2.655,1.9v-2.05h-5.526v18.43h5.526Zm31.251,0.07a8.867,8.867,0,0,0,2.646-1.29l-1.89-3.73a4.729,4.729,0,0,1-1.458.72,6.183,6.183,0,0,1-1.854.27,5.509,5.509,0,0,1-2.817-.7,4.932,4.932,0,0,1-1.881-1.9,5.359,5.359,0,0,1-.666-2.65,5.461,5.461,0,0,1,.621-2.54,5.017,5.017,0,0,1,1.809-1.96,5.24,5.24,0,0,1,2.9-.76,5.508,5.508,0,0,1,3.348.99l1.89-3.72a8.158,8.158,0,0,0-2.655-1.3,11.52,11.52,0,0,0-3.429-.5,10.381,10.381,0,0,0-7.353,2.95,9.754,9.754,0,0,0-2.16,3.13,9.291,9.291,0,0,0-.765,3.73,9.033,9.033,0,0,0,.81,3.8,10.008,10.008,0,0,0,2.232,3.12,10.47,10.47,0,0,0,3.285,2.09,10.343,10.343,0,0,0,3.969.76A11.323,11.323,0,0,0,658.162,5006.21Zm20.715-.75a9.025,9.025,0,0,0,3.672-3.49l-3.978-2a6.81,6.81,0,0,1-2.133,1.78,5.613,5.613,0,0,1-2.547.56,5.843,5.843,0,0,1-2.682-.59,4.373,4.373,0,0,1-1.791-1.62,4.618,4.618,0,0,1-.639-2.45h14.13c0.036-.31.056-0.53,0.063-0.64s0.009-.25.009-0.41a9.816,9.816,0,0,0-1.215-4.95,8.676,8.676,0,0,0-3.384-3.32,10.264,10.264,0,0,0-5.049-1.19,10.6,10.6,0,0,0-4.014.74,10.267,10.267,0,0,0-3.258,2.09,9.668,9.668,0,0,0-2.187,3.12,9.453,9.453,0,0,0-.783,3.84,9.2,9.2,0,0,0,1.386,5,9.913,9.913,0,0,0,3.753,3.5,11,11,0,0,0,5.355,1.29A11.118,11.118,0,0,0,678.877,5005.46Zm-9.216-12.71a3.688,3.688,0,0,1,1.476-1.19,5.215,5.215,0,0,1,2.124-.41,4.909,4.909,0,0,1,2.034.41,3.957,3.957,0,0,1,1.485,1.19,4.188,4.188,0,0,1,.765,1.84h-8.568A3.86,3.86,0,0,1,669.661,4992.75Zm38.807,13.39v-24.55h7.542v-5.15H695.13v5.15h7.524v24.55h5.814Zm23.4-.67a9.945,9.945,0,0,0,3.879-3.46,9.75,9.75,0,0,0,0-10.17,9.844,9.844,0,0,0-3.879-3.45,12.74,12.74,0,0,0-11.007,0,9.83,9.83,0,0,0-3.888,3.45,9.724,9.724,0,0,0,.009,10.17,10.013,10.013,0,0,0,3.888,3.46A12.721,12.721,0,0,0,731.868,5005.47Zm-8.055-4.11a4.823,4.823,0,0,1-1.809-1.8,5.546,5.546,0,0,1,0-5.27,4.8,4.8,0,0,1,1.809-1.79,5.368,5.368,0,0,1,5.121,0,4.778,4.778,0,0,1,1.818,1.79,5.546,5.546,0,0,1,0,5.27,4.8,4.8,0,0,1-1.818,1.8A5.442,5.442,0,0,1,723.813,5001.36Zm33,13.47a8.166,8.166,0,0,0,3.573-3.34,9.816,9.816,0,0,0,1.179-4.84v-18.94h-5.526v2.25a7.515,7.515,0,0,0-2.754-2.08,8.617,8.617,0,0,0-3.6-.74,8.8,8.8,0,0,0-4.743,1.28,9.184,9.184,0,0,0-3.276,3.49A11.119,11.119,0,0,0,741.7,5002a9.162,9.162,0,0,0,3.285,3.47,8.66,8.66,0,0,0,4.563,1.25,8.281,8.281,0,0,0,3.6-.79,8.708,8.708,0,0,0,2.9-2.22v2.6a5.015,5.015,0,0,1-.666,2.6,4.524,4.524,0,0,1-1.854,1.74,5.789,5.789,0,0,1-2.754.62,6.971,6.971,0,0,1-3.2-.75,5.34,5.34,0,0,1-2.232-2.04l-4.5,2.2a8.057,8.057,0,0,0,3.69,4,13.093,13.093,0,0,0,6.264,1.36A13.272,13.272,0,0,0,756.816,5014.83Zm-8.154-13.47a4.555,4.555,0,0,1-1.746-1.8,5.671,5.671,0,0,1,.018-5.23,4.762,4.762,0,0,1,1.764-1.83,5.142,5.142,0,0,1,5.076,0,4.738,4.738,0,0,1,1.755,1.82,5.362,5.362,0,0,1,.639,2.64,5.267,5.267,0,0,1-.63,2.6,4.537,4.537,0,0,1-1.755,1.8,5.009,5.009,0,0,1-2.583.66A4.891,4.891,0,0,1,748.662,5001.36Zm33.206,4.1a9.025,9.025,0,0,0,3.672-3.49l-3.978-2a6.81,6.81,0,0,1-2.133,1.78,5.61,5.61,0,0,1-2.547.56,5.849,5.849,0,0,1-2.682-.59,4.385,4.385,0,0,1-1.791-1.62,4.627,4.627,0,0,1-.639-2.45H785.9c0.036-.31.057-0.53,0.063-0.64s0.009-.25.009-0.41a9.816,9.816,0,0,0-1.215-4.95,8.67,8.67,0,0,0-3.384-3.32,10.258,10.258,0,0,0-5.049-1.19,10.6,10.6,0,0,0-4.014.74,10.278,10.278,0,0,0-3.258,2.09,9.668,9.668,0,0,0-2.187,3.12,9.453,9.453,0,0,0-.783,3.84,9.206,9.206,0,0,0,1.386,5,9.928,9.928,0,0,0,3.753,3.5,11.006,11.006,0,0,0,5.355,1.29A11.118,11.118,0,0,0,781.868,5005.46Zm-9.216-12.71a3.7,3.7,0,0,1,1.476-1.19,5.219,5.219,0,0,1,2.124-.41,4.906,4.906,0,0,1,2.034.41,3.942,3.942,0,0,1,1.485,1.19,4.165,4.165,0,0,1,.765,1.84h-8.568A3.881,3.881,0,0,1,772.652,4992.75Zm26.584,13.68a8.69,8.69,0,0,0,2.1-.79l-1.386-4.43a2.742,2.742,0,0,1-1.656.58,1.432,1.432,0,0,1-1.2-.54,2.542,2.542,0,0,1-.423-1.59v-7.75h4.05v-4.2h-4.05v-6.91h-5.526v6.91h-2.466v4.2h2.466v8.15a7.209,7.209,0,0,0,1.53,4.9,5.385,5.385,0,0,0,4.284,1.76A9.541,9.541,0,0,0,799.236,5006.43Zm11.824-.29v-10.9a3.923,3.923,0,0,1,.477-1.94,3.444,3.444,0,0,1,1.368-1.35,4.288,4.288,0,0,1,2.115-.49,3.681,3.681,0,0,1,2.835,1.1,4.356,4.356,0,0,1,1.035,3.09v10.49h5.526v-11.66a7.742,7.742,0,0,0-.918-3.84,6.658,6.658,0,0,0-2.529-2.58,7.332,7.332,0,0,0-3.735-.92,8.446,8.446,0,0,0-3.519.72,7.837,7.837,0,0,0-2.655,1.9v-14.58h-5.526v30.96h5.526Zm33.339-.68a9.025,9.025,0,0,0,3.672-3.49l-3.978-2a6.81,6.81,0,0,1-2.133,1.78,5.61,5.61,0,0,1-2.547.56,5.849,5.849,0,0,1-2.682-.59,4.385,4.385,0,0,1-1.791-1.62,4.627,4.627,0,0,1-.639-2.45h14.13c0.036-.31.057-0.53,0.063-0.64s0.009-.25.009-0.41a9.816,9.816,0,0,0-1.215-4.95,8.67,8.67,0,0,0-3.384-3.32,10.258,10.258,0,0,0-5.049-1.19,10.6,10.6,0,0,0-4.014.74,10.278,10.278,0,0,0-3.258,2.09,9.668,9.668,0,0,0-2.187,3.12,9.453,9.453,0,0,0-.783,3.84,9.206,9.206,0,0,0,1.386,5,9.928,9.928,0,0,0,3.753,3.5,11.006,11.006,0,0,0,5.355,1.29A11.118,11.118,0,0,0,844.4,5005.46Zm-9.216-12.71a3.7,3.7,0,0,1,1.476-1.19,5.219,5.219,0,0,1,2.124-.41,4.906,4.906,0,0,1,2.034.41,3.942,3.942,0,0,1,1.485,1.19,4.165,4.165,0,0,1,.765,1.84H834.5A3.881,3.881,0,0,1,835.183,4992.75Zm23.44,13.39v-10.29a3.377,3.377,0,0,1,.594-1.92,4.626,4.626,0,0,1,1.566-1.45,4.082,4.082,0,0,1,2.052-.56,5.122,5.122,0,0,1,1.521.25,5.259,5.259,0,0,1,1.431.65l2.3-4.66a6.625,6.625,0,0,0-1.746-.74,7.633,7.633,0,0,0-2.016-.28,6.374,6.374,0,0,0-3.195.83,7.364,7.364,0,0,0-2.511,2.39v-2.65H853.1v18.43h5.526Z"
+                                    transform="translate(-119 -4726)" />
+                                <path id="Special_Experience_:_Post_COVID-19"
+                                    data-name="Special Experience : Post COVID-19" class="cls-3"
+                                    d="M130.868,5051.84a5.373,5.373,0,0,0,3.318-5.18,5.206,5.206,0,0,0-.45-2.26,4.837,4.837,0,0,0-1.266-1.63,9.22,9.22,0,0,0-1.926-1.24c-0.74-.36-1.546-0.72-2.418-1.07q-0.66-.255-1.254-0.51a7.736,7.736,0,0,1-1.05-.57,2.4,2.4,0,0,1-.714-0.75,2.1,2.1,0,0,1-.258-1.07,2.546,2.546,0,0,1,.366-1.33,2.746,2.746,0,0,1,1.05-1.01,3.427,3.427,0,0,1,1.668-.38,5.066,5.066,0,0,1,1.608.25,5.789,5.789,0,0,1,1.4.67,6.268,6.268,0,0,1,1.086.88l1.368-2.39a6.376,6.376,0,0,0-1.422-1.1,8.3,8.3,0,0,0-1.926-.84,7.24,7.24,0,0,0-2.172-.33,6.542,6.542,0,0,0-2.478.46,5.8,5.8,0,0,0-3.156,3.05,5.344,5.344,0,0,0-.438,2.13,4.315,4.315,0,0,0,.36,1.82,4.612,4.612,0,0,0,.966,1.39,6.663,6.663,0,0,0,1.356,1.03,14.146,14.146,0,0,0,1.518.76c0.72,0.28,1.372.56,1.956,0.83a10.461,10.461,0,0,1,1.512.84,3.125,3.125,0,0,1,.978,1.03,2.748,2.748,0,0,1,.342,1.41,2.685,2.685,0,0,1-.456,1.59,2.822,2.822,0,0,1-1.224.97,4.55,4.55,0,0,1-1.74.32,5.641,5.641,0,0,1-1.884-.3,7.072,7.072,0,0,1-1.536-.77,9.667,9.667,0,0,1-1.194-.94c-0.34-.32-0.622-0.6-0.846-0.83l-1.656,2.54c0.208,0.23.512,0.53,0.912,0.89a9.414,9.414,0,0,0,1.482,1.07,9,9,0,0,0,2.046.9A9.588,9.588,0,0,0,130.868,5051.84Zm10.077,6.54v-8.2a5.618,5.618,0,0,0,4.6,2.35,5.775,5.775,0,0,0,3.114-.86,6.139,6.139,0,0,0,2.172-2.33,6.933,6.933,0,0,0,.8-3.34,6.848,6.848,0,0,0-.8-3.35,6.154,6.154,0,0,0-2.19-2.33,5.985,5.985,0,0,0-3.162-.85,5.667,5.667,0,0,0-2.592.6,5.046,5.046,0,0,0-1.932,1.66v-1.87h-2.988v18.52h2.988Zm1.77-8.92a3.608,3.608,0,0,1-1.362-1.41,4.492,4.492,0,0,1,.006-4.1,3.664,3.664,0,0,1,1.362-1.41,3.8,3.8,0,0,1,1.968-.51,3.734,3.734,0,0,1,1.956.51,3.692,3.692,0,0,1,1.35,1.41,4.513,4.513,0,0,1,.006,4.11,3.676,3.676,0,0,1-1.35,1.4,3.766,3.766,0,0,1-1.962.51A3.83,3.83,0,0,1,142.715,5049.46Zm21.9,2.25a6.082,6.082,0,0,0,2.43-2.29l-2.172-1.12a4.744,4.744,0,0,1-1.578,1.38,4.26,4.26,0,0,1-1.986.45,4.38,4.38,0,0,1-2.082-.48,3.4,3.4,0,0,1-1.41-1.32,3.728,3.728,0,0,1-.5-1.96h10.008c0.024-.16.04-0.27,0.048-0.34a2.268,2.268,0,0,0,.012-0.26,6.562,6.562,0,0,0-.81-3.3,5.749,5.749,0,0,0-2.256-2.21,6.986,6.986,0,0,0-3.366-.79,6.676,6.676,0,0,0-2.616.51,6.492,6.492,0,0,0-2.124,1.4,6.629,6.629,0,0,0-1.428,2.09,6.317,6.317,0,0,0-.516,2.55,6.242,6.242,0,0,0,.906,3.33,6.546,6.546,0,0,0,2.46,2.33,7.292,7.292,0,0,0,3.522.85A7.382,7.382,0,0,0,164.617,5051.71Zm-6.582-8.67a3.054,3.054,0,0,1,1.212-.95,3.977,3.977,0,0,1,1.692-.34,3.93,3.93,0,0,1,1.632.34,3.241,3.241,0,0,1,1.848,2.41h-6.972A3.012,3.012,0,0,1,158.035,5043.04Zm21.014,9.13a6,6,0,0,0,1.812-.9l-1.08-2.02a3.608,3.608,0,0,1-1.146.59,4.7,4.7,0,0,1-1.422.22,4.244,4.244,0,0,1-2.16-.54,3.841,3.841,0,0,1-1.452-1.46,4.129,4.129,0,0,1-.516-2.06,4.233,4.233,0,0,1,.492-2.01,3.768,3.768,0,0,1,1.416-1.49,4.588,4.588,0,0,1,4.8.25l1.068-2.02a5.813,5.813,0,0,0-1.818-.91,7.624,7.624,0,0,0-2.3-.35,6.814,6.814,0,0,0-2.682.52,6.667,6.667,0,0,0-2.16,1.41,6.5,6.5,0,0,0-1.428,2.09,6.442,6.442,0,0,0,.024,5.08,6.49,6.49,0,0,0,1.47,2.07,6.691,6.691,0,0,0,2.166,1.39,6.96,6.96,0,0,0,2.622.5A7.2,7.2,0,0,0,179.049,5052.17Zm7.73-.03v-12.28h-2.988v12.28h2.988Zm-0.582-15.05a1.831,1.831,0,0,0,.648-0.66,1.77,1.77,0,0,0,.246-0.92,1.7,1.7,0,0,0-.246-0.9,1.884,1.884,0,0,0-.648-0.65,1.652,1.652,0,0,0-.906-0.25,1.69,1.69,0,0,0-.906.25,1.852,1.852,0,0,0-.66.65,1.7,1.7,0,0,0-.246.9,1.77,1.77,0,0,0,.246.92,1.835,1.835,0,0,0,1.566.91A1.74,1.74,0,0,0,186.2,5037.09Zm12.735,14.82a5.784,5.784,0,0,0,2-1.73v1.96h2.988v-12.28H200.93v1.88a4.841,4.841,0,0,0-1.92-1.67,6.2,6.2,0,0,0-5.8.25,6.026,6.026,0,0,0-2.166,2.33,6.963,6.963,0,0,0-.786,3.34,6.886,6.886,0,0,0,.81,3.37,6.1,6.1,0,0,0,2.2,2.32,5.764,5.764,0,0,0,3.09.85A5.5,5.5,0,0,0,198.932,5051.91Zm-3.69-2.45a3.621,3.621,0,0,1-1.356-1.41,4.517,4.517,0,0,1,0-4.1,3.621,3.621,0,0,1,1.356-1.41,4.052,4.052,0,0,1,3.936,0,3.7,3.7,0,0,1,1.344,1.4,4.538,4.538,0,0,1,0,4.11,3.655,3.655,0,0,1-1.344,1.41A4.052,4.052,0,0,1,195.242,5049.46Zm15.986,2.68V5031.5H208.24v20.64h2.988Zm22.212,0v-2.76h-7.5v-5.78h7.212v-2.76H225.94v-5.74h7.5v-2.76H222.8v19.8H233.44Zm6.119,0,3.5-4.36,3.492,4.36h3.564l-5.22-6.38,4.5-5.9h-3.456l-2.88,3.81-2.892-3.81h-3.456l4.5,5.9-5.22,6.38h3.564Zm16.112,6.24v-8.2a5.618,5.618,0,0,0,4.6,2.35,5.78,5.78,0,0,0,3.114-.86,6.147,6.147,0,0,0,2.172-2.33,6.933,6.933,0,0,0,.8-3.34,6.859,6.859,0,0,0-.8-3.35,6.154,6.154,0,0,0-2.19-2.33,5.988,5.988,0,0,0-3.162-.85,5.667,5.667,0,0,0-2.592.6,5.046,5.046,0,0,0-1.932,1.66v-1.87h-2.988v18.52h2.988Zm1.77-8.92a3.6,3.6,0,0,1-1.362-1.41,4.492,4.492,0,0,1,.006-4.1,3.657,3.657,0,0,1,1.362-1.41,3.8,3.8,0,0,1,1.968-.51,3.737,3.737,0,0,1,1.956.51,3.692,3.692,0,0,1,1.35,1.41,4.513,4.513,0,0,1,.006,4.11,3.691,3.691,0,0,1-1.35,1.4,3.766,3.766,0,0,1-1.962.51A3.827,3.827,0,0,1,257.441,5049.46Zm21.9,2.25a6.082,6.082,0,0,0,2.43-2.29l-2.172-1.12a4.744,4.744,0,0,1-1.578,1.38,4.26,4.26,0,0,1-1.986.45,4.38,4.38,0,0,1-2.082-.48,3.4,3.4,0,0,1-1.41-1.32,3.728,3.728,0,0,1-.5-1.96h10.008c0.024-.16.04-0.27,0.048-0.34a2.268,2.268,0,0,0,.012-0.26,6.562,6.562,0,0,0-.81-3.3,5.749,5.749,0,0,0-2.256-2.21,6.986,6.986,0,0,0-3.366-.79,6.676,6.676,0,0,0-2.616.51,6.492,6.492,0,0,0-2.124,1.4,6.629,6.629,0,0,0-1.428,2.09,6.317,6.317,0,0,0-.516,2.55,6.242,6.242,0,0,0,.906,3.33,6.546,6.546,0,0,0,2.46,2.33,7.292,7.292,0,0,0,3.522.85A7.382,7.382,0,0,0,279.343,5051.71Zm-6.582-8.67a3.054,3.054,0,0,1,1.212-.95,3.977,3.977,0,0,1,1.692-.34,3.93,3.93,0,0,1,1.632.34,3.241,3.241,0,0,1,1.848,2.41h-6.972A3.012,3.012,0,0,1,272.761,5043.04Zm15.789,9.1v-7.32a2.335,2.335,0,0,1,.426-1.34,3.278,3.278,0,0,1,1.11-1.02,2.9,2.9,0,0,1,1.452-.4,3.515,3.515,0,0,1,.966.15,3.412,3.412,0,0,1,.918.38l1.236-2.53a4.206,4.206,0,0,0-1.1-.43,5.527,5.527,0,0,0-1.254-.16,4.236,4.236,0,0,0-2.136.56,4.57,4.57,0,0,0-1.62,1.61v-1.78h-2.988v12.28h2.988Zm11.628,0v-12.28H297.19v12.28h2.988Zm-0.582-15.05a1.831,1.831,0,0,0,.648-0.66,1.77,1.77,0,0,0,.246-0.92,1.7,1.7,0,0,0-.246-0.9,1.884,1.884,0,0,0-.648-0.65,1.652,1.652,0,0,0-.906-0.25,1.69,1.69,0,0,0-.906.25,1.852,1.852,0,0,0-.66.65,1.7,1.7,0,0,0-.246.9,1.77,1.77,0,0,0,.246.92,1.835,1.835,0,0,0,1.566.91A1.74,1.74,0,0,0,299.6,5037.09Zm14.316,14.62a6.082,6.082,0,0,0,2.43-2.29l-2.172-1.12a4.744,4.744,0,0,1-1.578,1.38,4.26,4.26,0,0,1-1.986.45,4.38,4.38,0,0,1-2.082-.48,3.4,3.4,0,0,1-1.41-1.32,3.728,3.728,0,0,1-.5-1.96h10.008c0.024-.16.04-0.27,0.048-0.34a2.268,2.268,0,0,0,.012-0.26,6.562,6.562,0,0,0-.81-3.3,5.749,5.749,0,0,0-2.256-2.21,6.986,6.986,0,0,0-3.366-.79,6.676,6.676,0,0,0-2.616.51,6.492,6.492,0,0,0-2.124,1.4,6.629,6.629,0,0,0-1.428,2.09,6.317,6.317,0,0,0-.516,2.55,6.242,6.242,0,0,0,.906,3.33,6.546,6.546,0,0,0,2.46,2.33,7.292,7.292,0,0,0,3.522.85A7.382,7.382,0,0,0,313.912,5051.71Zm-6.582-8.67a3.054,3.054,0,0,1,1.212-.95,3.977,3.977,0,0,1,1.692-.34,3.93,3.93,0,0,1,1.632.34,3.241,3.241,0,0,1,1.848,2.41h-6.972A3.012,3.012,0,0,1,307.33,5043.04Zm15.789,9.1v-7.53a2.78,2.78,0,0,1,.36-1.4,2.653,2.653,0,0,1,1.032-1.01,3.226,3.226,0,0,1,1.6-.38,2.7,2.7,0,0,1,2.106.84,3.369,3.369,0,0,1,.762,2.37v7.11h2.988v-7.74a5.471,5.471,0,0,0-.588-2.61,4.148,4.148,0,0,0-1.65-1.71,4.854,4.854,0,0,0-2.478-.61,5.549,5.549,0,0,0-2.43.52,4.852,4.852,0,0,0-1.7,1.34v-1.47h-2.988v12.28h2.988Zm21.171,0.03a6,6,0,0,0,1.812-.9l-1.08-2.02a3.608,3.608,0,0,1-1.146.59,4.7,4.7,0,0,1-1.422.22,4.244,4.244,0,0,1-2.16-.54,3.841,3.841,0,0,1-1.452-1.46,4.129,4.129,0,0,1-.516-2.06,4.233,4.233,0,0,1,.492-2.01,3.768,3.768,0,0,1,1.416-1.49,4.588,4.588,0,0,1,4.8.25l1.068-2.02a5.813,5.813,0,0,0-1.818-.91,7.624,7.624,0,0,0-2.3-.35,6.814,6.814,0,0,0-2.682.52,6.667,6.667,0,0,0-2.16,1.41,6.5,6.5,0,0,0-1.428,2.09,6.442,6.442,0,0,0,.024,5.08,6.49,6.49,0,0,0,1.47,2.07,6.691,6.691,0,0,0,2.166,1.39,6.96,6.96,0,0,0,2.622.5A7.2,7.2,0,0,0,344.29,5052.17Zm13.973-.46a6.082,6.082,0,0,0,2.43-2.29l-2.172-1.12a4.744,4.744,0,0,1-1.578,1.38,4.26,4.26,0,0,1-1.986.45,4.38,4.38,0,0,1-2.082-.48,3.4,3.4,0,0,1-1.41-1.32,3.728,3.728,0,0,1-.5-1.96h10.008c0.024-.16.04-0.27,0.048-0.34a2.268,2.268,0,0,0,.012-0.26,6.562,6.562,0,0,0-.81-3.3,5.749,5.749,0,0,0-2.256-2.21,6.986,6.986,0,0,0-3.366-.79,6.676,6.676,0,0,0-2.616.51,6.492,6.492,0,0,0-2.124,1.4,6.629,6.629,0,0,0-1.428,2.09,6.317,6.317,0,0,0-.516,2.55,6.242,6.242,0,0,0,.906,3.33,6.546,6.546,0,0,0,2.46,2.33,7.292,7.292,0,0,0,3.522.85A7.382,7.382,0,0,0,358.263,5051.71Zm-6.582-8.67a3.054,3.054,0,0,1,1.212-.95,3.977,3.977,0,0,1,1.692-.34,3.93,3.93,0,0,1,1.632.34,3.241,3.241,0,0,1,1.848,2.41h-6.972A3.012,3.012,0,0,1,351.681,5043.04Zm22.554-.9a2.019,2.019,0,0,0,.714-0.72,1.978,1.978,0,0,0-1.716-2.97,1.888,1.888,0,0,0-.99.27,1.985,1.985,0,0,0-.714,2.7,2.019,2.019,0,0,0,.714.72,1.977,1.977,0,0,0,.99.26A2,2,0,0,0,374.235,5042.14Zm0,10.12a2.019,2.019,0,0,0,.714-0.72,2.007,2.007,0,0,0,0-1.99,1.936,1.936,0,0,0-1.716-.98,1.977,1.977,0,0,0-.99.26,2.019,2.019,0,0,0-.714.72,2.007,2.007,0,0,0,0,1.99,2.019,2.019,0,0,0,.714.72,1.888,1.888,0,0,0,.99.27A1.91,1.91,0,0,0,374.235,5052.26Zm16.026-.12v-7.87h3.024a7.384,7.384,0,0,0,3.4-.74,5.507,5.507,0,0,0,2.3-2.1,6.1,6.1,0,0,0,.828-3.24,5.876,5.876,0,0,0-.828-3.21,5.2,5.2,0,0,0-2.3-1.96,8.075,8.075,0,0,0-3.4-.68h-6.168v19.8h3.144Zm0-17.28h2.1a5.929,5.929,0,0,1,2.13.37,3.26,3.26,0,0,1,1.494,1.12,3.633,3.633,0,0,1,0,3.85,3.3,3.3,0,0,1-1.494,1.14,5.524,5.524,0,0,1-2.13.39h-2.1v-6.87Zm21.781,16.84a6.411,6.411,0,0,0,2.532-2.3,6.68,6.68,0,0,0,0-6.8,6.411,6.411,0,0,0-2.532-2.3,8.209,8.209,0,0,0-7.194,0,6.466,6.466,0,0,0-2.532,2.3,6.643,6.643,0,0,0,0,6.8,6.455,6.455,0,0,0,2.538,2.3A8.2,8.2,0,0,0,412.042,5051.7Zm-5.61-2.25a3.761,3.761,0,0,1-1.416-1.4,4.35,4.35,0,0,1,0-4.11,3.761,3.761,0,0,1,1.416-1.4,4.326,4.326,0,0,1,4.038,0,3.774,3.774,0,0,1,1.41,1.4,4.35,4.35,0,0,1,0,4.11,3.774,3.774,0,0,1-1.41,1.4A4.251,4.251,0,0,1,406.432,5049.45Zm18.538,2.59a3.834,3.834,0,0,0,1.758-1.41,3.873,3.873,0,0,0,.618-2.22,2.839,2.839,0,0,0-1.584-2.78,12.989,12.989,0,0,0-1.728-.77c-0.416-.16-0.833-0.33-1.248-0.5a4.038,4.038,0,0,1-1.044-.62,1.048,1.048,0,0,1-.42-0.84,1.2,1.2,0,0,1,.486-0.98,2,2,0,0,1,1.29-.38,4.345,4.345,0,0,1,2.772,1.16l1.08-1.88a8.119,8.119,0,0,0-1.944-.99,5.875,5.875,0,0,0-4.3.12,3.966,3.966,0,0,0-1.632,1.3,3.152,3.152,0,0,0-.594,1.89,2.542,2.542,0,0,0,.45,1.55,3.773,3.773,0,0,0,1.146,1,15.316,15.316,0,0,0,1.464.72c0.607,0.24,1.111.45,1.512,0.62a2.708,2.708,0,0,1,.9.59,1.292,1.292,0,0,1,.3.9,1.67,1.67,0,0,1-.264.95,1.715,1.715,0,0,1-.708.62,2.362,2.362,0,0,1-1.02.21,3.536,3.536,0,0,1-1.806-.52,5.5,5.5,0,0,1-1.578-1.45l-1.32,1.94a4.99,4.99,0,0,0,1.962,1.68,6.373,6.373,0,0,0,2.754.58A6.753,6.753,0,0,0,424.97,5052.04Zm11.114,0.31a4.5,4.5,0,0,0,1.236-.48l-0.756-2.39a1.837,1.837,0,0,1-1.14.38,1.1,1.1,0,0,1-.924-0.42,2.027,2.027,0,0,1-.324-1.23v-6.09h2.832v-2.26h-2.832v-4.6h-2.988v4.6h-1.5v2.26h1.5v6.29a4.511,4.511,0,0,0,.93,3.04,3.245,3.245,0,0,0,2.6,1.08A5.45,5.45,0,0,0,436.084,5052.35Zm23.91-.36a10.256,10.256,0,0,0,2.8-1.39l-1.38-2.67a6.745,6.745,0,0,1-2.136,1.12,8.608,8.608,0,0,1-2.6.39,7.873,7.873,0,0,1-2.988-.55,7.413,7.413,0,0,1-2.382-1.53,6.781,6.781,0,0,1-1.566-2.28,7.479,7.479,0,0,1,0-5.64,6.723,6.723,0,0,1,1.566-2.29,7.413,7.413,0,0,1,2.382-1.53,7.873,7.873,0,0,1,2.988-.55,8.608,8.608,0,0,1,2.6.39,6.745,6.745,0,0,1,2.136,1.12l1.38-2.66a9.77,9.77,0,0,0-2.844-1.41,11.378,11.378,0,0,0-3.48-.53,11.065,11.065,0,0,0-4.17.79,10.486,10.486,0,0,0-3.4,2.19,10.311,10.311,0,0,0-2.3,3.28,10.139,10.139,0,0,0-.006,8.04,10.053,10.053,0,0,0,2.3,3.27,10.55,10.55,0,0,0,3.414,2.19,10.95,10.95,0,0,0,4.188.79A11.108,11.108,0,0,0,459.994,5051.99Zm17.957-.25a9.982,9.982,0,0,0,3.18-2.21,10.477,10.477,0,0,0,0-14.55,9.8,9.8,0,0,0-3.18-2.2,9.848,9.848,0,0,0-7.776,0,9.8,9.8,0,0,0-3.18,2.2,10.477,10.477,0,0,0,0,14.55,9.982,9.982,0,0,0,3.18,2.21A9.962,9.962,0,0,0,477.951,5051.74Zm-6.5-2.78a6.373,6.373,0,0,1-2.1-1.53,6.919,6.919,0,0,1-1.386-2.29,8.675,8.675,0,0,1,0-5.76,6.966,6.966,0,0,1,1.386-2.3,6.517,6.517,0,0,1,2.1-1.53,6.607,6.607,0,0,1,5.232,0,6.517,6.517,0,0,1,2.1,1.53,6.966,6.966,0,0,1,1.386,2.3,8.675,8.675,0,0,1,0,5.76,6.919,6.919,0,0,1-1.386,2.29A6.471,6.471,0,0,1,471.453,5048.96Zm24.431,3.18,8.3-19.8h-3.54l-5.988,15.08-5.988-15.08h-3.54l8.3,19.8h2.448Zm14.119,0v-19.8h-3.144v19.8H510Zm10.466,0a10.2,10.2,0,0,0,3.93-.75,9.75,9.75,0,0,0,3.18-2.1,9.649,9.649,0,0,0,2.118-3.15,10.348,10.348,0,0,0-.006-7.78,9.8,9.8,0,0,0-5.3-5.26,10.164,10.164,0,0,0-3.924-.76h-5.088v19.8h5.088Zm-1.944-16.98h1.608a6.946,6.946,0,0,1,2.754.54,6.724,6.724,0,0,1,3.672,3.74,7.824,7.824,0,0,1,0,5.62,6.838,6.838,0,0,1-1.464,2.25,6.767,6.767,0,0,1-2.208,1.49,7.117,7.117,0,0,1-2.754.52h-1.608v-14.16Zm23.553,11.32v-2.58H534.35v2.58h7.728Zm8.252,5.66v-19.8h-5.7v3.09h2.556v16.71h3.144Zm10.051,0,5.58-6.72q0.636-.765,1.14-1.5a9.812,9.812,0,0,0,.852-1.48,7.52,7.52,0,0,0,.522-1.62,9.857,9.857,0,0,0,.174-1.91,6.7,6.7,0,0,0-3.558-6.01,7.913,7.913,0,0,0-3.906-.93,7.666,7.666,0,0,0-3.8.9,6.26,6.26,0,0,0-2.472,2.44,6.882,6.882,0,0,0-.864,3.44,7.055,7.055,0,0,0,.522,2.75,6.875,6.875,0,0,0,1.428,2.17,6.439,6.439,0,0,0,2.064,1.41,6.182,6.182,0,0,0,2.454.5,3.65,3.65,0,0,0,2.076-.58l-6.024,7.14h3.816Zm-1.158-9.84a4.087,4.087,0,0,1-1.476-1.49,4.133,4.133,0,0,1-.546-2.12,3.962,3.962,0,0,1,2.01-3.53,4.228,4.228,0,0,1,2.118-.52,4.131,4.131,0,0,1,2.1.52,3.82,3.82,0,0,1,1.434,1.44,4.375,4.375,0,0,1,.2,3.71,4.3,4.3,0,0,1-.87,1.32,3.833,3.833,0,0,1-2.868,1.21A4.111,4.111,0,0,1,559.223,5042.3Z"
+                                    transform="translate(-119 -4726)" />
+                            </g>
+                            <g id="D-DAY">
+                                <path id="September_10_2020_" data-name="September 10, 2020 " class="cls-3"
+                                    d="M142.28,5149.34a11.013,11.013,0,0,0,6.864-10.64,10.738,10.738,0,0,0-.852-4.47,9.49,9.49,0,0,0-2.46-3.27,18.867,18.867,0,0,0-3.864-2.56c-1.5-.77-3.184-1.54-5.04-2.33q-1.3-.525-2.376-0.99a11.732,11.732,0,0,1-1.848-.99,3.807,3.807,0,0,1-1.188-1.22,3.322,3.322,0,0,1-.42-1.72,4.068,4.068,0,0,1,.636-2.22,4.535,4.535,0,0,1,1.824-1.59,6.361,6.361,0,0,1,2.892-.6,10.512,10.512,0,0,1,2.988.43,14.471,14.471,0,0,1,2.784,1.14,13.2,13.2,0,0,1,2.34,1.59l3.24-6.09a15.344,15.344,0,0,0-3.168-2.04,20.548,20.548,0,0,0-4.032-1.51,16.455,16.455,0,0,0-4.32-.58,13.635,13.635,0,0,0-5.22.96,12.617,12.617,0,0,0-4.032,2.59,11.6,11.6,0,0,0-2.6,3.72,10.8,10.8,0,0,0-.912,4.37,8.763,8.763,0,0,0,.66,3.47,9.706,9.706,0,0,0,1.788,2.77,12.933,12.933,0,0,0,2.58,2.15,24.572,24.572,0,0,0,3.06,1.64c1.44,0.63,2.724,1.2,3.852,1.72a19.76,19.76,0,0,1,2.856,1.58,6.055,6.055,0,0,1,1.764,1.8,4.609,4.609,0,0,1,.6,2.41,4.4,4.4,0,0,1-.744,2.61,4.571,4.571,0,0,1-2.028,1.57,7.784,7.784,0,0,1-2.964.53,10.8,10.8,0,0,1-3.4-.52,15.471,15.471,0,0,1-2.964-1.29,19.958,19.958,0,0,1-2.472-1.65q-1.1-.855-1.9-1.56l-3.984,6.43a20.344,20.344,0,0,0,2.088,1.73,21.425,21.425,0,0,0,7.32,3.45,20.345,20.345,0,0,0,5.088.61A18.641,18.641,0,0,0,142.28,5149.34Zm32.639-.25a12.028,12.028,0,0,0,4.9-4.66l-5.3-2.66a9.066,9.066,0,0,1-2.844,2.37,7.4,7.4,0,0,1-3.4.75,7.8,7.8,0,0,1-3.576-.78,5.87,5.87,0,0,1-2.388-2.17,6.149,6.149,0,0,1-.852-3.27H180.3c0.048-.41.076-0.7,0.084-0.85s0.012-.33.012-0.54a13.071,13.071,0,0,0-1.62-6.6,11.523,11.523,0,0,0-4.512-4.43,13.751,13.751,0,0,0-6.732-1.59,14.263,14.263,0,0,0-5.352.99,13.542,13.542,0,0,0-4.344,2.79,12.855,12.855,0,0,0-2.916,4.16,12.556,12.556,0,0,0-1.044,5.11,12.286,12.286,0,0,0,1.848,6.67,13.219,13.219,0,0,0,5,4.67,14.638,14.638,0,0,0,7.14,1.72A14.824,14.824,0,0,0,174.919,5149.09Zm-12.288-16.95a4.884,4.884,0,0,1,1.968-1.58,6.8,6.8,0,0,1,2.832-.55,6.387,6.387,0,0,1,2.712.55,5.208,5.208,0,0,1,1.98,1.58,5.556,5.556,0,0,1,1.02,2.45H161.719A5.175,5.175,0,0,1,162.631,5132.14Zm31.7,30.34v-15.72a11.231,11.231,0,0,0,3.864,2.96,11.026,11.026,0,0,0,4.752,1.05,11.422,11.422,0,0,0,6.2-1.72,12.1,12.1,0,0,0,4.332-4.68,14.806,14.806,0,0,0-.012-13.35,12.145,12.145,0,0,0-4.368-4.66,11.791,11.791,0,0,0-6.324-1.7,11.474,11.474,0,0,0-4.752.98,10.035,10.035,0,0,0-3.7,2.78v-3h-7.368v37.06h7.368Zm3.024-18.85a6.29,6.29,0,0,1-2.364-2.41,7.568,7.568,0,0,1,.012-7,6.4,6.4,0,0,1,2.364-2.41,6.559,6.559,0,0,1,3.4-.89,6.369,6.369,0,0,1,3.36.89,6.52,6.52,0,0,1,2.328,2.42,7.041,7.041,0,0,1,.864,3.51,7.123,7.123,0,0,1-.84,3.49,6.325,6.325,0,0,1-2.316,2.4,6.561,6.561,0,0,1-3.4.87A6.709,6.709,0,0,1,197.359,5143.63Zm35.724,6.75a11.583,11.583,0,0,0,2.8-1.05l-1.848-5.91a3.651,3.651,0,0,1-2.208.77,1.91,1.91,0,0,1-1.6-.72,3.364,3.364,0,0,1-.564-2.11v-10.34h5.4v-5.6h-5.4v-9.21H222.3v9.21h-3.288v5.6H222.3v10.87a9.631,9.631,0,0,0,2.04,6.54,7.175,7.175,0,0,0,5.712,2.34A12.4,12.4,0,0,0,233.083,5150.38Zm28.02-1.29a12.028,12.028,0,0,0,4.9-4.66l-5.3-2.66a9.066,9.066,0,0,1-2.844,2.37,7.4,7.4,0,0,1-3.4.75,7.8,7.8,0,0,1-3.576-.78,5.87,5.87,0,0,1-2.388-2.17,6.149,6.149,0,0,1-.852-3.27h18.84c0.048-.41.076-0.7,0.084-0.85s0.012-.33.012-0.54a13.071,13.071,0,0,0-1.62-6.6,11.523,11.523,0,0,0-4.512-4.43,13.751,13.751,0,0,0-6.732-1.59,14.263,14.263,0,0,0-5.352.99,13.542,13.542,0,0,0-4.344,2.79,12.855,12.855,0,0,0-2.916,4.16,12.556,12.556,0,0,0-1.044,5.11,12.286,12.286,0,0,0,1.848,6.67,13.219,13.219,0,0,0,5,4.67,14.638,14.638,0,0,0,7.14,1.72A14.824,14.824,0,0,0,261.1,5149.09Zm-12.288-16.95a4.884,4.884,0,0,1,1.968-1.58,6.8,6.8,0,0,1,2.832-.55,6.387,6.387,0,0,1,2.712.55,5.208,5.208,0,0,1,1.98,1.58,5.556,5.556,0,0,1,1.02,2.45H247.9A5.175,5.175,0,0,1,248.815,5132.14Zm31.7,17.86v-14.95a4.323,4.323,0,0,1,.624-2.28,4.428,4.428,0,0,1,1.74-1.63,5.259,5.259,0,0,1,2.532-.6,4.243,4.243,0,0,1,3.348,1.36,5.324,5.324,0,0,1,1.212,3.65V5150h7.368v-15.02a4.185,4.185,0,0,1,.624-2.24,4.541,4.541,0,0,1,1.716-1.6,5.174,5.174,0,0,1,2.532-.6,4.278,4.278,0,0,1,3.336,1.38,5.432,5.432,0,0,1,1.248,3.78V5150h7.368v-16.32a9.306,9.306,0,0,0-1.188-4.79,8.2,8.2,0,0,0-3.252-3.13,9.824,9.824,0,0,0-4.728-1.1,9.419,9.419,0,0,0-4.728,1.17,13.274,13.274,0,0,0-3.864,3.51,7.436,7.436,0,0,0-3.264-3.41,10.3,10.3,0,0,0-5.112-1.27,9.079,9.079,0,0,0-3.888.84,12.917,12.917,0,0,0-3.624,2.66v-2.74h-7.368V5150h7.368Zm64.019-.9a12.149,12.149,0,0,0,4.38-4.62,14.868,14.868,0,0,0,.048-13.45,12.166,12.166,0,0,0-4.368-4.66,11.859,11.859,0,0,0-6.336-1.71,11.538,11.538,0,0,0-4.776.99,10.121,10.121,0,0,0-3.672,2.77v-19.7h-7.368V5150h7.368v-3.24a11.582,11.582,0,0,0,3.864,2.95,10.945,10.945,0,0,0,4.776,1.06A11.519,11.519,0,0,0,344.538,5149.1Zm-11.712-5.47a6.36,6.36,0,0,1-2.352-2.4,6.992,6.992,0,0,1-.852-3.47,7.091,7.091,0,0,1,.864-3.53,6.432,6.432,0,0,1,2.364-2.42,6.559,6.559,0,0,1,3.4-.89,6.369,6.369,0,0,1,3.36.89,6.474,6.474,0,0,1,2.328,2.43,7.595,7.595,0,0,1,.024,6.99,6.354,6.354,0,0,1-2.3,2.4,6.544,6.544,0,0,1-3.408.87A6.691,6.691,0,0,1,332.826,5143.63Zm43.38,5.46a12.028,12.028,0,0,0,4.9-4.66l-5.3-2.66a9.066,9.066,0,0,1-2.844,2.37,7.4,7.4,0,0,1-3.4.75,7.8,7.8,0,0,1-3.576-.78,5.87,5.87,0,0,1-2.388-2.17,6.149,6.149,0,0,1-.852-3.27h18.84c0.048-.41.076-0.7,0.084-0.85s0.012-.33.012-0.54a13.071,13.071,0,0,0-1.62-6.6,11.523,11.523,0,0,0-4.512-4.43,13.751,13.751,0,0,0-6.732-1.59,14.263,14.263,0,0,0-5.352.99,13.542,13.542,0,0,0-4.344,2.79,12.855,12.855,0,0,0-2.916,4.16,12.556,12.556,0,0,0-1.044,5.11,12.286,12.286,0,0,0,1.848,6.67,13.219,13.219,0,0,0,5,4.67,14.638,14.638,0,0,0,7.14,1.72A14.824,14.824,0,0,0,376.206,5149.09Zm-12.288-16.95a4.884,4.884,0,0,1,1.968-1.58,6.8,6.8,0,0,1,2.832-.55,6.387,6.387,0,0,1,2.712.55,5.208,5.208,0,0,1,1.98,1.58,5.556,5.556,0,0,1,1.02,2.45H363.006A5.175,5.175,0,0,1,363.918,5132.14Zm31.7,17.86v-13.73a4.5,4.5,0,0,1,.792-2.55,6.121,6.121,0,0,1,2.088-1.94,5.469,5.469,0,0,1,2.736-.74,7.371,7.371,0,0,1,2.028.32,6.931,6.931,0,0,1,1.908.88l3.072-6.22a8.632,8.632,0,0,0-2.328-.98,9.926,9.926,0,0,0-2.688-.38,8.569,8.569,0,0,0-4.26,1.11,9.862,9.862,0,0,0-3.348,3.18v-3.53h-7.368V5150h7.368Zm40.127,0v-39.6h-13.68v7.63h5.9V5150h7.776Zm32.651-1.82a17.1,17.1,0,0,0,5.712-7.23,29.106,29.106,0,0,0,0-21.47,17.1,17.1,0,0,0-5.712-7.21,15.289,15.289,0,0,0-17.028,0,17.063,17.063,0,0,0-5.724,7.21,29.106,29.106,0,0,0,0,21.47,17.064,17.064,0,0,0,5.724,7.23A15.289,15.289,0,0,0,468.4,5148.18Zm-12.816-5.91a10.605,10.605,0,0,1-2.8-4.74,27.682,27.682,0,0,1,0-14.63,10.642,10.642,0,0,1,2.8-4.72,6.4,6.4,0,0,1,8.6,0,10.7,10.7,0,0,1,2.784,4.72,27.682,27.682,0,0,1,0,14.63,10.666,10.666,0,0,1-2.784,4.74A6.4,6.4,0,0,1,455.584,5142.27Zm35.448,10.12a11.939,11.939,0,0,0,1.884-6.06,5.3,5.3,0,0,0-1.3-3.78,4.546,4.546,0,0,0-3.48-1.38,4.79,4.79,0,0,0-3.492,1.31,4.863,4.863,0,0,0-.4,6.27,4.675,4.675,0,0,0,2.664,1.61,8.832,8.832,0,0,1-.672,2.23,17.226,17.226,0,0,1-1.2,2.31,8.772,8.772,0,0,1-1.3,1.68l2.088,1.7A22.517,22.517,0,0,0,491.032,5152.39Zm50.675-2.39v-6.91H525.651q3.36-2.445,5.892-4.62a49.119,49.119,0,0,0,4.332-4.15,24.512,24.512,0,0,0,2.928-3.87,15.581,15.581,0,0,0,1.656-3.73,13.691,13.691,0,0,0,.528-3.77,12.721,12.721,0,0,0-1.86-6.84,13.209,13.209,0,0,0-5.124-4.74,16.723,16.723,0,0,0-12.6-.92,14.047,14.047,0,0,0-4.284,2.35,14.61,14.61,0,0,0-3.264,3.71,17.742,17.742,0,0,0-2.076,4.88l6.528,3.05a16.384,16.384,0,0,1,1.872-4.3,8.231,8.231,0,0,1,2.628-2.65,6.246,6.246,0,0,1,3.276-.9,6.342,6.342,0,0,1,3.324.89,6.586,6.586,0,0,1,3.2,5.71,7.9,7.9,0,0,1-.708,3.11,16.538,16.538,0,0,1-2.244,3.6,43.235,43.235,0,0,1-4.008,4.33q-2.472,2.385-5.976,5.29-3.5,2.925-8.184,6.5V5150h30.216Zm30.467-1.82a17.1,17.1,0,0,0,5.712-7.23,29.106,29.106,0,0,0,0-21.47,17.1,17.1,0,0,0-5.712-7.21,15.289,15.289,0,0,0-17.028,0,17.063,17.063,0,0,0-5.724,7.21,29.106,29.106,0,0,0,0,21.47,17.064,17.064,0,0,0,5.724,7.23A15.289,15.289,0,0,0,572.174,5148.18Zm-12.816-5.91a10.605,10.605,0,0,1-2.8-4.74,27.682,27.682,0,0,1,0-14.63,10.642,10.642,0,0,1,2.8-4.72,6.4,6.4,0,0,1,8.6,0,10.7,10.7,0,0,1,2.784,4.72,27.682,27.682,0,0,1,0,14.63,10.666,10.666,0,0,1-2.784,4.74A6.4,6.4,0,0,1,559.358,5142.27ZM614.4,5150v-6.91H598.346q3.36-2.445,5.892-4.62a49.119,49.119,0,0,0,4.332-4.15,24.451,24.451,0,0,0,2.928-3.87,15.581,15.581,0,0,0,1.656-3.73,13.653,13.653,0,0,0,.528-3.77,12.712,12.712,0,0,0-1.86-6.84,13.2,13.2,0,0,0-5.124-4.74,16.723,16.723,0,0,0-12.6-.92,14.047,14.047,0,0,0-4.284,2.35,14.629,14.629,0,0,0-3.264,3.71,17.742,17.742,0,0,0-2.076,4.88l6.528,3.05a16.45,16.45,0,0,1,1.872-4.3,8.231,8.231,0,0,1,2.628-2.65,6.251,6.251,0,0,1,3.276-.9,6.342,6.342,0,0,1,3.324.89,6.586,6.586,0,0,1,3.2,5.71,7.882,7.882,0,0,1-.708,3.11,16.5,16.5,0,0,1-2.244,3.6,43.117,43.117,0,0,1-4.008,4.33q-2.472,2.385-5.976,5.29-3.5,2.925-8.184,6.5V5150H614.4Zm30.467-1.82a17.1,17.1,0,0,0,5.712-7.23,29.106,29.106,0,0,0,0-21.47,17.1,17.1,0,0,0-5.712-7.21,15.289,15.289,0,0,0-17.028,0,17.063,17.063,0,0,0-5.724,7.21,29.106,29.106,0,0,0,0,21.47,17.064,17.064,0,0,0,5.724,7.23A15.289,15.289,0,0,0,644.869,5148.18Zm-12.816-5.91a10.605,10.605,0,0,1-2.8-4.74,27.682,27.682,0,0,1,0-14.63,10.642,10.642,0,0,1,2.8-4.72,6.4,6.4,0,0,1,8.6,0,10.7,10.7,0,0,1,2.784,4.72,27.682,27.682,0,0,1,0,14.63,10.666,10.666,0,0,1-2.784,4.74A6.4,6.4,0,0,1,632.053,5142.27Z"
+                                    transform="translate(-119 -4726)" />
+                            </g>
+                        </svg>
+                    </div>
+                    <a href="#" class="more_btn_fix">
+                        <div class="more_btn_txt_fix">Learn more</div>
+                        <i class="more_btn_icon_fix"></i>
+                    </a>
+                </div>
+                <div class="aix_shape" id="pink">
+                    <div></div>
+                </div>
+                <div class="aix_shape" id="yellow">
+                    <div></div>
+                </div>
+                <div class="aix_shape" id="blue">
+                    <div></div>
+                </div>
+                <div class="aix_figure_wrap">
+                    <div class="aix_figure_1"></div>
+                    <div class="aix_figure_2"></div>
+                    <div class="aix_figure_3"></div>
+                </div>
+                <div id="trigger_1"></div>
+                <div id="trigger_2"></div>
+                <div id="trigger_3"></div>
+                <div id="trigger_4"></div>
+                <div id="trigger_5"></div>
+                <div id="trigger_6"></div>
+
+            </div>
+        </section>
+
+        <section id="join">
+            <div class="join_wrap">
+                <div class="join_text_wrap">
+                    <div class="join_text">
+                        <h1><span class="join_stroke">We strive for (and achieve)</span>
+                            excellence!
+                        </h1>
+                    </div>
+                    <div class="join_paragraph">
+                        <p>
+                            If you strive to grow your career, <span class="mobile_join_space">work with experts
+                                :</span><br>
+                            process actual data and work on shipping products that have real-world impact, <span
+                                class="mobile_join_space">JOIN US!</span>
+                        </p>
+                    </div>
+                    <div class="join_btn_wrap">
+                        <a href="#" class="more_btn_fix">
+                            <div class="more_btn_txt_fix">Learn more</div>
+                            <i class="more_btn_icon_fix"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="join_figure_wrap">
+                    <div class="join_figure_1"></div>
+                    <div class="join_figure_2"></div>
+                </div>
+                <div class="join_bg_wrap">
+                    <div class="join_bg">
+                    </div>
+                </div>
+        </section>
+
+
+    </main>
+
+    <footer id="footer">
+        <div class="footer_wrap">
+            <div class="footer_logo">
+                <span class="icon_logo"></span>
+            </div>
+            <div class="footer_menu">
+                <ul>
+                    <li><a href="#">Contact</a></li>
+                    <li><a href="#">Legal Notice</a></li>
+                    <li class="footer_lang_wrap"><button class="footer_lang">ENG<i class="dropdown"></i></button></li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+
+
+    <script>
+
+        function subMenuShow(subMenuNumber) {
+
+            if (window.innerWidth > 1200) {
+
+                for (i = 0; i < 7; i++) {
+                    document.getElementsByClassName('header_copy')[i].style = "display:none;"
+                    document.getElementsByClassName('lnb_a')[subMenuNumber].style = "font-weight:400"
+                }
+
+                document.getElementsByClassName('header_copy')[subMenuNumber].style = "display:block;"
+
+                document.getElementsByClassName('lnb_a')[subMenuNumber].style = "font-weight:600"
+
+            } else[
+                document.getElementsByClassName('lnb_a')[subMenuNumber].style = "font-weight:600"
+            ]
+
+        }
+
+
+        function subMenuOut(subMenuNumber) {
+
+            if (window.innerWidth > 1200) {
+                document.getElementsByClassName('header_copy')[subMenuNumber].style = "display:none"
+                document.getElementsByClassName('lnb_a')[subMenuNumber].style = "font-weight:400"
+            } else{
+                document.getElementsByClassName('lnb_a')[subMenuNumber].style = "font-weight:400"
+            }
+        }
+    </script>
+
+
+    <script>
+
+        var currentSlide = 0;
+        var slide = document.getElementsByClassName('people_item_img');
+        var textSlide = document.getElementsByClassName('people_text');
+        var imgBg = document.getElementsByClassName('img_bg')
+        var slideText = document.getElementById('slide_text');
+
+
+        slideText.innerHTML = "01 - 12"
+
+        function moveLeft() {
+
+            if (currentSlide != 0) {
+
+                slide[currentSlide].style = "animation : slide_ani_3 0.4s forwards"
+
+                textSlide[currentSlide].style = "animation: txtchange_2 0.4s forwards"
+
+                imgBg[currentSlide].style = "animation: txtchange_2 0.4s forwards"
+
+                slideText.innerHTML = "0" + (currentSlide) + " " + "- 12"
+
+                slide[currentSlide - 1].style = "animation : slide_ani_4 0.4s forwards"
+
+                textSlide[currentSlide - 1].style = "animation: txtchange_1 0.4s forwards"
+
+                imgBg[currentSlide - 1].style = "animation: txtchange_1 0.4s forwards"
+
+                currentSlide--;
+
+            } else {
+                slide[0].style = "animation : stop 0.1s forwards";
+
+                textSlide[0].style = "animation : textstop 0.1s forwards";
+
+                imgBg[0].style = "animation : textstop 0.1s forwards";
+
+                currentSlide = 0;
+            }
+
+            if (currentSlide == 8) {
+                slideText.innerHTML = "0" + (currentSlide + 1) + " " + "- 12"
+            }
+
+            if (currentSlide >= 9) {
+                slideText.innerHTML = (currentSlide + 1) + " " + "- 12"
+            }
+
+        }
+
+        function moveRight() {
+
+            if (currentSlide != 11) {
+
+                slide[currentSlide].style = "animation : slide_ani_1 0.4s forwards"
+
+                textSlide[currentSlide].style = "animation: txtchange_2 0.4s forwards"
+
+                imgBg[currentSlide].style = "animation: txtchange_2 0.4s forwards"
+
+                slideText.innerHTML = "0" + (currentSlide + 2) + " " + "- 12"
+
+                slide[currentSlide + 1].style = "animation : slide_ani_2 0.4s forwards"
+
+                textSlide[currentSlide + 1].style = "animation: txtchange_1 0.4s forwards"
+
+                imgBg[currentSlide + 1].style = "animation: txtchange_1 0.4s forwards"
+
+                currentSlide++;
+
+            } else {
+
+                slide[11].style = "animation : stop 0.1s forwards";
+
+                textSlide[11].style = "animation : textstop 0.1s forwards";
+
+                imgBg[11].style = "animation : textstop 0.1s forwards";
+
+                slideText.innerHTML = "12 - 12"
+
+                currentSlide = 11;
+            }
+
+            if (currentSlide >= 9) {
+                slideText.innerHTML = (currentSlide + 1) + " " + "- 12"
+            }
+
+        }
+
+
+
+
+    </script>
+
+    <script>
+        // scrollmagic
+        $(document).ready(function () {
+            var controller = new ScrollMagic.Controller();
+
+            var ourScene = new ScrollMagic.Scene({
+                triggerElement: '.nugu_bg'
+            })
+
+                .setClassToggle('.nugu_bg', 'nugu_bg_ani')
+                .addTo(controller);
+
+        });
+
+        var controller = new ScrollMagic.Controller();
+
+        var scene1 = new ScrollMagic.Scene({
+            triggerElement: "#trigger_1",
+            duration: 155,
+            offset: 0
+        })
+            .setClassToggle('.aix_shape', 'rotate_shape_1')
+            .setPin(".rotate_shape_1")
+            // .addIndicators({ name: "1" }) // 위치 확인 표시
+            .addTo(controller);
+
+        var scene2 = new ScrollMagic.Scene({
+            triggerElement: "#trigger_2",
+            duration: 155,
+            offset: 0
+        })
+            .setClassToggle('.aix_shape', 'rotate_shape_2')
+            .setPin(".rotate_shape_2")
+            // .addIndicators({ name: "2" }) // 위치 확인 표시
+            .addTo(controller);
+
+        var scene3 = new ScrollMagic.Scene({
+            triggerElement: "#trigger_3",
+            duration: 155,
+            offset: 0
+        })
+            .setClassToggle('.aix_shape', 'rotate_shape_3')
+            .setPin(".rotate_shape_3")
+            // .addIndicators({ name: "3" }) // 위치 확인 표시
+            .addTo(controller);
+        var scene4 = new ScrollMagic.Scene({
+            triggerElement: "#trigger_4",
+            duration: 155,
+            offset: 0
+        })
+            .setClassToggle('.aix_shape', 'rotate_shape_4')
+            .setPin(".rotate_shape_4")
+            // .addIndicators({ name: "3" }) // 위치 확인 표시
+            .addTo(controller);
+        var scene5 = new ScrollMagic.Scene({
+            triggerElement: "#trigger_5",
+            duration: 155,
+            offset: 0
+        })
+            .setClassToggle('.aix_shape', 'rotate_shape_5')
+            .setPin(".rotate_shape_5")
+            // .addIndicators({ name: "3" }) // 위치 확인 표시
+            .addTo(controller);
+        var scene6 = new ScrollMagic.Scene({
+            triggerElement: "#trigger_6",
+            duration: 100,
+            offset: 0
+        })
+            .setClassToggle('.aix_shape', 'rotate_shape_6')
+            .setPin(".rotate_shape_6")
+            // .addIndicators({ name: "3" }) // 위치 확인 표시
+            .addTo(controller);
+
+        $(document).ready(function () {
+            var controller = new ScrollMagic.Controller();
+
+            var ourScene = new ScrollMagic.Scene({
+                triggerElement: '.join_bg'
+            })
+
+                .setClassToggle('.join_bg', 'join_bg_ani')
+                .addTo(controller);
+
+        });
+
+
+
+    </script>
+
+    <script>
+        //burgermenuicon
+        var burgerState = 0;
+        
+        var prac = 0;
+
+        function buggerIcon() {
+
+            if (burgerState == 0) {
+
+                document.getElementById('main').style = "display:none";
+                document.getElementById('footer').style = "display:none";
+                document.getElementById('lnb').style = "display:block";
+                document.getElementById('header').style = "height:300px;"
+                document.getElementsByClassName('gnb_indicator_wrap')[0].style = "color:transparent;"
+                document.getElementById('gnb_wrap').style = "height:160px;"
+                document.getElementById('gnb_logo_icon').style = "display:block;"
+                document.getElementById('gnb').style ="background-color:transparent;"
+                document.getElementById('top_menu_search').style = "color:white;"
+                // document.getElementById('logo_ai').style = "color:black;"
+                // document.getElementById('logo_dot').style = "color:black;"
+                // document.getElementById('logo_text').style = "color:black;"
+                
+                document.getElementById('logo_ai').style = "color : #333"
+                document.getElementById('logo_dot').style = "color : #333"
+                document.getElementById('logo_text_con').style = "color : #333"
+
+                document.getElementById('bugger_line1').style = "animation: buggeropen1 .8s backwards;transform: translate(-50%, -50%) rotate(45deg); background : #333;"
+                document.getElementById('bugger_line2').style = "animation: buggeropen2 .8s backwards;transform: translate(-50%, -50%) rotate(-45deg); background : #333;"
+
+                burgerState = 1;
+                
+                prac = 1;
+
+            } else if (burgerState == 1) {
+
+                document.getElementById('main').style = "display:block";
+                document.getElementById('footer').style = "display:block";
+                document.getElementById('lnb').style = "display:none";
+                document.getElementById('header').style = "height:auto;"
+                document.getElementsByClassName('gnb_indicator_wrap')[0].style = "color:transparent;"
+                document.getElementById('gnb_wrap').style = "height:160px;"
+                document.getElementById('gnb_logo_icon').style = "display:block;"
+                document.getElementById('gnb').style ="background-color:transparent;"
+                 document.getElementById('top_menu_search').style = "color:white;"
+                // document.getElementById('logo_ai').style = "color:white;"
+                // document.getElementById('logo_dot').style = "color:white;"
+                // document.getElementById('logo_text').style = "color:white;"
+
+                document.getElementById('logo_ai').style = "color : #fff"
+                document.getElementById('logo_dot').style = "color : #fff"
+                document.getElementById('logo_text_con').style = "color : #fff"
+
+                document.getElementById('bugger_line1').style = "animation: buggerclose1 .8s backwards;transform: translate(-50%, 230%) rotate(0deg); background : #fff;"
+                document.getElementById('bugger_line2').style = "animation: buggerclose2 .8s backwards;transform: translate(-50%, -230%) rotate(0deg); background : #fff;"
+
+                burgerState = 0;
+                
+                prac = 0;
+            }
+
+
+
+        }
+
+    </script>
+    <script>
+        //메인상단슬라이드
+        $('.hero_slide_wrap').slick({
+            infinite: true,
+            slidesToShow: 1,
+            slidesToScroll: 1,
+            centerMode: true,
+            centerPadding: '100px',
+            variableWidth: true,
+            adaptiveHeight: true,
+            focusOnChange: true
+
+        });
+
+
+
+
+
+
+    </script>
+</body>
+
+</html>
